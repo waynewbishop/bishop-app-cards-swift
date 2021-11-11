@@ -23,7 +23,6 @@ public class Suit: Equatable {
         comparision.
         */
         
-        scores.append(Score("A", 1, 11))
         scores.append(Score("2", 2))
         scores.append(Score("3", 3))
         scores.append(Score("4", 4))
@@ -33,9 +32,12 @@ public class Suit: Equatable {
         scores.append(Score("8", 8))
         scores.append(Score("9", 9))
         scores.append(Score("10", 10))
-        scores.append(Score("J", 11))
-        scores.append(Score("Q", 12))
-        scores.append(Score("K", 13))
+
+        //special support for general games + blackjack
+        scores.append(Score("A", 1, 11))
+        scores.append(Score("J", 11, 10))
+        scores.append(Score("Q", 12, 10))
+        scores.append(Score("K", 13, 10))
     }
     
     

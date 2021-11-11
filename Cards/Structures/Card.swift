@@ -13,6 +13,7 @@ public class Card : Comparable {
    var suit: Suit
    var score: Score
    var wildcard: Bool = false
+   var faceup: Bool = false
    
    public init() {
        self.suit = Suit()

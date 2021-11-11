@@ -10,12 +10,14 @@ import Foundation
 class Player {
     
     let name: String
-    var hand = Hand()
     let uuid = UUID()
+    var hand = Hand()
+    var isDealer: Bool = false
 
     
     /// Assign player name
     /// - Parameter name: The name of the player
+    /// 
     public init(with name: String) {
         self.name = name
     }
