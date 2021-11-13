@@ -21,7 +21,7 @@ struct GameView: View {
                 }
                 ForEach(viewModel.players) { player in
                     Section {
-                        ForEach(player.hand.sequence) { card in
+                        ForEach(player.hand.cards) { card in
                             Text(card.description)
                         }
                     } header: {

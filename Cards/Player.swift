@@ -11,29 +11,18 @@ struct Player: Identifiable {
     let id = UUID()
     let name: String
     var score: Int = 0
-    var hand = Heap<Card>(type: .max)
-    
-    func showHand() {
-        print("Player: \(name)")
-        print("---------")
-        
-        for s in hand.sequence {
-            print("\(s.suit.name) - \(s.score.name)")
-        }
-        
-        print("")
-    }
+    var hand = Hand()
     
     mutating func receive(_ card: Card) {
-        hand.enQueue(card)
+        hand.add(card: card)
     }
     
-    public func playCard(index: Int) -> Card?  {
-        return nil
+    mutating func playCard(index: Int) -> Card?  {
+        hand.play(index)
     }
     
     mutating func resetHand() {
-        hand = Heap<Card>(type: .max)
+        hand = Hand()
     }
 }
 

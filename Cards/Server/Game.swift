@@ -51,19 +51,20 @@ class Game: ObservableObject {
         }
     }
     
-    private func score(for player: Player) -> Int {
-        let hand = player.hand
+    private func score(_ hand: Hand) -> Int {
+        let secondScore = hand.cards.reduce(0, { $0 + $1.secondaryValue })
         
-        let score = hand.sequence.reduce(0, { $0 + $1.primaryValue })
-        
-        guard score > 21 else {
-            return score
+        if secondScore > 21 {
+            let score = hand.cards.reduce(0, { $0 + $1.primaryValue })
+            
+            return min(score, secondScore)
         }
         
-        //check if there ace
-        let secondScore = hand.sequence.reduce(0, { $0 + $1.secondaryValue })
-        
-        return min(score, secondScore)
+        return secondScore
+    }
+    
+    private func score(for player: Player) -> Int {
+        score(player.hand)
     }
     
     func stand(_ player: Player) {

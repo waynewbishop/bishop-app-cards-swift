@@ -23,6 +23,7 @@
 		225B5C2E27380E3800C456C9 /* GameType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225B5C2D27380E3800C456C9 /* GameType.swift */; };
 		225B5C3027380E4C00C456C9 /* Turn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225B5C2F27380E4C00C456C9 /* Turn.swift */; };
 		225B5C342738275900C456C9 /* Dealer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225B5C332738275900C456C9 /* Dealer.swift */; };
+		22963063273F438B00AB5180 /* Hand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22963062273F438B00AB5180 /* Hand.swift */; };
 		22D022372736154D0067D872 /* CardsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D022362736154D0067D872 /* CardsApp.swift */; };
 		22D022392736154D0067D872 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D022382736154D0067D872 /* ContentView.swift */; };
 		22D0223B2736154F0067D872 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22D0223A2736154F0067D872 /* Assets.xcassets */; };
@@ -71,6 +72,7 @@
 		225B5C2D27380E3800C456C9 /* GameType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameType.swift; sourceTree = "<group>"; };
 		225B5C2F27380E4C00C456C9 /* Turn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Turn.swift; sourceTree = "<group>"; };
 		225B5C332738275900C456C9 /* Dealer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dealer.swift; sourceTree = "<group>"; };
+		22963062273F438B00AB5180 /* Hand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hand.swift; sourceTree = "<group>"; };
 		22D022332736154D0067D872 /* Cards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22D022362736154D0067D872 /* CardsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsApp.swift; sourceTree = "<group>"; };
 		22D022382736154D0067D872 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				22D022362736154D0067D872 /* CardsApp.swift */,
 				225B5C282736E01B00C456C9 /* View */,
 				225B5C152736CDDA00C456C9 /* Player.swift */,
+				22963062273F438B00AB5180 /* Hand.swift */,
 				225B5C332738275900C456C9 /* Dealer.swift */,
 				225B5C2927380C5C00C456C9 /* Blackjack.swift */,
 				225B5C2F27380E4C00C456C9 /* Turn.swift */,
@@ -368,6 +371,7 @@
 				225B5C182736D15400C456C9 /* Heap.swift in Sources */,
 				22D02290273616FE0067D872 /* Stack.swift in Sources */,
 				225B5C242736DD7500C456C9 /* DealerViewViewModel.swift in Sources */,
+				22963063273F438B00AB5180 /* Hand.swift in Sources */,
 				225B5C3027380E4C00C456C9 /* Turn.swift in Sources */,
 				225B5C2C27380C6C00C456C9 /* Playable.swift in Sources */,
 				225B5C142736CA3100C456C9 /* DealerView.swift in Sources */,
