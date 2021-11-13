@@ -8,7 +8,7 @@
 import Foundation
 
 class Server {
-    private var games: Set<Game> = []
+    private var games: Set<Blackjack> = []
     
     func connectNewClient() {
         // start game

@@ -10,10 +10,10 @@ import Foundation
 class ContentViewViewModel {
     private var server = Server()
     
-    private(set) var game: Game
+    private(set) var game: Blackjack
     
     init() {
-        self.game = Game(dealer: Dealer(deck: Deck()), players: [Player(name: "Sam")])
+        self.game = Blackjack(dealer: Dealer(deck: Deck()), players: [Player(name: "Sam")])
     }
     
     var deckViewViewModel: DeckViewViewModel {

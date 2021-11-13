@@ -8,15 +8,14 @@
 import Foundation
 
 protocol Playable {
-    var players: Array<Player> { get set }
-    var hasStarted: Bool { get set }
+    var players: [Player] { get }
     var deck: Deck { get }
     
-    func start() ->()
-    func call() -> Player?
-    func deal(_ player: inout Player) ->()
-    func draw(_ player: inout Player) ->()
-    func fold(_ player: inout Player) ->()
+    func deal() ->()
+//    func call() -> Player?
+//    func deal(_ player: inout Player) ->()
+//    func draw(_ player: inout Player) ->()
+//    func fold(_ player: inout Player) ->()
 }
 
 extension Playable {

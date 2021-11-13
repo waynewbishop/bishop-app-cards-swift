@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 class GameViewViewModel: ObservableObject {
-    @Published private(set) var game: Game
+    @Published private(set) var game: Blackjack
     @Published private(set) var buttonTitle = "New Game"
     @Published private(set) var resetButtonTitle = "Reset"
     private var anyCancellable = Set<AnyCancellable>()
@@ -22,7 +22,7 @@ class GameViewViewModel: ObservableObject {
         game.players
     }
     
-    init(game: Game) {
+    init(game: Blackjack) {
         self.game = game
         self.game.objectWillChange.sink {
             self.objectWillChange.send()

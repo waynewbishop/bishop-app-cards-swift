@@ -13,17 +13,17 @@
 		225B5C162736CDDA00C456C9 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225B5C152736CDDA00C456C9 /* Player.swift */; };
 		225B5C182736D15400C456C9 /* Heap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225B5C172736D15400C456C9 /* Heap.swift */; };
 		225B5C1C2736D89800C456C9 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225B5C1B2736D89800C456C9 /* Server.swift */; };
-		225B5C1E2736D8F200C456C9 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225B5C1D2736D8F200C456C9 /* Game.swift */; };
+		225B5C1E2736D8F200C456C9 /* Blackjack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225B5C1D2736D8F200C456C9 /* Blackjack.swift */; };
 		225B5C202736DD2E00C456C9 /* DeckViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225B5C1F2736DD2E00C456C9 /* DeckViewViewModel.swift */; };
 		225B5C222736DD5D00C456C9 /* GameViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225B5C212736DD5D00C456C9 /* GameViewViewModel.swift */; };
 		225B5C242736DD7500C456C9 /* DealerViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225B5C232736DD7500C456C9 /* DealerViewViewModel.swift */; };
 		225B5C262736DE3500C456C9 /* ContentViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225B5C252736DE3400C456C9 /* ContentViewViewModel.swift */; };
-		225B5C2A27380C5C00C456C9 /* Blackjack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225B5C2927380C5C00C456C9 /* Blackjack.swift */; };
 		225B5C2C27380C6C00C456C9 /* Playable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225B5C2B27380C6C00C456C9 /* Playable.swift */; };
 		225B5C2E27380E3800C456C9 /* GameType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225B5C2D27380E3800C456C9 /* GameType.swift */; };
 		225B5C3027380E4C00C456C9 /* Turn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225B5C2F27380E4C00C456C9 /* Turn.swift */; };
 		225B5C342738275900C456C9 /* Dealer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225B5C332738275900C456C9 /* Dealer.swift */; };
 		22963063273F438B00AB5180 /* Hand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22963062273F438B00AB5180 /* Hand.swift */; };
+		22963065273F48FE00AB5180 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22963064273F48FE00AB5180 /* Game.swift */; };
 		22D022372736154D0067D872 /* CardsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D022362736154D0067D872 /* CardsApp.swift */; };
 		22D022392736154D0067D872 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D022382736154D0067D872 /* ContentView.swift */; };
 		22D0223B2736154F0067D872 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22D0223A2736154F0067D872 /* Assets.xcassets */; };
@@ -62,17 +62,17 @@
 		225B5C152736CDDA00C456C9 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		225B5C172736D15400C456C9 /* Heap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heap.swift; sourceTree = "<group>"; };
 		225B5C1B2736D89800C456C9 /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
-		225B5C1D2736D8F200C456C9 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		225B5C1D2736D8F200C456C9 /* Blackjack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blackjack.swift; sourceTree = "<group>"; };
 		225B5C1F2736DD2E00C456C9 /* DeckViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckViewViewModel.swift; sourceTree = "<group>"; };
 		225B5C212736DD5D00C456C9 /* GameViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewViewModel.swift; sourceTree = "<group>"; };
 		225B5C232736DD7500C456C9 /* DealerViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerViewViewModel.swift; sourceTree = "<group>"; };
 		225B5C252736DE3400C456C9 /* ContentViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewViewModel.swift; sourceTree = "<group>"; };
-		225B5C2927380C5C00C456C9 /* Blackjack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blackjack.swift; sourceTree = "<group>"; };
 		225B5C2B27380C6C00C456C9 /* Playable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playable.swift; sourceTree = "<group>"; };
 		225B5C2D27380E3800C456C9 /* GameType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameType.swift; sourceTree = "<group>"; };
 		225B5C2F27380E4C00C456C9 /* Turn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Turn.swift; sourceTree = "<group>"; };
 		225B5C332738275900C456C9 /* Dealer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dealer.swift; sourceTree = "<group>"; };
 		22963062273F438B00AB5180 /* Hand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hand.swift; sourceTree = "<group>"; };
+		22963064273F48FE00AB5180 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		22D022332736154D0067D872 /* Cards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22D022362736154D0067D872 /* CardsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsApp.swift; sourceTree = "<group>"; };
 		22D022382736154D0067D872 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -128,7 +128,9 @@
 			isa = PBXGroup;
 			children = (
 				225B5C1B2736D89800C456C9 /* Server.swift */,
-				225B5C1D2736D8F200C456C9 /* Game.swift */,
+				225B5C1D2736D8F200C456C9 /* Blackjack.swift */,
+				22963064273F48FE00AB5180 /* Game.swift */,
+				225B5C2B27380C6C00C456C9 /* Playable.swift */,
 			);
 			path = Server;
 			sourceTree = "<group>";
@@ -183,10 +185,8 @@
 				225B5C152736CDDA00C456C9 /* Player.swift */,
 				22963062273F438B00AB5180 /* Hand.swift */,
 				225B5C332738275900C456C9 /* Dealer.swift */,
-				225B5C2927380C5C00C456C9 /* Blackjack.swift */,
 				225B5C2F27380E4C00C456C9 /* Turn.swift */,
 				225B5C2D27380E3800C456C9 /* GameType.swift */,
-				225B5C2B27380C6C00C456C9 /* Playable.swift */,
 				225B5C272736DEB700C456C9 /* View Model */,
 				225B5C1A2736D7E800C456C9 /* Server */,
 				225B5C192736D37700C456C9 /* Structures */,
@@ -379,8 +379,8 @@
 				225B5C102736C84B00C456C9 /* DeckView.swift in Sources */,
 				225B5C222736DD5D00C456C9 /* GameViewViewModel.swift in Sources */,
 				22D022922736177F0067D872 /* Card.swift in Sources */,
-				225B5C2A27380C5C00C456C9 /* Blackjack.swift in Sources */,
-				225B5C1E2736D8F200C456C9 /* Game.swift in Sources */,
+				22963065273F48FE00AB5180 /* Game.swift in Sources */,
+				225B5C1E2736D8F200C456C9 /* Blackjack.swift in Sources */,
 				225B5C202736DD2E00C456C9 /* DeckViewViewModel.swift in Sources */,
 				225B5C342738275900C456C9 /* Dealer.swift in Sources */,
 				22D022392736154D0067D872 /* ContentView.swift in Sources */,
