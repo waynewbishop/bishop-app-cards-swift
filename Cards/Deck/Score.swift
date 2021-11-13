@@ -12,12 +12,12 @@ struct Score {
     let value: Int
     let secondary: Int?
     
-    var primary: Int {
+    var primaryValue: Int {
         value
     }
     
     var secondaryValue: Int {
-        secondary ?? primary
+        secondary ?? primaryValue
     }
 }
  

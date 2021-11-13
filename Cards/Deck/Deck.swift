@@ -18,10 +18,10 @@ class Deck: ObservableObject {
         cards = Stack<Card>()
         
         let suits = [
-            Suit(of: "Hearts"),
-            Suit(of: "Diamonds"),
-            Suit(of: "Spades"),
-            Suit(of: "Clubs")
+            Suit(name: "Hearts"),
+            Suit(name: "Diamonds"),
+            Suit(name: "Spades"),
+            Suit(name: "Clubs")
         ]
         
         for suit in suits {

@@ -17,7 +17,7 @@ struct Card {
     let score: Score
     
     var primaryValue: Int {
-        score.primary
+        score.primaryValue
     }
     
     var secondaryValue: Int {
