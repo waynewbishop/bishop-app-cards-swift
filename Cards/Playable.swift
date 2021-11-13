@@ -2,13 +2,12 @@
 //  Playable.swift
 //  Cards
 //
-//  Created by Wayne Bishop on 11/10/21.
+//  Created by Sam Warfield on 11/7/21.
 //
 
 import Foundation
 
 protocol Playable {
-    
     var players: Array<Player> { get set }
     var hasStarted: Bool { get set }
     var deck: Deck { get }
@@ -20,13 +19,10 @@ protocol Playable {
     func fold(_ player: inout Player) ->()
 }
 
-
-extension Playable {  //extension of a protocol
-    
-    mutating func addPlayer(_ player: inout Player) {
-        if self.hasStarted == false {
-            players.append(player)  //reference being added..
-        }
+extension Playable {
+    func draw(_ player: inout Player)  {
+//        if let card = deck.cards.pop() {
+//            player.hand.enQueue(card)
+//        }
     }
-
 }
