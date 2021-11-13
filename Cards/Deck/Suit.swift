@@ -36,10 +36,9 @@ struct Suit {
         scores.append(Score(name: "K", value: 13, secondary: nil))
     }
 }
- 
+
 extension Suit: Equatable {
     static public func == (lhs: Suit, rhs: Suit) -> Bool {
         return lhs.name == rhs.name
     }
-    
 }
