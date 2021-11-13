@@ -12,7 +12,7 @@ struct Card {
         case up
         case down
     }
-//    let id: Int
+    
     let suit: Suit
     let score: Score
     
