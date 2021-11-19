@@ -56,35 +56,75 @@ class Blackjack : Playable  {
         
         self.hasStarted = true
         
+        //start the player turns
+        self.nextTurn()
     }
 
+    
+    
+    //TODO: deque the next player.
+    func nextTurn() {
+        if let next  = self.players.deQueue() {
+            next.isTurn = true
+        }
+    }
 
     
     func score(of player: inout Player) -> Int {
         
         //gets computed as the hand changes.. - blackjack
         var total: Int = 0
+        let number_range = 2...10
+        let face_range = 11...13
+        var hasAce: Bool = false
+                
+        for card in player.hand.cards {
+            
+            if card.score.value == 1 {
+                hasAce = true
+            }
+            
+            //add to total if the range is between 2 and 10
+            if number_range.contains(card.score.value) {
+                total += card.score.value
+            }
+            
+            //add 10 points if range is between 11 and 13
+            if face_range.contains(card.score.value) {
+                if let secondary = card.score.secondary {
+                    total += secondary
+                }
+            }
+        }        
         
-        //TODO: Need to provide more detail
-        //add to total if the range is between 2 and 10
-        //add 10 points if range is between 11 and 13
-        //if players hand contains an ace and total is less than 10 then add 11
-        //if players hand contains an ace and total is greater than 10 then add 1
-        
-        
-        for s in player.hand.cards {
-            total += s.score.value
+        //add conditional rules for holding an ace
+        if hasAce == true {
+            if (total <= 10) {
+                total += 11 //secondary ace value
+            }
+            else {
+                total += 1 //primary ace value
+            }
         }
+                
         
         return total
-        
     }
     
     
-
+    //TODO: Somehow, the game needs to send an aknowledgement that its a player's turn.
+    //How can this be accomplished beyond a polling-based model? 
     
     //put down a card
     func play(_ player: inout Player, card: Card?) -> Turn  {
+        
+        //TODO: some gameplay goes here..
+
+        
+        //reset player to the back of the queue
+        player.isTurn = false
+        self.players.enQueue(item: player)
+
         
         //do some card analysis here..
         return Turn.match

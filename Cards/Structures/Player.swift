@@ -13,6 +13,7 @@ class Player {
     let uuid = UUID()
     var hand = Hand()
     var isDealer: Bool = false
+    var isTurn: Bool = false
 
     
     /// Assign player name

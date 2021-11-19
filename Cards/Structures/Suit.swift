@@ -22,7 +22,7 @@ public class Suit: Equatable {
         generic model, each having the same rules and basis of
         comparision.
         */
-        
+        scores.append(Score("A", 1, 11))
         scores.append(Score("2", 2))
         scores.append(Score("3", 3))
         scores.append(Score("4", 4))
@@ -34,7 +34,6 @@ public class Suit: Equatable {
         scores.append(Score("10", 10))
 
         //special support for general games + blackjack
-        scores.append(Score("A", 1, 11))
         scores.append(Score("J", 11, 10))
         scores.append(Score("Q", 12, 10))
         scores.append(Score("K", 13, 10))
