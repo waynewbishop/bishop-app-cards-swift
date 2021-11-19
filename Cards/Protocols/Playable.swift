@@ -9,24 +9,14 @@ import Foundation
 
 protocol Playable {
     
-    var players: Array<Player> { get set }
+    var players: Queue<Player> { get set }
     var hasStarted: Bool { get set }
     var deck: Deck { get }
     
     func start() ->()
     func call() -> Player?
-    func deal(_ player: inout Player) ->()
     func draw(_ player: inout Player) ->()
     func fold(_ player: inout Player) ->()
+    func score(of player: inout Player) -> Int
 }
 
-
-extension Playable {  //extension of a protocol
-    
-    mutating func addPlayer(_ player: inout Player) {
-        if self.hasStarted == false {
-            players.append(player)  //reference being added..
-        }
-    }
-
-}

@@ -10,45 +10,76 @@ import Foundation
 
 class Blackjack : Playable  {
     
-    var players = Array<Player>()  //represents an open socket to client players
-    var deck = Deck()
+    let gameid = UUID()
+    var dealer = Player(with: "dealer")
+    var players = Queue<Player>() //represents an open socket to client players
     var discard = Array<Card>()
     var hasStarted: Bool = false
-    var dealer = Player(with: "dealer")
+    var deck = Deck()
+
+    
+    init() {
+        //add dealer to list of players - 1st player
+        dealer.isDealer = true
+        self.addPlayer(&dealer)
+    }
+    
     
     //MARK: Playable protocol conformance
+    
+    func addPlayer(_ newPlayer: inout Player) {
+        if self.hasStarted == false {
+            players.enQueue(item: newPlayer)
+        }
+    }
     
     
     //randomize the deck
     func start() {
         
+        //shuffle the deck
         deck.shuffle()
-        self.hasStarted = true
-        dealer.isDealer = true
-        
-        //TODO: the deal method needs to be initialized automatically through the game start
-        //this is done by updating the reference to the players collection with the new cards.
-        
-    }
-
     
-    //deal cards to player
-    func deal(_ player: inout Player) {
-
-        var cards_received = Array<Card>()
         
-        //assign two cards to the designated player
-        for _ in 0..<2 {
-            if let c = deck.cards.pop() {
-                c.faceup = true
-                cards_received.append(c)
+        //deal cards to all players
+        for p in players.elements {
+            
+            //assign two cards per player
+            for _ in 0..<2 {
+                if let card = deck.cards.pop() {
+                    card.faceup = true
+                    p.hand.receive(card)
+                }
             }
         }
-    
+
         
-        //player receives cards - single push
-        player.hand.receive(cards: cards_received)
+        self.hasStarted = true
+        
     }
+
+
+    
+    func score(of player: inout Player) -> Int {
+        
+        //gets computed as the hand changes.. - blackjack
+        var total: Int = 0
+        
+        //TODO: Need to provide more detail
+        //add to total if the range is between 2 and 10
+        //add 10 points if range is between 11 and 13
+        //if players hand contains an ace and total is less than 10 then add 11
+        //if players hand contains an ace and total is greater than 10 then add 1
+        
+        
+        for s in player.hand.cards {
+            total += s.score.value
+        }
+        
+        return total
+        
+    }
+    
     
 
     

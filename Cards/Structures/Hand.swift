@@ -7,31 +7,20 @@
 
 import Foundation
 
-class Hand : Scoreable {
+class Hand {
     
-    private var elements = Array<Card>()
+    var cards = Array<Card>()
     
     
     //numer of cards - hearts, uno
     var count: Int {
-        return elements.count
+        return cards.count
     }
-    
-    var score: Int {
-        //gets computed as the hand changes.. - blackjack
-        var total: Int = 0
         
-        for s in self.elements {
-            total += s.score.value
-        }
-        
-        return total
-    }
-    
 
     //show the top card - but don't remove it from the hand
     func peek() -> Card? {
-        return self.elements.first
+        return self.cards.first
     }
     
         
@@ -41,11 +30,11 @@ class Hand : Scoreable {
     func show() -> Array<Card>? {
         
         //trivial check
-        guard elements.count > 0 else {
+        guard cards.count > 0 else {
             return nil
         }
         
-        return self.elements
+        return self.cards
     }
     
     
@@ -53,13 +42,13 @@ class Hand : Scoreable {
     /// Prepare to recieve one or more cards
     /// - Parameter card: cards to be recevied
 
-    func receive(cards: Array<Card>) {
+    func receive(_ card: Card) {
         
         //list of cards
-        for c in cards {
-            elements.append(c)
-        }
-        elements.sort()
+        cards.append(card)
+        
+        //sort cards - compared value
+        cards.sort()
     }
     
     
@@ -70,9 +59,9 @@ class Hand : Scoreable {
 
     func play(_ index: Int) -> Card? {
         
-        if elements.indices.contains(index) {
-            let card = elements.remove(at: index)
-            elements.sort()
+        if cards.indices.contains(index) {
+            let card = cards.remove(at: index)
+            cards.sort()
             
             return card
         }
@@ -81,10 +70,5 @@ class Hand : Scoreable {
         }
     }
         
-    
-    //equatable conformance - used to compare hands
-    public static func == (lhs: Hand, rhs: Hand) -> Bool {
-        return lhs.score == rhs.score
-    }
-    
+        
 }

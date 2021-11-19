@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA29B120274715AB00B53871 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA29B11F274715AA00B53871 /* Queue.swift */; };
 		DA425B18273DC55D00418FC2 /* Blackjack.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA425B17273DC55D00418FC2 /* Blackjack.swift */; };
 		DA425B1A273DCFE700418FC2 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA425B19273DCFE700418FC2 /* Enums.swift */; };
 		DAE7D601273C5A7900A0C8F0 /* CardsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE7D600273C5A7900A0C8F0 /* CardsApp.swift */; };
@@ -21,7 +22,6 @@
 		DAE7D630273C5B7000A0C8F0 /* Playable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE7D62F273C5B7000A0C8F0 /* Playable.swift */; };
 		DAE7D632273C5B7F00A0C8F0 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE7D631273C5B7F00A0C8F0 /* Player.swift */; };
 		DAE7D634273C5B8D00A0C8F0 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE7D633273C5B8D00A0C8F0 /* Score.swift */; };
-		DAE7D636273C5C3800A0C8F0 /* Scoreable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE7D635273C5C3800A0C8F0 /* Scoreable.swift */; };
 		DAE7D638273C5C4200A0C8F0 /* Suit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE7D637273C5C4200A0C8F0 /* Suit.swift */; };
 		DAE7D63D273C820600A0C8F0 /* BSNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE7D63C273C820600A0C8F0 /* BSNode.swift */; };
 		DAE7D63F273C838F00A0C8F0 /* BSTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE7D63E273C838F00A0C8F0 /* BSTree.swift */; };
@@ -47,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DA29B11F274715AA00B53871 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		DA425B17273DC55D00418FC2 /* Blackjack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blackjack.swift; sourceTree = "<group>"; };
 		DA425B19273DCFE700418FC2 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		DAE7D5FD273C5A7900A0C8F0 /* Cards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cards.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,7 +65,6 @@
 		DAE7D62F273C5B7000A0C8F0 /* Playable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playable.swift; sourceTree = "<group>"; };
 		DAE7D631273C5B7F00A0C8F0 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		DAE7D633273C5B8D00A0C8F0 /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
-		DAE7D635273C5C3800A0C8F0 /* Scoreable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scoreable.swift; sourceTree = "<group>"; };
 		DAE7D637273C5C4200A0C8F0 /* Suit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Suit.swift; sourceTree = "<group>"; };
 		DAE7D63C273C820600A0C8F0 /* BSNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSNode.swift; sourceTree = "<group>"; };
 		DAE7D63E273C838F00A0C8F0 /* BSTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSTree.swift; sourceTree = "<group>"; };
@@ -191,7 +191,6 @@
 			isa = PBXGroup;
 			children = (
 				DAE7D62F273C5B7000A0C8F0 /* Playable.swift */,
-				DAE7D635273C5C3800A0C8F0 /* Scoreable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -202,6 +201,7 @@
 				DAE7D63C273C820600A0C8F0 /* BSNode.swift */,
 				DAE7D643273C9FEE00A0C8F0 /* Stack.swift */,
 				DA425B19273DCFE700418FC2 /* Enums.swift */,
+				DA29B11F274715AA00B53871 /* Queue.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -342,13 +342,13 @@
 				DAE7D63F273C838F00A0C8F0 /* BSTree.swift in Sources */,
 				DAE7D634273C5B8D00A0C8F0 /* Score.swift in Sources */,
 				DAE7D62E273C5B6000A0C8F0 /* Deck.swift in Sources */,
-				DAE7D636273C5C3800A0C8F0 /* Scoreable.swift in Sources */,
 				DA425B1A273DCFE700418FC2 /* Enums.swift in Sources */,
 				DAE7D603273C5A7900A0C8F0 /* ContentView.swift in Sources */,
 				DAE7D630273C5B7000A0C8F0 /* Playable.swift in Sources */,
 				DAE7D62C273C5B4D00A0C8F0 /* Card.swift in Sources */,
 				DAE7D641273C89C400A0C8F0 /* Hand.swift in Sources */,
 				DAE7D632273C5B7F00A0C8F0 /* Player.swift in Sources */,
+				DA29B120274715AB00B53871 /* Queue.swift in Sources */,
 				DAE7D638273C5C4200A0C8F0 /* Suit.swift in Sources */,
 				DAE7D601273C5A7900A0C8F0 /* CardsApp.swift in Sources */,
 			);
