@@ -39,11 +39,8 @@ class GameViewViewModel: ObservableObject {
         game.reset()
     }
     
-    func hit(_ player: Player) {
-        game.hit(player)
-    }
-    
-    func stand(_ player: Player) {
-        game.stand(player)
+    func viewModel(for player: Player) -> PlayerViewViewModel {
+        PlayerViewViewModel(game: game,
+                            player: player)
     }
 }

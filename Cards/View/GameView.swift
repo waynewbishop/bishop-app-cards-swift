@@ -20,23 +20,7 @@ struct GameView: View {
 //                    }
                 }
                 ForEach(viewModel.players) { player in
-                    Section {
-                        ForEach(player.hand.cards) { card in
-                            Text(card.description)
-                        }
-                    } header: {
-                        HStack {
-                            Text(player.name)
-                            Text("\(player.score)")
-                            Spacer()
-                            Button("Hit") {
-                                viewModel.hit(player)
-                            }
-                            Button("Stand") {
-                                viewModel.stand(player)
-                            }
-                        }
-                    }
+                    PlayerView(viewModel: viewModel.viewModel(for: player))
                 }
             }
             .listStyle(DefaultListStyle())
