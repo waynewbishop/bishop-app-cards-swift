@@ -9,38 +9,35 @@ import Foundation
 import Combine
 
 class GameViewViewModel: ObservableObject {
-    @Published private(set) var game: Blackjack
-    @Published private(set) var buttonTitle = "New Game"
+    @Published private(set) var buttonTitle = "SharePlay Start"
     @Published private(set) var resetButtonTitle = "Reset"
-    private var anyCancellable = Set<AnyCancellable>()
-    
-    var dealer: Dealer {
-        game.dealer
+    private var blackjack: Blackjack
+    private var sharePlayManager = SharePlayManager()
+    private let gameID = UUID()
+
+    var debugViewViewModel: DebugViewViewModel {
+        DebugViewViewModel(blackjack: blackjack)
     }
     
-    var players: [Player] {
-        game.players
+    var dealerViewViewModel: DealerViewViewModel {
+        DealerViewViewModel(blackjack: blackjack)
     }
     
-    init(game: Blackjack) {
-        self.game = game
-        self.game.objectWillChange.sink {
-            self.objectWillChange.send()
-        }.store(in: &anyCancellable)
+    var playerViewViewModel: PlayerViewViewModel {
+        PlayerViewViewModel(blackjack: blackjack)
     }
     
-    func startGame() {
-        buttonTitle = "Hit"
-        game.deal()
+    init(blackjack: Blackjack) {
+        self.blackjack = blackjack
     }
     
     func resetGame() {
-        buttonTitle = "New Game"
-        game.reset()
+        blackjack.reset()
+        blackjack.connect()
+        blackjack.join(gameID: gameID)
     }
     
-    func viewModel(for player: Player) -> PlayerViewViewModel {
-        PlayerViewViewModel(game: game,
-                            player: player)
+    func activate() {
+        sharePlayManager.activate()
     }
 }

@@ -10,12 +10,18 @@ import Foundation
 struct GameType {
     struct Hearts {
         enum Turn {
-            case match, nomatch, draw
+            case match
+            case nomatch
+            case draw
         }
     }
     struct BlackJack {
         enum Turn {
-            case hit, hold
+            case match
+            case nomatch
+            case draw
+            case hit
+            case hold
         }
     }
 }

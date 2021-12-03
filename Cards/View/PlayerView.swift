@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PlayerView: View {
-    var viewModel: PlayerViewViewModel
+    @ObservedObject var viewModel: PlayerViewViewModel
     
     var body: some View {
         Section {
@@ -17,9 +17,16 @@ struct PlayerView: View {
             }
         } header: {
             HStack {
-                Text(viewModel.name)
-                Text(viewModel.score)
+                VStack(alignment: .leading) {
+                    HStack {
+                        Text(viewModel.name)
+                        Text(viewModel.score)
+                    }
+                }
                 Spacer()
+                Button("Bet") {
+                    viewModel.bet()
+                }
                 Button("Hit") {
                     viewModel.hit()
                 }

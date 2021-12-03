@@ -8,20 +8,23 @@
 import SwiftUI
 
 struct DealerView: View {
+    @ObservedObject var viewModel: DealerViewViewModel
+
     var body: some View {
-        NavigationView {
-            Text("DealerView")
-                .navigationTitle("Dealer")
-                .navigationBarItems(
-                    trailing:
-                        Button("Deal") {
-                            print("draw from deck")
-                        }
-                )
-        }
-        .tabItem {
-            Image(systemName: "house")
-            Text("Dealer")
+        Section {
+            ForEach(viewModel.cards) { card in
+                Text(card.description)
+            }
+        } header: {
+            HStack {
+                VStack(alignment: .leading) {
+                    HStack {
+                        Text("Dealer")
+                        Text(viewModel.score)
+                    }
+                }
+                Spacer()
+            }
         }
     }
 }

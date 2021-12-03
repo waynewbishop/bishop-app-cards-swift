@@ -13,16 +13,15 @@ struct ContentView: View {
     var body: some View {
         TabView {
             GameView(viewModel: viewModel.gameViewViewModel)
-            DealerView()
-            DeckView(viewModel: viewModel.deckViewViewModel)
+//            DeckView(viewModel: viewModel.deckViewViewModel)
         }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            ContentView()
-        }
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Group {
+//            ContentView()
+//        }
+//    }
+//}

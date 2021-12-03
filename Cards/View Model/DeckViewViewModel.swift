@@ -7,15 +7,18 @@
 
 import Foundation
 import Combine
+import CardDeck
 
 class DeckViewViewModel: ObservableObject {
-    @Published private(set) var deck: Deck
-    private var anyCancellable = Set<AnyCancellable>()
-
-    init(deck: Deck) {
-        self.deck = deck
-        self.deck.objectWillChange.sink {
-            self.objectWillChange.send()
-        }.store(in: &anyCancellable)
-    }
+//    private var serverClient: ServerClient
+//    @Published private(set) var deck: Deck
+//    private var anyCancellable = Set<AnyCancellable>()
+//
+//    init(serverClient: ServerClient) {
+//        self.serverClient = serverClient
+//        self.deck = serverClient.deck
+//        self.deck.objectWillChange.sink {
+//            self.objectWillChange.send()
+//        }.store(in: &anyCancellable)
+//    }
 }

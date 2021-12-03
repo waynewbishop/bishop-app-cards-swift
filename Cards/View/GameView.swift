@@ -13,15 +13,9 @@ struct GameView: View {
     var body: some View {
         NavigationView {
             List {
-                Section(header: Text("Dealer")) {
-                    Text("Show Dealer Cards")
-//                    ForEach(viewModel.dealer.hand.sequence) { card in
-//                        Text(card.description)
-//                    }
-                }
-                ForEach(viewModel.players) { player in
-                    PlayerView(viewModel: viewModel.viewModel(for: player))
-                }
+                DebugView(viewModel: viewModel.debugViewViewModel)
+                DealerView(viewModel: viewModel.dealerViewViewModel)
+                PlayerView(viewModel: viewModel.playerViewViewModel)
             }
             .listStyle(DefaultListStyle())
             .navigationTitle("Game View")
@@ -33,7 +27,7 @@ struct GameView: View {
                 ,
                 trailing:
                     Button(viewModel.buttonTitle) {
-                        viewModel.startGame()
+                        viewModel.activate()
                     }
             )
         }

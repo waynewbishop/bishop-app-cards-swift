@@ -6,34 +6,44 @@
 //
 
 import Foundation
+import Combine
+import CardDeck
 
 class PlayerViewViewModel: ObservableObject {
-    @Published private(set) var game: Blackjack
-    @Published private(set) var player: Player
+    private var blackjack: Blackjack
+    @Published private(set) var hand: Hand
     
+    private var cancellables: Set<AnyCancellable> = []
+
     var name: String {
-        player.name
+        blackjack.player.name
     }
     
     var cards: [Card] {
-        player.hand.cards
+        hand.show()
     }
     
     var score: String {
-        "\(player.score)"
+        "\(hand.score)"
     }
     
-    init(game: Blackjack,
-         player: Player) {
-        self.game = game
-        self.player = player
+    init(blackjack: Blackjack) {
+        self.blackjack = blackjack
+        self.hand = blackjack.player.hand
+        self.blackjack.player.$hand.sink { [weak self] hand in
+            self?.hand = hand
+        }.store(in: &cancellables)
+    }
+    
+    func bet() {
+        blackjack.bet()
     }
     
     func hit() {
-        game.hit(player)
+        blackjack.hit()
     }
     
     func stand() {
-        game.stand(player)
+        blackjack.stand()
     }
 }
