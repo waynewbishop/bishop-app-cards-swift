@@ -8,5 +8,5 @@
 import Foundation
 
 struct Turn: Codable {
-    let playerID: UUID
+    let playerID: UUID?
 }

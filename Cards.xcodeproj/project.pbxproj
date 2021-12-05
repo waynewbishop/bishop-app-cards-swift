@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2223AC88275D6EE4002255AD /* ClientMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2223AC87275D6EE4002255AD /* ClientMessage.swift */; };
 		225B5C102736C84B00C456C9 /* DeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225B5C0F2736C84B00C456C9 /* DeckView.swift */; };
 		225B5C122736CA2600C456C9 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225B5C112736CA2600C456C9 /* GameView.swift */; };
 		225B5C142736CA3100C456C9 /* DealerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225B5C132736CA3100C456C9 /* DealerView.swift */; };
@@ -21,7 +22,7 @@
 		2269132C274C08D300ECA740 /* CardDeck in Frameworks */ = {isa = PBXBuildFile; productRef = 2269132B274C08D300ECA740 /* CardDeck */; };
 		2269132E274C09F300ECA740 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2269132D274C09F200ECA740 /* Player.swift */; };
 		22691331274C2DE000ECA740 /* Connect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22691330274C2DE000ECA740 /* Connect.swift */; };
-		22691333274C3F4400ECA740 /* WebsocketMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22691332274C3F4400ECA740 /* WebsocketMessage.swift */; };
+		22691333274C3F4400ECA740 /* ServerMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22691332274C3F4400ECA740 /* ServerMessage.swift */; };
 		22691335274C400400ECA740 /* GameAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22691334274C400400ECA740 /* GameAction.swift */; };
 		22691337274D4DAA00ECA740 /* Blackjack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22691336274D4DA900ECA740 /* Blackjack.swift */; };
 		2269133A274D607D00ECA740 /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22691339274D607D00ECA740 /* Data+Extension.swift */; };
@@ -59,6 +60,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2223AC87275D6EE4002255AD /* ClientMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientMessage.swift; sourceTree = "<group>"; };
 		225B5C0F2736C84B00C456C9 /* DeckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckView.swift; sourceTree = "<group>"; };
 		225B5C112736CA2600C456C9 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		225B5C132736CA3100C456C9 /* DealerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerView.swift; sourceTree = "<group>"; };
@@ -72,7 +74,7 @@
 		22691326274BFE7C00ECA740 /* WebSocketClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketClient.swift; sourceTree = "<group>"; };
 		2269132D274C09F200ECA740 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		22691330274C2DE000ECA740 /* Connect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connect.swift; sourceTree = "<group>"; };
-		22691332274C3F4400ECA740 /* WebsocketMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsocketMessage.swift; sourceTree = "<group>"; };
+		22691332274C3F4400ECA740 /* ServerMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerMessage.swift; sourceTree = "<group>"; };
 		22691334274C400400ECA740 /* GameAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAction.swift; sourceTree = "<group>"; };
 		22691336274D4DA900ECA740 /* Blackjack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blackjack.swift; sourceTree = "<group>"; };
 		22691339274D607D00ECA740 /* Data+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
@@ -157,7 +159,8 @@
 				22691330274C2DE000ECA740 /* Connect.swift */,
 				22691345274EE16800ECA740 /* Turn.swift */,
 				22691334274C400400ECA740 /* GameAction.swift */,
-				22691332274C3F4400ECA740 /* WebsocketMessage.swift */,
+				22691332274C3F4400ECA740 /* ServerMessage.swift */,
+				2223AC87275D6EE4002255AD /* ClientMessage.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -425,12 +428,13 @@
 				225B5C2E27380E3800C456C9 /* GameType.swift in Sources */,
 				22691331274C2DE000ECA740 /* Connect.swift in Sources */,
 				22691346274EE16800ECA740 /* Turn.swift in Sources */,
-				22691333274C3F4400ECA740 /* WebsocketMessage.swift in Sources */,
+				22691333274C3F4400ECA740 /* ServerMessage.swift in Sources */,
 				225B5C262736DE3500C456C9 /* ContentViewViewModel.swift in Sources */,
 				225B5C242736DD7500C456C9 /* DealerViewViewModel.swift in Sources */,
 				22691321274B07D200ECA740 /* PlayerView.swift in Sources */,
 				2269134B274EF68700ECA740 /* CardGameMessage.swift in Sources */,
 				225B5C142736CA3100C456C9 /* DealerView.swift in Sources */,
+				2223AC88275D6EE4002255AD /* ClientMessage.swift in Sources */,
 				225B5C102736C84B00C456C9 /* DeckView.swift in Sources */,
 				225B5C222736DD5D00C456C9 /* GameViewViewModel.swift in Sources */,
 				225B5C202736DD2E00C456C9 /* DeckViewViewModel.swift in Sources */,

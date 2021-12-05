@@ -8,7 +8,7 @@
 import Foundation
 
 extension Data {
-    func decodeWebsocketMessage<T: Codable>(_ type: T.Type) -> WebsocketMessage<T>? {
-        try? JSONDecoder().decode(WebsocketMessage<T>.self, from: self)
+    func decodeWebsocketMessage<T: Codable>(_ type: T.Type) -> ClientMessage<T>? {
+        try? JSONDecoder().decode(ClientMessage<T>.self, from: self)
     }
 }

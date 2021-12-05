@@ -11,7 +11,10 @@ import CardDeck
 
 class PlayerViewViewModel: ObservableObject {
     private var blackjack: Blackjack
+    @Published private(set) var playerID: String
     @Published private(set) var hand: Hand
+    @Published private(set) var isNotAbleToBet: Bool
+    @Published private(set) var isNotAbleToHit: Bool
     
     private var cancellables: Set<AnyCancellable> = []
 
@@ -28,10 +31,16 @@ class PlayerViewViewModel: ObservableObject {
     }
     
     init(blackjack: Blackjack) {
+        let hand = blackjack.player.hand
         self.blackjack = blackjack
-        self.hand = blackjack.player.hand
+        self.hand = hand
+        self.isNotAbleToBet = hand.count > 0
+        self.isNotAbleToHit = hand.score >= 21
+        self.playerID = blackjack.player.id.uuidString
         self.blackjack.player.$hand.sink { [weak self] hand in
             self?.hand = hand
+            self?.isNotAbleToBet = hand.count > 0
+            self?.isNotAbleToHit = hand.score >= 21
         }.store(in: &cancellables)
     }
     

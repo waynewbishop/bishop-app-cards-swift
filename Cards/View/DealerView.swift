@@ -22,6 +22,8 @@ struct DealerView: View {
                         Text("Dealer")
                         Text(viewModel.score)
                     }
+                    Text("Dealer has to get 17 or more")
+                        .font(.footnote)
                 }
                 Spacer()
             }

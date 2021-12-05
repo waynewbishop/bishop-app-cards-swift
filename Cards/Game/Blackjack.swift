@@ -12,7 +12,7 @@ class Blackjack: WebSocketClient {
     @Published private(set) var gameID: UUID?
     @Published private(set) var dealerHand = Hand()
     @Published private(set) var currentTurnPlayerID: UUID?
-
+    
     private(set) var player: Player
     
     init(player: Player) {
@@ -72,9 +72,9 @@ class Blackjack: WebSocketClient {
             return
         }
         
-        let message = WebsocketMessage(playerID: player.id,
-                                       gameID: gameID,
-                                       data: data)
+        let message = ServerMessage(playerID: player.id,
+                                    gameID: gameID,
+                                    data: data)
         let data = try! JSONEncoder().encode(message)
         send(message: .data(data))
     }

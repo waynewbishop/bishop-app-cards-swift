@@ -15,10 +15,10 @@ class DebugViewViewModel: ObservableObject {
     @Published private(set) var currentTurnPlayerID: UUID? {
         didSet {
             if let id = currentTurnPlayerID {
-                currentTurnPlayerIDMessage = "Turn is for \(id)"
+                currentTurnPlayerIDMessage = "Turn is for\n\(id)"
             }
             else {
-                currentTurnPlayerIDMessage = "Not sure current player"
+                currentTurnPlayerIDMessage = "Game Over"
             }
         }
     }
@@ -29,13 +29,13 @@ class DebugViewViewModel: ObservableObject {
     
     init(blackjack: Blackjack) {
         self.blackjack = blackjack
-        self.playerID = "Player: \(blackjack.player.id)"
+        self.playerID = "Player:\n\(blackjack.player.id)"
         self.blackjack.delegate.$isSocketOpen.sink { [weak self] connected in
             self?.connectedMessage = "Websocket connected: \(connected)"
         }.store(in: &cancellables)
         
         self.blackjack.$gameID.sink { [weak self] gameID in
-            self?.gameID = "Game: \(gameID?.uuidString ?? "")"
+            self?.gameID = "Game:\n\(gameID?.uuidString ?? "")"
         }.store(in: &cancellables)
         
         self.blackjack.$currentTurnPlayerID.sink { [weak self] playerID in
