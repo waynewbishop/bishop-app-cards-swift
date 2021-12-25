@@ -39,8 +39,7 @@ class Blackjack : Playable  {
         
         //shuffle the deck
         deck.shuffle()
-    
-        
+            
         //deal cards to all players
         for p in players.elements {
             
@@ -76,7 +75,7 @@ class Blackjack : Playable  {
         var total: Int = 0
         let number_range = 2...10
         let face_range = 11...13
-        var hasAce: Bool = false
+        var hasAce: Bool = false  //TODO: Change this to an Int?
                 
         for card in player.hand.cards {
             
@@ -96,6 +95,8 @@ class Blackjack : Playable  {
                 }
             }
         }        
+        
+        //TODO: Add back the ace(s) one at a time and recalculate..
         
         //add conditional rules for holding an ace
         if hasAce == true {
@@ -130,16 +131,23 @@ class Blackjack : Playable  {
         return Turn.match
     }
     
+
+    
+    func draw(_ player: inout Player) {
+        //code goes here.
+    }
+    
+    
+    func hold() {
+        
+    }
     
     
     func call() -> Player? {
         //code goes here.
         return nil
     }
-    
-    func draw(_ player: inout Player) {
-        //code goes here.
-    }
+
     
     func fold(_ player: inout Player) {
         //code goes here.

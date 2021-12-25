@@ -10,6 +10,7 @@ import Foundation
 
 public class Card : Comparable {
    
+///var id = UUID() //indivual cards?
    var suit: Suit
    var score: Score
    var wildcard: Bool = false
