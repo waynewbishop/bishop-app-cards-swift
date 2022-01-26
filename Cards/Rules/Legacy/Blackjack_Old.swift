@@ -8,7 +8,7 @@
 import Foundation
 
 
-class Blackjack : Playable  {
+class Blackjack_Old : Playable  {
     
     let gameid = UUID()
     var dealer = Player(with: "dealer")
@@ -16,7 +16,8 @@ class Blackjack : Playable  {
     var discard = Array<Card>()
     var hasStarted: Bool = false
     var deck = Deck()
-
+    var scoreboard = Set<Boarditem>()
+    
     
     init() {
         //add dealer to list of players - 1st player
@@ -50,6 +51,19 @@ class Blackjack : Playable  {
                     p.hand.receive(card)
                 }
             }
+            
+            //add each player's starting score
+            let starting_score = self.score(of: p)
+            self.scoreboard.insert(Boarditem(for: p, starting_score, gameid))
+            
+            //TODO: Should the Scoreboard be delegation design pattern??
+            
+            //what if they are served a winning hand?
+            if starting_score == 21 {
+                //todo: where and when am I serving this information?
+                //where does this go?
+            }
+            
         }
 
         
@@ -69,7 +83,7 @@ class Blackjack : Playable  {
     }
 
     
-    func score(of player: inout Player) -> Int {
+    func score(of player: Player) -> Int {
         
         //gets computed as the hand changes.. - blackjack
         var total: Int = 0
@@ -113,45 +127,42 @@ class Blackjack : Playable  {
     }
     
     
-    //TODO: Somehow, the game needs to send an aknowledgement that its a player's turn.
-    //How can this be accomplished beyond a polling-based model? 
+    //TODO: Somehow, the game needs to send an acknowledgement that its a player's turn.
+    //How can this be accomplished beyond a polling-based model?
     
-    //put down a card
-    func play(_ player: inout Player, card: Card?) -> Turn  {
+    
+    //player requests a card
+    func hit(_ player: inout Player) -> Turn {
         
-        //TODO: some gameplay goes here..
-
         
-        //reset player to the back of the queue
-        player.isTurn = false
-        self.players.enQueue(item: player)
+        if let card = deck.cards.pop() {
+            player.hand.receive(card)
+            
+            //revise player score
+            let new_score = self.score(of: player)
+            self.scoreboard.insert(Boarditem(for: player, new_score, gameid))
 
+            /*
+             TODO: What happens to overall data-flow experience when
+             someone is declared the winner,
+             */
+            
+            
+            if new_score == 21 {
+                return .winner
+            }
+            
+            else if new_score > 21 {
+                return .bust
+            }
+            
+            else {
+                return .safe
+            }
+        }
+
+        return .nocards
+    }
         
-        //do some card analysis here..
-        return Turn.match
-    }
-    
-
-    
-    func draw(_ player: inout Player) {
-        //code goes here.
-    }
-    
-    
-    func hold() {
-        
-    }
-    
-    
-    func call() -> Player? {
-        //code goes here.
-        return nil
-    }
-
-    
-    func fold(_ player: inout Player) {
-        //code goes here.
-    }
-
     
 }

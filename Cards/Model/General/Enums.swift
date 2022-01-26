@@ -11,5 +11,12 @@ import Foundation
 /// Governs types card game moves (deck of cards)
 
 enum Turn {
-    case match, nomatch, draw, hit, hold, bust
+    case match, nomatch, draw, hit, hold, bust, safe, winner, nocards
+}
+
+
+// Tracks status of each game
+
+enum Status {
+    case started, active, completed
 }
