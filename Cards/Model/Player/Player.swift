@@ -9,17 +9,17 @@ import Foundation
 
 class Player {
     
+    var server: Server?
     let name: String
     let uuid = UUID()
     var hand = Hand()
     var isDealer: Bool = false
     var isTurn: Bool = false
 
+    //todo: the player needs to hold their own cards
+    //for this to work..
     
-    /// Assign player name
-    /// - Parameter name: The name of the player
-    /// 
-    public init(with name: String) {
+    public init(name: String = "default") {
         self.name = name
     }
         
@@ -31,6 +31,12 @@ class Player {
         return hand.show()
     }
     
+    /*
+     Note: how these functions organized are incorrect.
+     The app needs to be written from the perspective of
+     the player since they will be invoking the actions (e.g. hit, hold, bust, safe).
+     The player sends the requests to the server 
+     */
     
     /// Play the selected card based on index
     /// - Returns: the card to played - optional

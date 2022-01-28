@@ -8,38 +8,39 @@
 import Foundation
 
 class Game {
-    
+        
     let gameid = UUID()
-    let type: Playable //conforms to all playable rules
-    let scoreBoard = ScoreBoard()
+    let playbook: Playable
+    var scoreBoard = ScoreBoard()
     
-    
-    //initialization
-    init(of type: Playable) {
-        self.type = type
+    init(of playbook: Playable) {
+        self.playbook = playbook
     }
 
-    //starting the game
-    func start() {
-        type.start() //TODO: does this correctly invoke the blackjack implementation?
+    
+    //start game depending on playbook
+    func start() -> () {
+        playbook.start()
     }
+
     
     //perform actions based on game type
     func perform(action: GameAction, on playerid: UUID) {
-        
+                
         switch action {
         case .hit:
-            type.hit(playerid)
+            print("invoke blackjack protocol")
 
         case .hold:
-            print("invoke playable protocol")
+            print("invoke blackjack protocol")
             
         case .bust:
-            print("invoke playable protocol")
+            print("invoke blackjack protocol")
             
         case .safe:
-            print("invoke playable protocol")
+            print("invoke blackjack protocol")
         }
+        
         
     } //end function
     

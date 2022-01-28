@@ -8,7 +8,7 @@
 import Foundation
 
 
-protocol Playable: Blackjack, Poker {
+protocol Playable {
     
     var players: Queue<Player> { get set }
     var hasStarted: Bool { get set }
@@ -16,6 +16,25 @@ protocol Playable: Blackjack, Poker {
     
     func start() ->()
     func score(of player: Player) -> Int
-    func deal() -> ()
+    func nextTurn() -> ()
+
+}
+
+//implementation common to all games
+
+extension Playable {
+    
+    func deal() {
+        print("now dealing cards!")
+    }
+    
+    func score(of player: Player) -> Int {
+        return 0
+    }
+    
+    func nextTurn() -> () {
+        print("now processing the next player's turn..")
+    }
+    
 }
 

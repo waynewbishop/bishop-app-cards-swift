@@ -7,19 +7,44 @@
 
 import Foundation
 
+
+//group activity code goes here..
+class GroupActivityMessenger: Messenger {
+    func send() {
+        print("now sending message via GroupActivity API")
+    }
+}
+
+
+
+class WebsocketMessenger: Messenger {
+    func send() {
+       print("now sending message via WebSocket API")
+    }
+}
+
+
+class LocalMessenger: Messenger {
+    func send() {
+        print("now sending a message via local app code..")
+    }
+}
+
+
 class Server {
     
-    //add playable games
+    var messenger: Messenger
     var games = Array<Game>()
+    
+    
+    init (of game: Game, messenger: Messenger) {
+        self.games.append(game)
+        self.messenger = messenger
+    }
 
     
-    //add new games
-    func newgame(_ game: Game) {
-        self.games.append(game)
-    }
-    
     //manage incoming messages
-    func incoming(message: Message) {
+    func receive(message: Message) {
         
         let gameID = message.gameID
         let playerID = message.playerID
@@ -28,9 +53,15 @@ class Server {
         //find the matching game
         if let game = games.first(where: { $0.gameid == gameID} ) {
             game.perform(action: action, on: playerID)
-        }
-        
-    } //end function
+        }        
+    }
+    
+    //send generic message
+    
+    func send() {
+        messenger.send()
+    }
+    
     
 } //end class
 
