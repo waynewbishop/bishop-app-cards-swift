@@ -10,9 +10,25 @@ import Foundation
 
 //group activity code goes here..
 class GroupActivityMessenger: Messenger {
+    
+    init() {
+        print("now initializing group activity api..")
+    }
+    
     func send() {
         print("now sending message via GroupActivity API")
     }
+    
+    func startSharing() {
+        Task {
+            do {
+                _ = try await Cards().activate()
+            } catch {
+                print("Failed to activate Cards group activity: \(error)")
+            }
+        }
+    }
+    
 }
 
 
@@ -21,12 +37,9 @@ class WebsocketMessenger: Messenger {
     func send() {
        print("now sending message via WebSocket API")
     }
-}
-
-
-class LocalMessenger: Messenger {
-    func send() {
-        print("now sending a message via local app code..")
+    
+    func startSharing() {
+        //code goes here..
     }
 }
 
@@ -34,11 +47,11 @@ class LocalMessenger: Messenger {
 class Server {
     
     var messenger: Messenger
-    var games = Array<Game>()
+    var game: Game
     
     
     init (of game: Game, messenger: Messenger) {
-        self.games.append(game)
+        self.game = game
         self.messenger = messenger
     }
 
@@ -46,14 +59,10 @@ class Server {
     //manage incoming messages
     func receive(message: Message) {
         
-        let gameID = message.gameID
         let playerID = message.playerID
         let action = message.action
         
-        //find the matching game
-        if let game = games.first(where: { $0.gameid == gameID} ) {
-            game.perform(action: action, on: playerID)
-        }        
+        game.perform(action: action, on: playerID)
     }
     
     //send generic message

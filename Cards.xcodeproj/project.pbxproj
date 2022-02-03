@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		DA109C8E27A1F8D400B93244 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA109C8D27A1F8D400B93244 /* Message.swift */; };
 		DA109C9027A1FA9000B93244 /* GameAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA109C8F27A1FA9000B93244 /* GameAction.swift */; };
+		DA19D9CB27AC9E22001F097C /* Cards.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA19D9CA27AC9E22001F097C /* Cards.swift */; };
 		DA29B120274715AB00B53871 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA29B11F274715AA00B53871 /* Queue.swift */; };
 		DA425B18273DC55D00418FC2 /* Blackjack.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA425B17273DC55D00418FC2 /* Blackjack.swift */; };
 		DA425B1A273DCFE700418FC2 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA425B19273DCFE700418FC2 /* Enums.swift */; };
@@ -55,6 +56,8 @@
 /* Begin PBXFileReference section */
 		DA109C8D27A1F8D400B93244 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		DA109C8F27A1FA9000B93244 /* GameAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAction.swift; sourceTree = "<group>"; };
+		DA19D9C927AC8947001F097C /* Cards.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Cards.entitlements; sourceTree = "<group>"; };
+		DA19D9CA27AC9E22001F097C /* Cards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cards.swift; sourceTree = "<group>"; };
 		DA29B11F274715AA00B53871 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		DA425B17273DC55D00418FC2 /* Blackjack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blackjack.swift; sourceTree = "<group>"; };
 		DA425B19273DCFE700418FC2 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
@@ -121,6 +124,7 @@
 		DA109C8627A1EB3C00B93244 /* Table */ = {
 			isa = PBXGroup;
 			children = (
+				DA109C8D27A1F8D400B93244 /* Message.swift */,
 				DAE7D62D273C5B6000A0C8F0 /* Deck.swift */,
 				DAE7D62B273C5B4D00A0C8F0 /* Card.swift */,
 				DAE7D637273C5C4200A0C8F0 /* Suit.swift */,
@@ -145,6 +149,7 @@
 			children = (
 				DA8ABF65279B4E93004F965D /* Game.swift */,
 				DA8ABF69279B5180004F965D /* Server.swift */,
+				DA19D9CA27AC9E22001F097C /* Cards.swift */,
 				DA109C8527A1EA5A00B93244 /* Player */,
 				DA109C8627A1EB3C00B93244 /* Table */,
 				DAE7D642273C9FAE00A0C8F0 /* General */,
@@ -166,7 +171,6 @@
 				DA63024127A206E800E9F9FA /* Poker.swift */,
 				DA425B17273DC55D00418FC2 /* Blackjack.swift */,
 				DAE7D62F273C5B7000A0C8F0 /* Playable.swift */,
-				DA109C8D27A1F8D400B93244 /* Message.swift */,
 				DA63024327A49FA200E9F9FA /* Messenger.swift */,
 			);
 			path = Rules;
@@ -195,6 +199,7 @@
 		DAE7D5FF273C5A7900A0C8F0 /* Cards */ = {
 			isa = PBXGroup;
 			children = (
+				DA19D9C927AC8947001F097C /* Cards.entitlements */,
 				DAE7D600273C5A7900A0C8F0 /* CardsApp.swift */,
 				DA109C8A27A1ED0300B93244 /* View */,
 				DA109C8C27A1F00200B93244 /* Rules */,
@@ -376,6 +381,7 @@
 				DAE7D644273C9FEE00A0C8F0 /* Stack.swift in Sources */,
 				DAE7D634273C5B8D00A0C8F0 /* Score.swift in Sources */,
 				DA109C8E27A1F8D400B93244 /* Message.swift in Sources */,
+				DA19D9CB27AC9E22001F097C /* Cards.swift in Sources */,
 				DAE7D62E273C5B6000A0C8F0 /* Deck.swift in Sources */,
 				DA425B1A273DCFE700418FC2 /* Enums.swift in Sources */,
 				DAE7D603273C5A7900A0C8F0 /* ContentView.swift in Sources */,

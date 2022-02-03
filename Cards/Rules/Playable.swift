@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 protocol Playable {
     
     var players: Queue<Player> { get set }

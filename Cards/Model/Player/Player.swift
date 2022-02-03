@@ -16,13 +16,32 @@ class Player {
     var isDealer: Bool = false
     var isTurn: Bool = false
 
-    //todo: the player needs to hold their own cards
-    //for this to work..
     
     public init(name: String = "default") {
         self.name = name
     }
+
+    
+    public func newGame() {
+
+        //new game
+        let blackjack = Blackjack()
+        let game = Game(of: blackjack)
+        let groupActivityMessenger = GroupActivityMessenger()
         
+        //new server
+        self.server = Server(of: game, messenger: groupActivityMessenger)
+ 
+        
+        //somehow the player needs to know when others
+        //have been added to the game. Callback?
+        
+        /*
+         todo: with the new server composed, players compose messages
+         which are sent to the server.
+         */
+        
+    }
     
     /// Provides details on showing a players hand
     /// - Returns: array of cards - optional
