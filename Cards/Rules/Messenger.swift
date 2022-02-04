@@ -10,8 +10,9 @@ import Foundation
 //defines the type of server messaging system
 protocol Messenger {
     
+    func connect() -> ()
     func send() -> ()
-    func startSharing() -> ()
+    func receive() -> ()
+    func disconnect() -> ()
     
-    //func start() -> () //this is where we start the service..
 }

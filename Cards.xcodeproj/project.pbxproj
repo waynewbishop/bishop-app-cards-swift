@@ -10,6 +10,7 @@
 		DA109C8E27A1F8D400B93244 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA109C8D27A1F8D400B93244 /* Message.swift */; };
 		DA109C9027A1FA9000B93244 /* GameAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA109C8F27A1FA9000B93244 /* GameAction.swift */; };
 		DA19D9CB27AC9E22001F097C /* Cards.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA19D9CA27AC9E22001F097C /* Cards.swift */; };
+		DA19D9CF27ADC8A8001F097C /* CardTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA19D9CE27ADC8A8001F097C /* CardTableView.swift */; };
 		DA29B120274715AB00B53871 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA29B11F274715AA00B53871 /* Queue.swift */; };
 		DA425B18273DC55D00418FC2 /* Blackjack.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA425B17273DC55D00418FC2 /* Blackjack.swift */; };
 		DA425B1A273DCFE700418FC2 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA425B19273DCFE700418FC2 /* Enums.swift */; };
@@ -58,6 +59,7 @@
 		DA109C8F27A1FA9000B93244 /* GameAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAction.swift; sourceTree = "<group>"; };
 		DA19D9C927AC8947001F097C /* Cards.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Cards.entitlements; sourceTree = "<group>"; };
 		DA19D9CA27AC9E22001F097C /* Cards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cards.swift; sourceTree = "<group>"; };
+		DA19D9CE27ADC8A8001F097C /* CardTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTableView.swift; sourceTree = "<group>"; };
 		DA29B11F274715AA00B53871 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		DA425B17273DC55D00418FC2 /* Blackjack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blackjack.swift; sourceTree = "<group>"; };
 		DA425B19273DCFE700418FC2 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				DAE7D602273C5A7900A0C8F0 /* ContentView.swift */,
+				DA19D9CE27ADC8A8001F097C /* CardTableView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				DAE7D644273C9FEE00A0C8F0 /* Stack.swift in Sources */,
 				DAE7D634273C5B8D00A0C8F0 /* Score.swift in Sources */,
 				DA109C8E27A1F8D400B93244 /* Message.swift in Sources */,
+				DA19D9CF27ADC8A8001F097C /* CardTableView.swift in Sources */,
 				DA19D9CB27AC9E22001F097C /* Cards.swift in Sources */,
 				DAE7D62E273C5B6000A0C8F0 /* Deck.swift in Sources */,
 				DA425B1A273DCFE700418FC2 /* Enums.swift in Sources */,

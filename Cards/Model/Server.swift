@@ -19,7 +19,16 @@ class GroupActivityMessenger: Messenger {
         print("now sending message via GroupActivity API")
     }
     
-    func startSharing() {
+    func receive() {
+      //<#code#>
+    }
+    
+    func disconnect() {
+      //  <#code#>
+    }
+
+    
+    func connect() {
         Task {
             do {
                 _ = try await Cards().activate()
@@ -34,11 +43,19 @@ class GroupActivityMessenger: Messenger {
 
 
 class WebsocketMessenger: Messenger {
+    func receive() {
+      //  <#code#>
+    }
+    
+    func disconnect() {
+      //  <#code#>
+    }
+    
     func send() {
        print("now sending message via WebSocket API")
     }
     
-    func startSharing() {
+    func connect() {
         //code goes here..
     }
 }
@@ -53,6 +70,8 @@ class Server {
     init (of game: Game, messenger: Messenger) {
         self.game = game
         self.messenger = messenger
+        self.messenger.connect()
+        Cards.sessions()
     }
 
     

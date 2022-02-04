@@ -13,6 +13,8 @@ class Game {
     let playbook: Playable
     var scoreBoard = ScoreBoard()
     
+    var cardTable = CardTable()
+    
     init(of playbook: Playable) {
         self.playbook = playbook
     }

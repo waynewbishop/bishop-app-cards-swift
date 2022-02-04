@@ -57,7 +57,7 @@ class Hand {
     /// - Parameter index: Index of the card to be played
     /// - Returns: The card instance
 
-    func play(_ index: Int) -> Card? {
+    func send(_ index: Int) -> Card? {
         
         if cards.indices.contains(index) {
             let card = cards.remove(at: index)

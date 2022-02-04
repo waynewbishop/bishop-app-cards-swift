@@ -13,12 +13,22 @@ struct ContentView: View {
     var player = Player()
     
     var body: some View {
-        Button {
-            player.newGame()
-        } label: {
-            Image(systemName: "person.2.fill")
+        
+        //insert CardTableView subview..
+        //it's this view that is replicated
+        //with other players using the group API.
+        VStack {
+            
+            CardTableView(cardTable: player.server!.game.cardTable) // pass in card table
+            
+//            Control bar
+            Button {
+                player.newGame()
+            } label: {
+                Image(systemName: "person.2.fill")
+            }
+            .buttonStyle(.borderedProminent)
         }
-        .buttonStyle(.borderedProminent)
     }
 }
 
