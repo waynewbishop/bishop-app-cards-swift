@@ -16,24 +16,5 @@ protocol Playable {
     func start() ->()
     func score(of player: Player) -> Int
     func nextTurn() -> ()
-
-}
-
-//implementation common to all games
-
-extension Playable {
-    
-    func deal() {
-        print("now dealing cards!")
-    }
-    
-    func score(of player: Player) -> Int {
-        return 0
-    }
-    
-    func nextTurn() -> () {
-        print("now processing the next player's turn..")
-    }
     
 }
-

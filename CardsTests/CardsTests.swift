@@ -9,6 +9,7 @@ import XCTest
 
 @testable import Cards
 
+/*
 class CardsTests: XCTestCase {
 
     //start the server
@@ -26,3 +27,5 @@ class CardsTests: XCTestCase {
     }
 
 }
+*/
+

@@ -9,12 +9,12 @@ import Foundation
 
 class Player {
     
-    var server: Server?
     let name: String
     let uuid = UUID()
     var hand = Hand()
-    var isDealer: Bool = false
-    var isTurn: Bool = false
+    var isDealer: Bool = false //todo: goes away..
+    var isTurn: Bool = false //todo: goes away..
+    var isSpectator: Bool = true
 
     
     public init(name: String = "default") {
@@ -22,20 +22,15 @@ class Player {
     }
 
     
-    public func newGame() {
+    public func newGame() {  //todo: pass the game type as a parameter...
+        
+        //invokes function to create CardTable instance..
 
         //new game
-        let blackjack = Blackjack()
-        let game = Game(of: blackjack)
-        let groupActivityMessenger = GroupActivityMessenger()
+      //  let blackjack = Blackjack()
+      //  let game = Game()
+    //    let groupActivityMessenger = GroupActivityMessenger()
         
-        //new server
-        self.server = Server(of: game, messenger: groupActivityMessenger)
-        
-        /*
-         todo: with the new server composed, players compose messages
-         which are sent to the server.
-         */
     }
 
     

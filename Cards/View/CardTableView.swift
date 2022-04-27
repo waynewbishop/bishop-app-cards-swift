@@ -7,20 +7,20 @@
 
 import SwiftUI
 
-class CardTable: ObservableObject {
-    
-}
-
 struct CardTableView: View {
     @StateObject var cardTable: CardTable
+    var response: String = "Hello World!"
+    
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text(response)
+            .frame(minWidth: 200, maxWidth: 450, minHeight: 200, maxHeight: 450)
     }
+    
 }
 
-//struct CardTableView_Previews: PreviewProvider {
-//    static var previews: some View {
-////        CardTableView()
-//    }
-//}
+struct CardTableView_Previews: PreviewProvider {
+    static var previews: some View {
+        CardTableView(cardTable: CardTable())
+   }
+}

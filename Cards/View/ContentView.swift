@@ -9,25 +9,30 @@ import SwiftUI
 
 struct ContentView: View {
     
-    //todo: refactor to observed object?
-    var player = Player()
-    
+        //1. create CardTable() instance
+        //2. create Game() instance with reference to CardTable
+        
+        /*
+         ControBar(game: game)
+         Player reference inside the Game
+         When button clicked tell the Game what you want.
+         Then the game updates the card table.
+         Then the card table gets sent to the players
+         The ControlBar buttons are disabled by the Game or Table
+         */
+
+
     var body: some View {
         
-        //insert CardTableView subview..
-        //it's this view that is replicated
-        //with other players using the group API.
+        //add the main views
         VStack {
             
-            CardTableView(cardTable: player.server!.game.cardTable) // pass in card table
+            //stores players views and game objects
+            CardTableView(cardTable: CardTable())
+                        
+            //controls payer actions
+            ControlBar(player: Player())
             
-//            Control bar
-            Button {
-                player.newGame()
-            } label: {
-                Image(systemName: "person.2.fill")
-            }
-            .buttonStyle(.borderedProminent)
         }
     }
 }

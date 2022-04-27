@@ -1,4 +1,4 @@
-//
+
 //  Enums.swift
 //  Cards
 //
@@ -7,6 +7,10 @@
 
 import Foundation
 
+
+enum GameAction: Codable {
+    case hit, hold, bust, safe
+}
 
 /// Governs types card game moves (deck of cards)
 
