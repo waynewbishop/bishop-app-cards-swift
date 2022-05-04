@@ -7,62 +7,14 @@
 
 import Foundation
 
-class Game: Player  {
+class Game  {
     
     let gameid = UUID()
-    var dealer = Player()
-    var players = Queue<Player>()  //todo: needs to be moved to the card table.
-    var discard = Array<Card>() //todo: needs to be moved the card table
-    var hasStarted: Bool = false
-    var deck = Deck() //todo: needs to be moved to the card table
         
     init() {
         
     }
  
-    
-    //MARK: playable protocol conformance
-    
-    func addPlayer(_ newPlayer: inout Player) {
-        if self.hasStarted == false {
-            players.enQueue(newPlayer)
-        }
-    }
-    
-    
-    //randomize the deck
-    func start() { //todo: does this reside at this level? Card Table?
-        
-        //shuffle the deck
-        deck.shuffle()
-            
-        //deal cards to all players
-        for p in players.elements {
-            
-            //assign two cards per player
-            for _ in 0..<2 {
-                if let card = deck.cards.pop() {
-                    card.faceup = true
-                    p.hand.receive(card)
-                }
-            }
-        }
-        
-        self.hasStarted = true
-        
-        //start the player turns
-        self.nextTurn()
-    }
-
-    
-    
-    func nextTurn() {
-        if let next  = self.players.deQueue() {
-            next.isTurn = true
-        }
-    }
-
-    
     func score(of player: Player) -> Int {
         
         //gets computed as the hand changes.. - blackjack

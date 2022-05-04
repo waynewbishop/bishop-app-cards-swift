@@ -7,6 +7,8 @@
 
 import Foundation
 
+
+@MainActor  //define async rules for conforming types..
 protocol Playable {
     
     var players: Queue<Player> { get set }
@@ -14,7 +16,6 @@ protocol Playable {
     var deck: Deck { get }
     
     func start() ->()
-    func score(of player: Player) -> Int
     func nextTurn() -> ()
     
 }

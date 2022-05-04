@@ -12,6 +12,7 @@
 		DA19D9D127ADD4F4001F097C /* ControlBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA19D9D027ADD4F4001F097C /* ControlBar.swift */; };
 		DA29B120274715AB00B53871 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA29B11F274715AA00B53871 /* Queue.swift */; };
 		DA425B18273DC55D00418FC2 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA425B17273DC55D00418FC2 /* Game.swift */; };
+		DA478EDE2823140F00B42EB5 /* Cards.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA478EDD2823140F00B42EB5 /* Cards.swift */; };
 		DA87D0F32819ECFA00888F2D /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA87D0F22819ECFA00888F2D /* Stack.swift */; };
 		DA87D0F52819ED1E00888F2D /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA87D0F42819ED1E00888F2D /* Enums.swift */; };
 		DA87D0F72819EE2900888F2D /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA87D0F62819EE2900888F2D /* Node.swift */; };
@@ -57,6 +58,7 @@
 		DA19D9D027ADD4F4001F097C /* ControlBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlBar.swift; sourceTree = "<group>"; };
 		DA29B11F274715AA00B53871 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		DA425B17273DC55D00418FC2 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		DA478EDD2823140F00B42EB5 /* Cards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cards.swift; sourceTree = "<group>"; };
 		DA87D0F22819ECFA00888F2D /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		DA87D0F42819ED1E00888F2D /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		DA87D0F62819EE2900888F2D /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 		DA109C8927A1ECFD00B93244 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DA478EDD2823140F00B42EB5 /* Cards.swift */,
 				DA87D0F92819F0DD00888F2D /* CardTable.swift */,
 				DA425B17273DC55D00418FC2 /* Game.swift */,
 				DA109C8527A1EA5A00B93244 /* Player */,
@@ -382,6 +385,7 @@
 				DAE7D62C273C5B4D00A0C8F0 /* Card.swift in Sources */,
 				DAE7D641273C89C400A0C8F0 /* Hand.swift in Sources */,
 				DAE7D632273C5B7F00A0C8F0 /* Player.swift in Sources */,
+				DA478EDE2823140F00B42EB5 /* Cards.swift in Sources */,
 				DA29B120274715AB00B53871 /* Queue.swift in Sources */,
 				DAE7D638273C5C4200A0C8F0 /* Suit.swift in Sources */,
 				DA87D0F52819ED1E00888F2D /* Enums.swift in Sources */,

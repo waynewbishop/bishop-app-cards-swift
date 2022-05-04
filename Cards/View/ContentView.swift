@@ -20,7 +20,7 @@ struct ContentView: View {
          Then the card table gets sent to the players
          The ControlBar buttons are disabled by the Game or Table
          */
-
+    @StateObject var cardTable = CardTable()
 
     var body: some View {
         
@@ -28,11 +28,17 @@ struct ContentView: View {
         VStack {
             
             //stores players views and game objects
-            CardTableView(cardTable: CardTable())
+            CardTableView(cardTable: cardTable)
                         
             //controls payer actions
-            ControlBar(player: Player())
+            ControlBar(cardTable: cardTable, player: Player())
             
+        }
+        .task {
+            //is this a callback from the GroupActivity.activate()?
+            for await session in Cards.sessions() {
+                cardTable.configureGroupSession(session)
+            }
         }
     }
 }
