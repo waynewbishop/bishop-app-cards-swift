@@ -31,7 +31,7 @@ struct ContentView: View {
             CardTableView(cardTable: cardTable)
                         
             //controls payer actions
-            ControlBar(cardTable: cardTable, player: Player())
+            ControlBar(cardTable: cardTable)
             
         }
         .task {

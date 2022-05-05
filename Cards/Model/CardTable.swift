@@ -18,6 +18,7 @@ class CardTable: ObservableObject, Playable {
     var discard = Array<Card>()
     var deck = Deck()
     var hasStarted: Bool = false
+    @State var response: String = "Hello World.."
     
     @Published var groupSession: GroupSession<Cards>?
     var messenger: GroupSessionMessenger?

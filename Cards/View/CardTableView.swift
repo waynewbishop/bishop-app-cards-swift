@@ -9,11 +9,9 @@ import SwiftUI
 
 struct CardTableView: View {
     @StateObject var cardTable: CardTable
-    var response: String = "Hello World!"
-    
     
     var body: some View {
-        Text(response)
+        Text(cardTable.response)
             .frame(minWidth: 200, maxWidth: 450, minHeight: 200, maxHeight: 450)
     }
     

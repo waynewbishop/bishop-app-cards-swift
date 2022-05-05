@@ -14,8 +14,6 @@ struct ControlBar: View {
     @ObservedObject var cardTable: CardTable
     @StateObject var groupStateObserver = GroupStateObserver()
     
-    //todo: does player need to be an observable object?
-    var player: Player
     
     var body: some View {
         
@@ -24,16 +22,21 @@ struct ControlBar: View {
             //start shared game
             if cardTable.groupSession == nil && groupStateObserver.isEligibleForGroupSession {
                 Button {
+                    
                     cardTable.startSharing()
+                    
                 } label: {
                     Image(systemName: "person.wave.2")
                 }
                 .buttonStyle(.borderedProminent)
             }
+            else {
+                //present some dialog
+            }
             
             //hit card
             Button  {
-                player.newGame()
+                cardTable.response = "hit button pressed.."
             } label: {
                 Image(systemName: "plus.square.on.square")
             }
@@ -42,7 +45,8 @@ struct ControlBar: View {
 
             //hold
             Button  {
-                player.newGame()
+                //todo: some action goes here..
+                cardTable.response = "hold button pressed.."
             } label: {
                 Image(systemName: "hand.raised")
             }
@@ -51,7 +55,7 @@ struct ControlBar: View {
             
             //fold - disconnect from game..
             Button  {
-                player.newGame()
+                cardTable.response = "disconnect button pressed.."
             } label: {
                 Image(systemName: "person.badge.minus")
             }
@@ -64,7 +68,7 @@ struct ControlBar: View {
 
 struct ControlBar_Previews: PreviewProvider {
     static var previews: some View {
-        ControlBar(cardTable: CardTable(), player: Player())
+        ControlBar(cardTable: CardTable())
             .previewLayout(.sizeThatFits)
     }
 }

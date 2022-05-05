@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DA19D9CB27AC9E22001F097C /* CardsGroupActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA19D9CA27AC9E22001F097C /* CardsGroupActivity.swift */; };
 		DA19D9CF27ADC8A8001F097C /* CardTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA19D9CE27ADC8A8001F097C /* CardTableView.swift */; };
 		DA19D9D127ADD4F4001F097C /* ControlBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA19D9D027ADD4F4001F097C /* ControlBar.swift */; };
 		DA29B120274715AB00B53871 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA29B11F274715AA00B53871 /* Queue.swift */; };
@@ -53,7 +52,6 @@
 
 /* Begin PBXFileReference section */
 		DA19D9C927AC8947001F097C /* Cards.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Cards.entitlements; sourceTree = "<group>"; };
-		DA19D9CA27AC9E22001F097C /* CardsGroupActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsGroupActivity.swift; sourceTree = "<group>"; };
 		DA19D9CE27ADC8A8001F097C /* CardTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTableView.swift; sourceTree = "<group>"; };
 		DA19D9D027ADD4F4001F097C /* ControlBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlBar.swift; sourceTree = "<group>"; };
 		DA29B11F274715AA00B53871 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
@@ -161,14 +159,6 @@
 			path = Rules;
 			sourceTree = "<group>";
 		};
-		DA87D0F12819E98B00888F2D /* GroupActivityAPI */ = {
-			isa = PBXGroup;
-			children = (
-				DA19D9CA27AC9E22001F097C /* CardsGroupActivity.swift */,
-			);
-			path = GroupActivityAPI;
-			sourceTree = "<group>";
-		};
 		DAE7D5F4273C5A7900A0C8F0 = {
 			isa = PBXGroup;
 			children = (
@@ -194,7 +184,6 @@
 			children = (
 				DA19D9C927AC8947001F097C /* Cards.entitlements */,
 				DAE7D600273C5A7900A0C8F0 /* CardsApp.swift */,
-				DA87D0F12819E98B00888F2D /* GroupActivityAPI */,
 				DA87D0F02819E91600888F2D /* Rules */,
 				DA109C8A27A1ED0300B93244 /* View */,
 				DA109C8927A1ECFD00B93244 /* Model */,
@@ -376,7 +365,6 @@
 				DAE7D634273C5B8D00A0C8F0 /* Score.swift in Sources */,
 				DA87D0F32819ECFA00888F2D /* Stack.swift in Sources */,
 				DA19D9CF27ADC8A8001F097C /* CardTableView.swift in Sources */,
-				DA19D9CB27AC9E22001F097C /* CardsGroupActivity.swift in Sources */,
 				DAE7D62E273C5B6000A0C8F0 /* Deck.swift in Sources */,
 				DA87D0F72819EE2900888F2D /* Node.swift in Sources */,
 				DAE7D603273C5A7900A0C8F0 /* ContentView.swift in Sources */,
