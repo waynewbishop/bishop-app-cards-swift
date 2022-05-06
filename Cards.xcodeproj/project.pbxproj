@@ -12,6 +12,7 @@
 		DA29B120274715AB00B53871 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA29B11F274715AA00B53871 /* Queue.swift */; };
 		DA425B18273DC55D00418FC2 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA425B17273DC55D00418FC2 /* Game.swift */; };
 		DA478EDE2823140F00B42EB5 /* Cards.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA478EDD2823140F00B42EB5 /* Cards.swift */; };
+		DA478EE0282465E600B42EB5 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA478EDF282465E600B42EB5 /* Messages.swift */; };
 		DA87D0F32819ECFA00888F2D /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA87D0F22819ECFA00888F2D /* Stack.swift */; };
 		DA87D0F52819ED1E00888F2D /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA87D0F42819ED1E00888F2D /* Enums.swift */; };
 		DA87D0F72819EE2900888F2D /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA87D0F62819EE2900888F2D /* Node.swift */; };
@@ -57,6 +58,7 @@
 		DA29B11F274715AA00B53871 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		DA425B17273DC55D00418FC2 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		DA478EDD2823140F00B42EB5 /* Cards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cards.swift; sourceTree = "<group>"; };
+		DA478EDF282465E600B42EB5 /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
 		DA87D0F22819ECFA00888F2D /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		DA87D0F42819ED1E00888F2D /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		DA87D0F62819EE2900888F2D /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				DA478EDD2823140F00B42EB5 /* Cards.swift */,
 				DA87D0F92819F0DD00888F2D /* CardTable.swift */,
 				DA425B17273DC55D00418FC2 /* Game.swift */,
+				DA478EDF282465E600B42EB5 /* Messages.swift */,
 				DA109C8527A1EA5A00B93244 /* Player */,
 				DA109C8627A1EB3C00B93244 /* Table */,
 				DAE7D642273C9FAE00A0C8F0 /* Structures */,
@@ -376,6 +379,7 @@
 				DA478EDE2823140F00B42EB5 /* Cards.swift in Sources */,
 				DA29B120274715AB00B53871 /* Queue.swift in Sources */,
 				DAE7D638273C5C4200A0C8F0 /* Suit.swift in Sources */,
+				DA478EE0282465E600B42EB5 /* Messages.swift in Sources */,
 				DA87D0F52819ED1E00888F2D /* Enums.swift in Sources */,
 				DAE7D601273C5A7900A0C8F0 /* CardsApp.swift in Sources */,
 			);

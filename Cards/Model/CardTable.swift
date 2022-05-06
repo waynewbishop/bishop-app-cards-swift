@@ -18,26 +18,36 @@ class CardTable: ObservableObject, Playable {
     var discard = Array<Card>()
     var deck = Deck()
     var hasStarted: Bool = false
-    @State var response: String = "Hello World.."
     
+    @Published var response: String = "Hello World.."
     @Published var groupSession: GroupSession<Cards>?
+    
     var messenger: GroupSessionMessenger?
     
     
+    //action that initiates the group activity
     func startSharing() {
         Task {
             do {
                 _ = try await Cards().activate()
             } catch {
-                print("Failed to activate Cards activity: \(error)")
+                self.response = "failed to activate Cards activity: \(error)"
             }
         }
     }
 
     
-    //configure the user session
+    //add the existing user to the shared session
     func configureGroupSession(_ groupSession: GroupSession<Cards>) {
-        print("configuring the session for new user..")
+        
+        self.response = "configuring the session for a new user."
+        self.groupSession = groupSession
+        
+        //create the messenger for the session
+        let messenger = GroupSessionMessenger(session: groupSession)
+        self.messenger = messenger
+        
+        groupSession.join()
     }
 
 
@@ -50,6 +60,8 @@ class CardTable: ObservableObject, Playable {
     
     
     //randomize the deck
+    //should this be it's own button action, based on the group session?
+    //how are specific cards assigned to certain indivduals?
     func start() {
         
         //shuffle the deck

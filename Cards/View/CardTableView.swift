@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CardTableView: View {
-    @StateObject var cardTable: CardTable
+    @ObservedObject var cardTable: CardTable
     
     var body: some View {
         Text(cardTable.response)

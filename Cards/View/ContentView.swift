@@ -20,7 +20,7 @@ struct ContentView: View {
          Then the card table gets sent to the players
          The ControlBar buttons are disabled by the Game or Table
          */
-    @StateObject var cardTable = CardTable()
+    @ObservedObject var cardTable = CardTable()
 
     var body: some View {
         
