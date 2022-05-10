@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Deck {
+class Deck: Codable {
     
     var cards = Stack<Card>()
     

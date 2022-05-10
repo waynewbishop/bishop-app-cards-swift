@@ -13,7 +13,7 @@ struct ContentView: View {
         //2. create Game() instance with reference to CardTable
         
         /*
-         ControBar(game: game)
+         ControlBar(game: game)
          Player reference inside the Game
          When button clicked tell the Game what you want.
          Then the game updates the card table.

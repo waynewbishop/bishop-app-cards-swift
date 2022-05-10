@@ -7,10 +7,10 @@
 
 import Foundation
 
-class Player {
+class Player: Codable {
     
     let name: String
-    let uuid = UUID()
+    var uuid = UUID()
     var hand = Hand()
     var isDealer: Bool = false //todo: goes away..
     var isTurn: Bool = false //todo: goes away..

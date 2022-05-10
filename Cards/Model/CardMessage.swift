@@ -19,3 +19,8 @@ import SwiftUI
 
 //how do we want the card object to be represented as a struct?
 //what other additional metadata messages need to be distrubuted to other players (who is the active/next player), who won the game
+
+struct CardMessage: Codable {
+    //todo: this will manage the other codable types
+    //of player, discard pile and deck..
+}

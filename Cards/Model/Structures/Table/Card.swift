@@ -8,7 +8,7 @@
 import Foundation
 
 
-public class Card : Comparable {
+public class Card : Comparable, Codable {
    
    var id = UUID() //individual cards
    var suit: Suit

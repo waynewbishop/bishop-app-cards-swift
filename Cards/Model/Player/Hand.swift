@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Hand {
+class Hand : Codable {
     
     var cards = Array<Card>()
     

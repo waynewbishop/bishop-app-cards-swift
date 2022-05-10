@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Stack <T> {
+public struct Stack <T: Codable> : Codable {
 
     var elements : [T] = [T]()
 

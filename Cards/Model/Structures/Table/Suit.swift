@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class Suit: Equatable {
+public class Suit: Equatable, Codable {
     
     var name: String //e.g. hearts
     var scores = Array<Score>()

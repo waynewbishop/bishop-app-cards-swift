@@ -11,7 +11,7 @@ import Foundation
 
 ///  Serves as the basis of comparsion for generic cards.
 
-class Score : Equatable {
+class Score : Equatable, Codable {
     
     var name: String? //A
     var value: Int  //1

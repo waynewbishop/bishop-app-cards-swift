@@ -14,10 +14,15 @@ import GroupActivities
 @MainActor
 class CardTable: ObservableObject, Playable {
     
+    //todo: these items have to be isloated into their own codable object
+    //so they can be sent back and forth while used on the cardTable.
     var players = Queue<Player>()
     var discard = Array<Card>()
     var deck = Deck()
-    var hasStarted: Bool = false
+    
+    
+    var hasStarted: Bool = false //this may not be required, as we can just check for cardTable.groupSession == nil
+    
     
     @Published var response: String = "Hello World.."
     @Published var groupSession: GroupSession<Cards>?
@@ -38,7 +43,7 @@ class CardTable: ObservableObject, Playable {
 
     
     //add the existing user to the shared session
-    func configureGroupSession(_ groupSession: GroupSession<Cards>) {
+    func configureGroupSession(_ groupSession: GroupSession<Cards>) { //addPlayer??
         
         self.response = "configuring the session for a new user."
         self.groupSession = groupSession
@@ -52,9 +57,10 @@ class CardTable: ObservableObject, Playable {
 
 
     //how can this be replicated using the groupactivity API?
+    //has this already been solved by using the configureGroupSession method?
     func addPlayer(_ newPlayer: inout Player) {
         if self.hasStarted == false {
-            players.enQueue(newPlayer)
+            players.enQueue(newPlayer) //todo: the player queue is sent to other players as a Codeable message..
         }
     }
     
