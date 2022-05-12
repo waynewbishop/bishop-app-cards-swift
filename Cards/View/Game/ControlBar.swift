@@ -17,7 +17,7 @@ struct ControlBar: View {
     
     var body: some View {
         
-        HStack (alignment: .bottom) {
+        HStack (alignment: .bottom, spacing: 50.0) {
 
             //start shared game
             if cardTable.groupSession == nil && groupStateObserver.isEligibleForGroupSession {
@@ -26,7 +26,7 @@ struct ControlBar: View {
                     cardTable.startSharing()
                     
                 } label: {
-                    Image(systemName: "person.wave.2")
+                    GameImage(name: "person.2.circle")
                 }
                 .buttonStyle(.borderedProminent)
             }
@@ -38,30 +38,47 @@ struct ControlBar: View {
             Button  {
                 cardTable.response = "hit button pressed.."
             } label: {
-                Image(systemName: "plus.square.on.square")
+                GameImage(name: "hand.thumbsup.circle")
             }
-            .buttonStyle(.borderedProminent)
-            
+            .buttonStyle(.borderless)
 
+            
             //hold
             Button  {
                 //todo: some action goes here..
                 cardTable.response = "hold button pressed.."
             } label: {
-                Image(systemName: "hand.raised")
+                GameImage(name: "hand.raised.circle")
             }
-            .buttonStyle(.borderedProminent)
+            .buttonStyle(.borderless)
             
-            
+
             //fold - disconnect from game..
             Button  {
                 cardTable.response = "disconnect button pressed.."
             } label: {
-                Image(systemName: "person.badge.minus")
+                GameImage(name: "xmark.circle")
             }
-            .buttonStyle(.borderedProminent)
+            .buttonStyle(.borderless)
         }
+        
                 
+    }
+}
+
+
+//custom image definition
+struct GameImage: View {
+    
+    var name: String
+    var width: CGFloat = 35.0
+    var height: CGFloat = 35.0
+    
+    var body: some View {
+        Image(systemName: name)
+            .resizable()
+            .foregroundColor(Color.blue)
+            .frame(width: width, height: height)
     }
 }
 
@@ -69,6 +86,7 @@ struct ControlBar: View {
 struct ControlBar_Previews: PreviewProvider {
     static var previews: some View {
         ControlBar(cardTable: CardTable())
+            .environment(\.sizeCategory, .large)
             .previewLayout(.sizeThatFits)
     }
 }

@@ -29,6 +29,7 @@ struct ContentView: View {
             
             //stores players views and game objects
             CardTableView(cardTable: cardTable)
+                .accentColor(.red)
                         
             //controls payer actions
             ControlBar(cardTable: cardTable)

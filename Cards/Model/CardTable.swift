@@ -12,22 +12,17 @@ import GroupActivities
 
 
 @MainActor
-class CardTable: ObservableObject, Playable {
+class CardTable: ObservableObject {
     
-    //todo: these items have to be isloated into their own codable object
-    //so they can be sent back and forth while used on the cardTable.
-    var players = Queue<Player>()
-    var discard = Array<Card>()
-    var deck = Deck()
-    
-    
-    var hasStarted: Bool = false //this may not be required, as we can just check for cardTable.groupSession == nil
-    
-    
+    var tMessage = TableMessage()
+    var localPlayer = Player(name: "Wayne")
+        
     @Published var response: String = "Hello World.."
     @Published var groupSession: GroupSession<Cards>?
     
     var messenger: GroupSessionMessenger?
+    
+    //@StateObject var groupStateObserver = GroupStateObserver() //is this required at this level?
     
     
     //action that initiates the group activity
@@ -43,7 +38,7 @@ class CardTable: ObservableObject, Playable {
 
     
     //add the existing user to the shared session
-    func configureGroupSession(_ groupSession: GroupSession<Cards>) { //addPlayer??
+    func configureGroupSession(_ groupSession: GroupSession<Cards>) {
         
         self.response = "configuring the session for a new user."
         self.groupSession = groupSession
@@ -52,49 +47,46 @@ class CardTable: ObservableObject, Playable {
         let messenger = GroupSessionMessenger(session: groupSession)
         self.messenger = messenger
         
+        //add new local player to shared queue
+        tMessage.players.enQueue(localPlayer)
+        
         groupSession.join()
+        
     }
 
-
-    //how can this be replicated using the groupactivity API?
-    //has this already been solved by using the configureGroupSession method?
-    func addPlayer(_ newPlayer: inout Player) {
-        if self.hasStarted == false {
-            players.enQueue(newPlayer) //todo: the player queue is sent to other players as a Codeable message..
-        }
-    }
     
     
     //randomize the deck
     //should this be it's own button action, based on the group session?
     //how are specific cards assigned to certain indivduals?
-    func start() {
+    func deal() {
+        
+        guard self.groupSession != nil else {
+            return
+        }
         
         //shuffle the deck
-        deck.shuffle()
+        tMessage.deck.shuffle()
             
         //deal cards to all players
-        for p in players.elements {
+        for p in tMessage.players.elements {
             
             //assign two cards per player
             for _ in 0..<2 {
-                if let card = deck.cards.pop() {
+                if let card = tMessage.deck.cards.pop() {
                     card.faceup = true
                     p.hand.receive(card)
                 }
             }
         }
         
-        self.hasStarted = true
-        
-        //start the player turns
-        self.nextTurn()
     }
     
     
+    //reorganize to the next player
     func nextTurn() {
-        if let next  = self.players.deQueue() {
-            next.isTurn = true
+        if let prevPlayer  = tMessage.players.deQueue() {
+            tMessage.players.enQueue(prevPlayer)
         }
     }
 

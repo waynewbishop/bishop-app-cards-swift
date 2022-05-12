@@ -9,7 +9,7 @@ import Foundation
 
 /// provides a basic wrapper for array object
 
-class Queue<T> {
+class Queue<T: Codable> : Codable {
     
     var elements = Array<T>()
     
