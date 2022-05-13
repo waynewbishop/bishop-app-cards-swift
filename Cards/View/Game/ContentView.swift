@@ -27,9 +27,16 @@ struct ContentView: View {
         //add the main views
         VStack {
             
+            //stores account view and start button
+            AccountView(cardTable: cardTable)
+            
+            //todo: the cardTableView should only
+            //apppear if they are on an active Facetime call.
+            //otherwise we should display some type of
+            //getting started view/dialog.
+            
             //stores players views and game objects
             CardTableView(cardTable: cardTable)
-                .accentColor(.red)
                         
             //controls payer actions
             ControlBar(cardTable: cardTable)

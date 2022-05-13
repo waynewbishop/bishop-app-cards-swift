@@ -15,7 +15,7 @@ struct MainView: View {
                     Label("Game", systemImage: "iphone.homebutton.radiowaves.left.and.right")
                 }
 
-            AccountView()
+            AccountDetailView()
                 .tabItem {
                     Label("Account", systemImage: "person.fill")
                 }

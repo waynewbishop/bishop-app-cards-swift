@@ -12,15 +12,6 @@ struct CardTableView: View {
     
     var body: some View {
         VStack(alignment: .trailing) {
-            
-            Button {
-                cardTable.deal()
-                
-            } label: {
-                GameImage(name: "arrow.uturn.down.circle", width: 50, height: 50)
-            }
-            .buttonStyle(.borderless)
-            
             Text(cardTable.response)
                 .font(.title)
                 .frame(minWidth: 200, maxWidth: 350, minHeight: 200, maxHeight: 350)

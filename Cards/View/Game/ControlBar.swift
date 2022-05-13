@@ -55,11 +55,21 @@ struct ControlBar: View {
 
             //fold - disconnect from game..
             Button  {
+                
+                /*
+                 todo: what happens when we disconnect from the game?
+                 do we want to bother with spectator mode or
+                 perform a more simple operation?
+                 */
+                
                 cardTable.response = "disconnect button pressed.."
             } label: {
                 GameImage(name: "xmark.circle")
             }
             .buttonStyle(.borderless)
+            
+            //todo: there also needs to be a reset / new game
+            ///button added to the control bar.
         }
         
                 
@@ -73,12 +83,14 @@ struct GameImage: View {
     var name: String
     var width: CGFloat = 35.0
     var height: CGFloat = 35.0
+    var color: Color = Color.blue
     
     var body: some View {
         Image(systemName: name)
             .resizable()
-            .foregroundColor(Color.blue)
+            .foregroundColor(color)
             .frame(width: width, height: height)
+            .accessibilityLabel("Testing..")
     }
 }
 

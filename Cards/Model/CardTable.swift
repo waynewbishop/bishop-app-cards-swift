@@ -15,8 +15,8 @@ import GroupActivities
 class CardTable: ObservableObject {
     
     var tMessage = TableMessage()
-    var localPlayer = Player(name: "Wayne")
-        
+    
+    @Published var localPlayer = Player(name: "Wayne")
     @Published var response: String = "Hello World.."
     @Published var groupSession: GroupSession<Cards>?
     
@@ -57,8 +57,7 @@ class CardTable: ObservableObject {
     
     
     //randomize the deck
-    //should this be it's own button action, based on the group session?
-    //how are specific cards assigned to certain indivduals?
+    //todo: this function needs to return a boolean letting the system know cards where dealt.
     func deal() {
         
         guard self.groupSession != nil else {
