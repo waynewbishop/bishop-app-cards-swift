@@ -11,6 +11,8 @@ class Player: Codable {
     
     let name: String
     var uuid = UUID()
+    /// Group Session participant UUID
+    var participantUUID: UUID?
     var hand = Hand()
     var isSpectator: Bool = true
 

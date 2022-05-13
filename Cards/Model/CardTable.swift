@@ -47,11 +47,18 @@ class CardTable: ObservableObject {
         let messenger = GroupSessionMessenger(session: groupSession)
         self.messenger = messenger
         
+        
+        groupSession.join()
+        print("Just joined session")
+        localPlayer.participantUUID = groupSession.localParticipant.id
+        self.response = localPlayer.participantUUID?.uuidString ?? "No ID"
+        
         //add new local player to shared queue
         tMessage.players.enQueue(localPlayer)
         
-        groupSession.join()
-        
+        groupSession.activeParticipants.forEach { participant in
+            print("ID for this participant: ", participant.id)
+        }
     }
 
     
@@ -79,6 +86,7 @@ class CardTable: ObservableObject {
             }
         }
         
+        //todo: send update to API.
     }
     
     
