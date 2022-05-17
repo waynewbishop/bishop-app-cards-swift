@@ -7,14 +7,13 @@
 
 import Foundation
 
-class Game  {
+struct Game  {
     
-    let gameid = UUID()
+    let id = UUID()
+    
+    //todo: what about other actions like a
+    //when a player winss or if there's a bust?
         
-    init() {
-        
-    }
- 
     func score(of player: Player) -> Int {
         
         //gets computed as the hand changes.. - blackjack

@@ -14,8 +14,8 @@ class Player: Codable {
     /// Group Session participant UUID
     var participantUUID: UUID?
     var hand = Hand()
+    var score: Int = 0
     var isSpectator: Bool = true
-
     
     public init(name: String = "default") {
         self.name = name

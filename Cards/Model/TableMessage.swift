@@ -14,9 +14,11 @@ import SwiftUI
 
 
 /// define the model for sending and recieving messages
-struct TableMessage: Codable {
+class TableMessage: Codable, ObservableObject {
     
-    var players = Queue<Player>()
-    var discard = Array<Card>()
-    var deck = Deck()
+   var players = Queue<Player>() //todo: these objects need to be @published
+   var discard = Array<Card>()
+   var deck = Deck()
+   var action = Action.start
+    
 }

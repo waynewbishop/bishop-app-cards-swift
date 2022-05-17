@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    
-        //1. create CardTable() instance
-        //2. create Game() instance with reference to CardTable
         
         /*
          ControlBar(game: game)
@@ -21,6 +18,11 @@ struct ContentView: View {
          The ControlBar buttons are disabled by the Game or Table
          */
     @ObservedObject var cardTable = CardTable()
+    
+    /*
+     todo: a new observed debug object goes here
+     that can also be referenced by the CardTableView instance..
+    */
 
     var body: some View {
         

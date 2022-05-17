@@ -14,15 +14,14 @@ import GroupActivities
 @MainActor
 class CardTable: ObservableObject {
     
-    var tMessage = TableMessage()
-    
+    @ObservedObject var tMessage = TableMessage()
+        
     @Published var localPlayer = Player(name: "Wayne")
-    @Published var response: String = "Hello World.."
+    @Published var response: String = "Waiting for players.."
     @Published var groupSession: GroupSession<Cards>?
     
     var messenger: GroupSessionMessenger?
-    
-    //@StateObject var groupStateObserver = GroupStateObserver() //is this required at this level?
+    var game = Game()
     
     
     //action that initiates the group activity
@@ -46,15 +45,16 @@ class CardTable: ObservableObject {
         //create the messenger for the session
         let messenger = GroupSessionMessenger(session: groupSession)
         self.messenger = messenger
-        
-        
+                
         groupSession.join()
-        print("Just joined session")
+        self.response = "Just joined session"
+        
         localPlayer.participantUUID = groupSession.localParticipant.id
         self.response = localPlayer.participantUUID?.uuidString ?? "No ID"
         
         //add new local player to shared queue
         tMessage.players.enQueue(localPlayer)
+        
         
         groupSession.activeParticipants.forEach { participant in
             print("ID for this participant: ", participant.id)
@@ -62,16 +62,35 @@ class CardTable: ObservableObject {
     }
 
     
+    //send message to participants
+    func sendMessage(message: TableMessage) {
+        
+        Task {
+            if let message = self.messenger {
+        
+                do {
+                    try await message.send(tMessage, to: .all)
+                } catch {
+                    self.response = "unable to send message: \(error)"
+                }
+            }
+            
+        } //end task
+    }
+    
+    
+    func recieveMessage() {
+        //receive message from the api
+    }
+
     
     //randomize the deck
-    //todo: this function needs to return a boolean letting the system know cards where dealt.
     func deal() {
         
         guard self.groupSession != nil else {
             return
         }
         
-        //shuffle the deck
         tMessage.deck.shuffle()
             
         //deal cards to all players
@@ -85,15 +104,41 @@ class CardTable: ObservableObject {
                 }
             }
         }
+
+        //update action
+        tMessage.action = .deal
         
-        //todo: send update to API.
+        //send message
+        sendMessage(message: tMessage)
     }
     
     
-    //reorganize to the next player
+    //receive a card from the dealer (computer)
+    func hit() {
+        
+        //determine if they are correct player
+        if let current = tMessage.players.deQueue() {
+            if current.participantUUID == localPlayer.participantUUID {
+                if let card = tMessage.deck.cards.pop() {
+                    current.hand.receive(card)
+                    current.score = game.score(of: current)
+                }
+            }
+        }
+        
+    }
+    
+    func hold() {
+        
+    }
+    
+    //switch to next player
     func nextTurn() {
         if let prevPlayer  = tMessage.players.deQueue() {
             tMessage.players.enQueue(prevPlayer)
+            
+            //send mutated message
+            sendMessage(message: tMessage)
         }
     }
 

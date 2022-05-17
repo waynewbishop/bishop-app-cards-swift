@@ -8,19 +8,19 @@
 import Foundation
 
 
-enum GameAction: Codable {
-    case hit, hold, bust, safe
+/*
+ describes the action associated with the latest mutated state
+ of TableMessage
+ */
+
+
+//player actions (that effect the card table)
+enum Action: Codable {
+    case start, new, deal, hit, hold, bust, safe, winner
 }
 
-/// Governs types card game moves (deck of cards)
 
-enum Turn {
-    case match, nomatch, draw, hit, hold, bust, safe, winner, nocards
-}
-
-
-// Tracks status of each game
-
-enum Status {
-    case started, active, completed
+//game status - may not be required
+enum Status: Codable {
+    case waiting, started, active, completed
 }
