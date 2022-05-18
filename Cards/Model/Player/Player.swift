@@ -11,8 +11,8 @@ class Player: Codable {
     
     let name: String
     var uuid = UUID()
-    /// Group Session participant UUID
-    var participantUUID: UUID?
+
+    var participantUUID: UUID? //from GroupSession
     var hand = Hand()
     var score: Int = 0
     var isSpectator: Bool = true
@@ -20,7 +20,6 @@ class Player: Codable {
     public init(name: String = "default") {
         self.name = name
     }
-
     
 }
 

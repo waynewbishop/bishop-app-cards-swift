@@ -21,7 +21,15 @@ class CardTable: ObservableObject {
     @Published var groupSession: GroupSession<Cards>?
     
     var messenger: GroupSessionMessenger?
-    var game = Game()
+    
+
+    //current player
+    var current: Player? {
+        guard let player = tMessage.players.peek() else {
+            return nil
+        }
+        return player
+    }
     
     
     //action that initiates the group activity
@@ -81,6 +89,10 @@ class CardTable: ObservableObject {
     
     func recieveMessage() {
         //receive message from the api
+        
+        //todo: handle message and check everyone's score
+        //from the last turn. Has anyone won the game or
+        //has gone over 21?
     }
 
     
@@ -105,10 +117,9 @@ class CardTable: ObservableObject {
             }
         }
 
-        //update action
-        tMessage.action = .deal
         
-        //send message
+        //post message
+        tMessage.action = .deal
         sendMessage(message: tMessage)
     }
     
@@ -116,31 +127,26 @@ class CardTable: ObservableObject {
     //receive a card from the dealer (computer)
     func hit() {
         
-        //determine if they are correct player
-        if let current = tMessage.players.deQueue() {
+        if let current = tMessage.players.peek() {
             if current.participantUUID == localPlayer.participantUUID {
+                _ = tMessage.players.deQueue()
+                
                 if let card = tMessage.deck.cards.pop() {
                     current.hand.receive(card)
-                    current.score = game.score(of: current)
-                }
+                    tMessage.players.enQueue(current)
+                    
+                    //post message
+                    tMessage.action = .hit
+                    sendMessage(message: tMessage)
+                 }
             }
         }
-        
     }
+    
     
     func hold() {
         
     }
     
-    //switch to next player
-    func nextTurn() {
-        if let prevPlayer  = tMessage.players.deQueue() {
-            tMessage.players.enQueue(prevPlayer)
-            
-            //send mutated message
-            sendMessage(message: tMessage)
-        }
-    }
-
     
 }

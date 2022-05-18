@@ -7,6 +7,9 @@
 
 import Foundation
 
+/*
+ ///Logic moved to the player's hand.
+ 
 struct Game  {
     
     let id = UUID()
@@ -56,8 +59,8 @@ struct Game  {
         
         return total
     }
-    
-    
-    
             
 }
+
+*/
+
