@@ -20,7 +20,8 @@ class CardTable: ObservableObject {
     @Published var response: String = "Waiting for players.."
     @Published var groupSession: GroupSession<Cards>?
     
-    var messenger: GroupSessionMessenger?
+    var sessionMessenger: GroupSessionMessenger?
+    var tasks = Set<Task<Void, Never>>()
     
 
     //current player
@@ -52,10 +53,11 @@ class CardTable: ObservableObject {
         
         //create the messenger for the session
         let messenger = GroupSessionMessenger(session: groupSession)
-        self.messenger = messenger
+        self.sessionMessenger = messenger
                 
         groupSession.join()
-        self.response = "Just joined session"
+        
+        self.response = localPlayer.name + " just joined session.."
         
         localPlayer.participantUUID = groupSession.localParticipant.id
         self.response = localPlayer.participantUUID?.uuidString ?? "No ID"
@@ -63,10 +65,14 @@ class CardTable: ObservableObject {
         //add new local player to shared queue
         tMessage.players.enQueue(localPlayer)
         
-        
         groupSession.activeParticipants.forEach { participant in
             print("ID for this participant: ", participant.id)
         }
+        
+        
+        //send the updated queue
+        tMessage.action = .new
+        sendMessage(message: tMessage)
     }
 
     
@@ -74,7 +80,7 @@ class CardTable: ObservableObject {
     func sendMessage(message: TableMessage) {
         
         Task {
-            if let message = self.messenger {
+            if let message = self.sessionMessenger {
         
                 do {
                     try await message.send(tMessage, to: .all)
@@ -87,12 +93,27 @@ class CardTable: ObservableObject {
     }
     
     
+    //receive tableMessage from api.
     func recieveMessage() {
-        //receive message from the api
         
         //todo: handle message and check everyone's score
         //from the last turn. Has anyone won the game or
         //has gone over 21?
+        
+        if let messenger = self.sessionMessenger {
+            var task = Task {
+                for await (responseMessage, context) in messenger.messages(of: TableMessage.self) {
+                    
+                    //todo: check each players recent action and score.
+                    //todo: check to see how many active players remain in the queue
+                    //todo: if the queue is zero, check the holding list to determine the winner..
+                    //todo: use context.participant to determine who initiated the previous action.
+                    //todo: if the queue isn't empty, let players know who's turn it is next.
+                    
+                }
+            }
+            tasks.insert(task)
+        }
     }
 
     
@@ -127,13 +148,15 @@ class CardTable: ObservableObject {
     //receive a card from the dealer (computer)
     func hit() {
         
-        if let current = tMessage.players.peek() {
-            if current.participantUUID == localPlayer.participantUUID {
+        if let currentPlayer = self.current {
+            if currentPlayer.participantUUID == localPlayer.participantUUID {
+                
                 _ = tMessage.players.deQueue()
                 
                 if let card = tMessage.deck.cards.pop() {
-                    current.hand.receive(card)
-                    tMessage.players.enQueue(current)
+                    
+                    currentPlayer.hand.receive(card)
+                    tMessage.players.enQueue(currentPlayer)
                     
                     //post message
                     tMessage.action = .hit
@@ -143,10 +166,22 @@ class CardTable: ObservableObject {
         }
     }
     
-    
+    //remove player from the queue
     func hold() {
         
+        if let currentPlayer = self.current {
+            if currentPlayer.participantUUID == localPlayer.participantUUID {
+                
+                //move to finished
+                if let player = tMessage.players.deQueue() {
+                    tMessage.holding.push(player)
+                }
+                                
+                //post message
+                tMessage.action = .hold
+                self.response = localPlayer.name + " holds with their cards.."
+            }
+        }
     }
-    
     
 }

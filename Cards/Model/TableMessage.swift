@@ -20,5 +20,6 @@ class TableMessage: Codable, ObservableObject {
    var discard = Array<Card>()
    var deck = Deck()
    var action = Action.start
+   var holding = Stack<Player>()
     
 }
