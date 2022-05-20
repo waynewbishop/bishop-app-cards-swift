@@ -7,7 +7,9 @@
 
 import Foundation
 
-class Player: Codable {
+//todo: player list is identifiable in order to generate a scoreboard..
+
+class Player: Codable, Identifiable {
     
     let name: String
     var uuid = UUID()

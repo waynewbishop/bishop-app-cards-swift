@@ -12,7 +12,7 @@ struct CardTableView: View {
     
     var body: some View {
         VStack(alignment: .trailing) {
-            Text(cardTable.response)
+            Text(cardTable.status)
                 .font(.title)
                 .frame(minWidth: 200, maxWidth: 350, minHeight: 200, maxHeight: 350)
         }

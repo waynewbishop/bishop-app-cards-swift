@@ -17,7 +17,7 @@ class CardTable: ObservableObject {
     @ObservedObject var tMessage = TableMessage()
         
     @Published var localPlayer = Player(name: "Wayne")
-    @Published var response: String = "Waiting for players.."
+    @Published var status: String = "Waiting for players.."
     @Published var groupSession: GroupSession<Cards>?
     
     var sessionMessenger: GroupSessionMessenger?
@@ -31,7 +31,7 @@ class CardTable: ObservableObject {
         }
         return player
     }
-    
+        
     
     //action that initiates the group activity
     func startSharing() {
@@ -39,7 +39,7 @@ class CardTable: ObservableObject {
             do {
                 _ = try await Cards().activate()
             } catch {
-                self.response = "failed to activate Cards activity: \(error)"
+                self.status = "failed to activate Cards activity: \(error)"
             }
         }
     }
@@ -48,7 +48,7 @@ class CardTable: ObservableObject {
     //add the existing user to the shared session
     func configureGroupSession(_ groupSession: GroupSession<Cards>) {
         
-        self.response = "configuring the session for a new user."
+        self.status = "configuring the session for a new user."
         self.groupSession = groupSession
         
         //create the messenger for the session
@@ -57,10 +57,10 @@ class CardTable: ObservableObject {
                 
         groupSession.join()
         
-        self.response = localPlayer.name + " just joined session.."
+        self.status = localPlayer.name + " just joined session.."
         
         localPlayer.participantUUID = groupSession.localParticipant.id
-        self.response = localPlayer.participantUUID?.uuidString ?? "No ID"
+        self.status = localPlayer.participantUUID?.uuidString ?? "No ID"
         
         //add new local player to shared queue
         tMessage.players.enQueue(localPlayer)
@@ -85,7 +85,7 @@ class CardTable: ObservableObject {
                 do {
                     try await message.send(tMessage, to: .all)
                 } catch {
-                    self.response = "unable to send message: \(error)"
+                    self.status = "unable to send message: \(error)"
                 }
             }
             
@@ -102,17 +102,37 @@ class CardTable: ObservableObject {
         
         if let messenger = self.sessionMessenger {
             var task = Task {
-                for await (responseMessage, context) in messenger.messages(of: TableMessage.self) {
+                for await (response, context) in messenger.messages(of: TableMessage.self) {
                     
-                    //todo: check each players recent action and score.
+                    //todo: check tableMessage action and each players score.
                     //todo: check to see how many active players remain in the queue
                     //todo: if the queue is zero, check the holding list to determine the winner..
                     //todo: use context.participant to determine who initiated the previous action.
                     //todo: if the queue isn't empty, let players know who's turn it is next.
+                    //todo: update any UI components with revised TableMessage information
                     
+                    let participantID = context.source.id.uuidString
+                    //if required, look up the player metadata based on their particpant id
+                    
+                    switch response.action {
+                        
+                    case .hold:
+                        status = "player " + participantID + " is holding.."
+                    case .new:
+                        status = "new player " + participantID + " has joined.."
+                    case .hit:
+                        status = "player " + participantID + " recieved a new card.."
+                    case .deal:
+                        status = "new cards dealt to players.."
+                        
+                    default:
+                        status = "response received from player " + participantID
+                    }
+
                 }
             }
             tasks.insert(task)
+            
         }
     }
 
@@ -179,7 +199,7 @@ class CardTable: ObservableObject {
                                 
                 //post message
                 tMessage.action = .hold
-                self.response = localPlayer.name + " holds with their cards.."
+                self.status = localPlayer.name + " holds with their cards.."
             }
         }
     }

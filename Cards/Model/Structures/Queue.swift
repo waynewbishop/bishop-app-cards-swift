@@ -11,7 +11,11 @@ import Foundation
 
 class Queue<T: Codable> : Codable {
     
-    var elements = Array<T>()
+   var elements = Array<T>()
+    
+    var count: Int {
+        return elements.count
+    }
     
     //retrieve first element
     func peek() -> T? {

@@ -36,7 +36,7 @@ struct ControlBar: View {
             
             //hit card
             Button  {
-                cardTable.response = "hit button pressed.."
+                cardTable.status = "hit button pressed.."
             } label: {
                 GameImage(name: "hand.thumbsup.circle")
             }
@@ -46,7 +46,7 @@ struct ControlBar: View {
             //hold
             Button  {
                 //todo: some action goes here..
-                cardTable.response = "hold button pressed.."
+                cardTable.status = "hold button pressed.."
             } label: {
                 GameImage(name: "hand.raised.circle")
             }
@@ -62,7 +62,7 @@ struct ControlBar: View {
                  perform a more simple operation?
                  */
                 
-                cardTable.response = "disconnect button pressed.."
+                cardTable.status = "disconnect button pressed.."
             } label: {
                 GameImage(name: "xmark.circle")
             }
