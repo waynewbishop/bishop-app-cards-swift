@@ -7,6 +7,22 @@
 
 import Foundation
 
+protocol Gameable {
+    
+}
+
+protocol BlackJack: Gameable {
+    func score(of hand: Hand) -> Int
+}
+
+extension BlackJack {
+    func score(of hand: Hand) -> Int {
+        print("code goes here..")
+        return 0
+    }
+}
+
+
 /*
  ///Logic moved to the player's hand.
  

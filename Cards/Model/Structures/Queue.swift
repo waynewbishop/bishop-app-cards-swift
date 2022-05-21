@@ -9,7 +9,7 @@ import Foundation
 
 /// provides a basic wrapper for array object
 
-class Queue<T: Codable> : Codable {
+class Queue<T: Codable & Identifiable> : Codable {
     
    var elements = Array<T>()
     
@@ -18,8 +18,23 @@ class Queue<T: Codable> : Codable {
     }
     
     //retrieve first element
-    func peek() -> T? {
+    var peek: T? {
         self.elements.first
+    }
+    
+    //retrieve first element
+    
+//    func peek() -> T? {
+//        self.elements.first
+//    }
+    
+    func remove(element: T) -> T? {
+        
+        guard let index = elements.firstIndex(where: {$0.id == element.id }) else {
+            return nil
+        }
+        
+        return elements.remove(at: index)
     }
     
     //add item - back of queue

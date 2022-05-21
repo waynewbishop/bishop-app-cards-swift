@@ -14,8 +14,12 @@ import GroupActivities
 @MainActor
 class CardTable: ObservableObject {
     
-    @ObservedObject var tMessage = TableMessage()
-        
+     var tMessage = TableMessage()
+     @ObservedObject var uMessage = UIMessage()
+    
+//    New table observable only object
+//    @ObservedObject var table = Table()
+    
     @Published var localPlayer = Player(name: "Wayne")
     @Published var status: String = "Waiting for players.."
     @Published var groupSession: GroupSession<Cards>?
@@ -26,7 +30,7 @@ class CardTable: ObservableObject {
 
     //current player
     var current: Player? {
-        guard let player = tMessage.players.peek() else {
+        guard let player = tMessage.players.peek else {
             return nil
         }
         return player
@@ -54,10 +58,13 @@ class CardTable: ObservableObject {
         //create the messenger for the session
         let messenger = GroupSessionMessenger(session: groupSession)
         self.sessionMessenger = messenger
-                
+        
+        //configure system to receive messages..
+        self.configureReceiveMessage()
+        
         groupSession.join()
         
-        self.status = localPlayer.name + " just joined session.."
+        self.status += "\n" + localPlayer.name + " just joined session.."
         
         localPlayer.participantUUID = groupSession.localParticipant.id
         self.status = localPlayer.participantUUID?.uuidString ?? "No ID"
@@ -93,42 +100,18 @@ class CardTable: ObservableObject {
     }
     
     
-    //receive tableMessage from api.
-    func recieveMessage() {
+    func configureReceiveMessage() {
         
         //todo: handle message and check everyone's score
         //from the last turn. Has anyone won the game or
         //has gone over 21?
         
         if let messenger = self.sessionMessenger {
-            var task = Task {
+            let task = Task {
+                
+                //receive tableMessage from api.
                 for await (response, context) in messenger.messages(of: TableMessage.self) {
-                    
-                    //todo: check tableMessage action and each players score.
-                    //todo: check to see how many active players remain in the queue
-                    //todo: if the queue is zero, check the holding list to determine the winner..
-                    //todo: use context.participant to determine who initiated the previous action.
-                    //todo: if the queue isn't empty, let players know who's turn it is next.
-                    //todo: update any UI components with revised TableMessage information
-                    
-                    let participantID = context.source.id.uuidString
-                    //if required, look up the player metadata based on their particpant id
-                    
-                    switch response.action {
-                        
-                    case .hold:
-                        status = "player " + participantID + " is holding.."
-                    case .new:
-                        status = "new player " + participantID + " has joined.."
-                    case .hit:
-                        status = "player " + participantID + " recieved a new card.."
-                    case .deal:
-                        status = "new cards dealt to players.."
-                        
-                    default:
-                        status = "response received from player " + participantID
-                    }
-
+                    uMessage.handle(message: response, from: context.source.id)
                 }
             }
             tasks.insert(task)
@@ -164,6 +147,10 @@ class CardTable: ObservableObject {
         sendMessage(message: tMessage)
     }
     
+    func fold() {
+        //if they fold they are just removed from the players
+        //queue. It doesn't need to be their turn to fold..
+    }
     
     //receive a card from the dealer (computer)
     func hit() {
@@ -171,13 +158,10 @@ class CardTable: ObservableObject {
         if let currentPlayer = self.current {
             if currentPlayer.participantUUID == localPlayer.participantUUID {
                 
-                _ = tMessage.players.deQueue()
-                
                 if let card = tMessage.deck.cards.pop() {
                     
                     currentPlayer.hand.receive(card)
-                    tMessage.players.enQueue(currentPlayer)
-                    
+                     
                     //post message
                     tMessage.action = .hit
                     sendMessage(message: tMessage)
@@ -199,6 +183,8 @@ class CardTable: ObservableObject {
                                 
                 //post message
                 tMessage.action = .hold
+                sendMessage(message: tMessage)
+                
                 self.status = localPlayer.name + " holds with their cards.."
             }
         }

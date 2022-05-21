@@ -6,16 +6,16 @@
 //
 
 import Foundation
-import SwiftUI
+import Combine
 
 
-/// model definition for sending and recieving messages
-class TableMessage: Codable, ObservableObject {
+/// model definition for sending and recieving messages - network level
+struct TableMessage: Codable {
     
-   var players = Queue<Player>() //todo: these objects need to be @published
-   var discard = Array<Card>()
-   var deck = Deck()
-   var action = Action.start
-   var holding = Stack<Player>()
-    
+    var players = Queue<Player>()
+    var discard = Array<Card>()
+    var deck = Deck()
+    var action = Action.start
+    var holding = Stack<Player>()
 }
+
