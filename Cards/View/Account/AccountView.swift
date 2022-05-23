@@ -17,15 +17,22 @@ struct AccountView: View {
                 Text("Welcome, " + cardTable.localPlayer.name)
                     .font(.title)
                     .fontWeight(.bold)
-                                    
-                Button {
-                    //some action goes here..
+                    .frame(maxWidth: 350, alignment: .leading)
+                        
+                //check for actiive session
+                if cardTable.groupSession != nil {
                     
-                } label: {
-                    GameImage(name: "arrow.uturn.down.circle", width: 45, height: 45, 
-                              color: Color.green)
-                }
-                .buttonStyle(.borderless)
+                    Button {
+                        cardTable.deal()
+                    } label: {
+                        
+                        GameImage(name: "play.circle", width: 45, height: 45,
+                                  color: Color.green)
+                    }
+                    .buttonStyle(.borderless)
+                    
+                }//end if
+
 
             }
         }

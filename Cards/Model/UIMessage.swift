@@ -9,6 +9,7 @@ import Foundation
 
 
 //UI Level
+
 class UIMessage: ObservableObject {
 
   @Published var players = Queue<Player>()
@@ -20,7 +21,7 @@ class UIMessage: ObservableObject {
     //update the presentation layer components
     func handle(message: TableMessage, from: UUID) {
         
-        //todo: check tableMessage action and each players score.
+        //todo: check ableMessage action and each players score.
         //todo: check to see how many active players remain in the queue
         //todo: if the queue is zero, check the holding list to determine the winner..
         //todo: use context.participant to determine who initiated the previous action.

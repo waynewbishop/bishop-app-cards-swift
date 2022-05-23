@@ -17,56 +17,63 @@ struct ControlBar: View {
     
     var body: some View {
         
-        HStack (alignment: .bottom, spacing: 50.0) {
+        HStack (alignment: .bottom, spacing: 35.0) {
 
-            //start shared game
+            //check for valid session
             if cardTable.groupSession == nil && groupStateObserver.isEligibleForGroupSession {
+                
                 Button {
-                    
                     cardTable.startSharing()
                     
                 } label: {
-                    GameImage(name: "person.2.circle")
+                    GameImage(name: "person.2.circle", color: Color.green)
                 }
                 .buttonStyle(.borderedProminent)
             }
             else {
-                //present some dialog
+                GameImage(name: "person.2.circle", color: Color.black)
             }
             
-            //hit card
-            Button  {
-                cardTable.status = "hit button pressed.."
-            } label: {
-                GameImage(name: "hand.thumbsup.circle")
-            }
-            .buttonStyle(.borderless)
-
             
-            //hold
-            Button  {
-                //todo: some action goes here..
-                cardTable.status = "hold button pressed.."
-            } label: {
-                GameImage(name: "hand.raised.circle")
-            }
-            .buttonStyle(.borderless)
-            
-
-            //fold - disconnect from game..
-            Button  {
+            if cardTable.groupSession != nil {
                 
-                /*
-                 todo: what happens when we disconnect from the game?
-                 do we want to bother with spectator mode or
-                 perform a more simple operation?
-                 */
+                //hit card
+                Button  {
+                    cardTable.hit()
+                } label: {
+                    GameImage(name: "hand.thumbsup.circle")
+                }
+                .buttonStyle(.borderless)
+
                 
-                cardTable.status = "disconnect button pressed.."
-            } label: {
-                GameImage(name: "xmark.circle")
+                //hold
+                Button  {
+                    cardTable.hold()
+                } label: {
+                    GameImage(name: "hand.raised.circle")
+                }
+                .buttonStyle(.borderless)
+                            
+
+                //fold
+                Button  {
+                    cardTable.fold()
+                } label: {
+                    GameImage(name: "xmark.circle")
+                }
+                .buttonStyle(.borderless)
+                
             }
-            .buttonStyle(.borderless)
+            
+            else {
+                GameImage(name: "hand.thumbsup.circle", color: Color.black)
+                GameImage(name: "hand.raised.circle", color: Color.black)
+                GameImage(name: "hand.raised.circle" , color: Color.black)
+                GameImage(name: "xmark.circle" , color: Color.black)
+            }
+            
+            
+           
             
             //todo: there also needs to be a reset / new game
             ///button added to the control bar.
@@ -99,6 +106,6 @@ struct ControlBar_Previews: PreviewProvider {
     static var previews: some View {
         ControlBar(cardTable: CardTable())
             .environment(\.sizeCategory, .large)
-            .previewLayout(.sizeThatFits)
+            
     }
 }

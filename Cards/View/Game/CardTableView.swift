@@ -9,12 +9,15 @@ import SwiftUI
 
 struct CardTableView: View {
     @ObservedObject var cardTable: CardTable
+
     
     var body: some View {
         VStack(alignment: .trailing) {
+            
+            //display dealing button if queued players is less than 2
             Text(cardTable.status)
                 .font(.title)
-                .frame(minWidth: 200, maxWidth: 350, minHeight: 200, maxHeight: 350)
+                .frame(minWidth: 200, maxWidth: 350, minHeight: 200, maxHeight: 375)
         }
     }
     

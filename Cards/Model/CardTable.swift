@@ -15,11 +15,8 @@ import GroupActivities
 class CardTable: ObservableObject {
     
      var tMessage = TableMessage()
-     @ObservedObject var uMessage = UIMessage()
     
-//    New table observable only object
-//    @ObservedObject var table = Table()
-    
+    @ObservedObject var uMessage = UIMessage()
     @Published var localPlayer = Player(name: "Wayne")
     @Published var status: String = "Waiting for players.."
     @Published var groupSession: GroupSession<Cards>?
@@ -52,7 +49,6 @@ class CardTable: ObservableObject {
     //add the existing user to the shared session
     func configureGroupSession(_ groupSession: GroupSession<Cards>) {
         
-        self.status = "configuring the session for a new user."
         self.groupSession = groupSession
         
         //create the messenger for the session
@@ -64,22 +60,20 @@ class CardTable: ObservableObject {
         
         groupSession.join()
         
-        self.status += "\n" + localPlayer.name + " just joined session.."
-        
-        localPlayer.participantUUID = groupSession.localParticipant.id
-        self.status = localPlayer.participantUUID?.uuidString ?? "No ID"
-        
-        //add new local player to shared queue
+        //add new local player to group queue
         tMessage.players.enQueue(localPlayer)
-        
-        groupSession.activeParticipants.forEach { participant in
-            print("ID for this participant: ", participant.id)
-        }
-        
-        
-        //send the updated queue
+                
         tMessage.action = .new
         sendMessage(message: tMessage)
+        
+        self.status += "\n" + localPlayer.name + " just joined session.."
+                
+    }
+
+    
+    //handle different scenarios here directly based on the .action enum.
+    func handle() {
+        
     }
 
     
@@ -101,10 +95,6 @@ class CardTable: ObservableObject {
     
     
     func configureReceiveMessage() {
-        
-        //todo: handle message and check everyone's score
-        //from the last turn. Has anyone won the game or
-        //has gone over 21?
         
         if let messenger = self.sessionMessenger {
             let task = Task {
@@ -141,16 +131,13 @@ class CardTable: ObservableObject {
             }
         }
 
+        self.status = "dealing cards to players.."
         
         //post message
         tMessage.action = .deal
         sendMessage(message: tMessage)
     }
     
-    func fold() {
-        //if they fold they are just removed from the players
-        //queue. It doesn't need to be their turn to fold..
-    }
     
     //receive a card from the dealer (computer)
     func hit() {
@@ -161,6 +148,8 @@ class CardTable: ObservableObject {
                 if let card = tMessage.deck.cards.pop() {
                     
                     currentPlayer.hand.receive(card)
+                    
+                    self.status = "hit button pressed.."
                      
                     //post message
                     tMessage.action = .hit
@@ -169,6 +158,7 @@ class CardTable: ObservableObject {
             }
         }
     }
+
     
     //remove player from the queue
     func hold() {
@@ -188,6 +178,21 @@ class CardTable: ObservableObject {
                 self.status = localPlayer.name + " holds with their cards.."
             }
         }
+    }
+    
+    
+    //remove from current game
+    func fold() {
+        
+        _ = self.tMessage.players.remove(element: localPlayer)
+
+         /*
+         note: if they fold they are out of the game but are still
+         connected to the shareplay session.
+         */
+        
+        tMessage.action = .fold
+        sendMessage(message: tMessage)
     }
     
 }
