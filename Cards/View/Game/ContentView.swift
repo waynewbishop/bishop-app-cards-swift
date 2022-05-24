@@ -9,15 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
         
-        /*
-         ControlBar(game: game)
-         Player reference inside the Game
-         When button clicked tell the Game what you want.
-         Then the game updates the card table.
-         Then the card table gets sent to the players
-         The ControlBar buttons are disabled by the Game or Table
-         */
     @ObservedObject var cardTable = CardTable()
+    @ObservedObject var uiMessage = UIMessage()
     
     /*
      todo: a new observed debug object goes here
@@ -26,26 +19,23 @@ struct ContentView: View {
 
     var body: some View {
         
-        //add the main views
+        //main views
         VStack {
             
             //stores account view and start button
             AccountView(cardTable: cardTable)
             
-            //todo: the cardTableView should only
-            //apppear if they are on an active Facetime call.
-            //otherwise we should display some type of
-            //getting started view/dialog.
             
             //stores players views and game objects
-            CardTableView(cardTable: cardTable)
-                        
-            //controls payer actions
-            ControlBar(cardTable: cardTable)
+            CardTableView(cardTable: cardTable, uiMessage: uiMessage)
+           
+            
+            //controls player actions
+            ControlBar(cardTable: cardTable, uiMessage: uiMessage)
             
         }
         .task {
-            //is this a callback from the GroupActivity.activate()?
+            //callback from GroupActivity.activate()?
             for await session in Cards.sessions() {
                 cardTable.configureGroupSession(session)
             }

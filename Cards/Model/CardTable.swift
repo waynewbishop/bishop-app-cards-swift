@@ -14,10 +14,9 @@ import GroupActivities
 @MainActor
 class CardTable: ObservableObject {
     
-     var tMessage = TableMessage()
-     var status = Status.waiting
+    var tMessage = TableMessage()
+    var uiMessage = UIMessage()
     
-    @ObservedObject var uMessage = UIMessage()
     @Published var localPlayer = Player(name: "Wayne")
     @Published var groupSession: GroupSession<Cards>?
     @Published var response: String = "Waiting for players.."
@@ -26,7 +25,6 @@ class CardTable: ObservableObject {
     var tasks = Set<Task<Void, Never>>()
     
 
-    //current player
     var current: Player? {
         guard let player = tMessage.players.peek else {
             return nil
@@ -35,7 +33,7 @@ class CardTable: ObservableObject {
     }
         
     
-    //action that initiates the group activity
+    //start group activity
     func startSharing() {
         Task {
             do {
@@ -97,7 +95,7 @@ class CardTable: ObservableObject {
                 
                 //receive tableMessage from api.
                 for await (response, context) in messenger.messages(of: TableMessage.self) {
-                    uMessage.handle(message: response, from: context.source.id)
+                    uiMessage.handle(message: response, from: context.source.id)
                 }
             }
             tasks.insert(task)
@@ -105,6 +103,12 @@ class CardTable: ObservableObject {
         }
     }
 
+
+    func reset() {
+        //todo: should there be a dedicated reset button or
+        //should this process be added to an existing process?
+    }
+    
     
     //randomize the deck
     func deal() {
@@ -113,8 +117,8 @@ class CardTable: ObservableObject {
             return
         }
         
-        //update status
-        self.status = .active
+        //update game status
+        tMessage.status = .active
                 
         tMessage.deck.shuffle()
             

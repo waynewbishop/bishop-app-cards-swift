@@ -29,12 +29,12 @@ struct AccountView: View {
                             cardTable.startSharing()
                             
                         } label: {
-                            GameImage(name: "person.2.circle", color: Color.green)
+                            GameImage(name: "person.2.circle", width: 45, height: 45, color: Color.green)
                         }
                         .buttonStyle(.borderedProminent)
                     }
                     else {
-                        GameImage(name: "person.2.circle", color: Color.black)
+                        GameImage(name: "person.2.circle", width: 45, height: 45, color: Color.black)
                     }
 
             }

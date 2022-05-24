@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct CardTableView: View {
+    
     @ObservedObject var cardTable: CardTable
+    @ObservedObject var uiMessage: UIMessage
 
     
     var body: some View {
@@ -25,6 +27,6 @@ struct CardTableView: View {
 
 struct CardTableView_Previews: PreviewProvider {
     static var previews: some View {
-        CardTableView(cardTable: CardTable())
+        CardTableView(cardTable: CardTable(), uiMessage: UIMessage())
    }
 }

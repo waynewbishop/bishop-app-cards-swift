@@ -12,48 +12,46 @@ import GroupActivities
 struct ControlBar: View {
     
     @ObservedObject var cardTable: CardTable
-        
+    @ObservedObject var uiMessage: UIMessage
+
+
     var body: some View {
-        
-        HStack (alignment: .bottom, spacing: 30.0) {            
+        HStack (alignment: .bottom, spacing: 30.0) {
             
-            if cardTable.groupSession != nil {
-                
-                //deal card
+            if cardTable.groupSession != nil && uiMessage.players.count > 1 {
                 Button  {
                     cardTable.deal()
                 } label: {
                     GameImage(name: "play.circle")
                 }
-                .buttonStyle(.borderless)
-                
-                
-                //hit card
-                Button  {
-                    cardTable.hit()
-                } label: {
-                    GameImage(name: "hand.thumbsup.circle")
-                }
-                .buttonStyle(.borderless)
+            }
 
+            
+            if cardTable.groupSession != nil && uiMessage.status == .active {
                 
-                //hold
-                Button  {
-                    cardTable.hold()
-                } label: {
-                    GameImage(name: "hand.raised.circle")
-                }
-                .buttonStyle(.borderless)
-                            
+                if let current = cardTable.current {
+                    if current.participantUUID == cardTable.localPlayer.participantUUID {
+                        
+                        Button  {
+                            cardTable.hit()
+                        } label: {
+                            GameImage(name: "hand.thumbsup.circle")
+                        }
 
-                //fold
-                Button  {
-                    cardTable.fold()
-                } label: {
-                    GameImage(name: "xmark.circle")
+                        
+                        Button  {
+                            cardTable.hold()
+                        } label: {
+                            GameImage(name: "hand.raised.circle")
+                        }
+                        
+                        Button  {
+                            cardTable.fold()
+                        } label: {
+                            GameImage(name: "xmark.circle")
+                        }
+                    }
                 }
-                .buttonStyle(.borderless)
-                
             }
             
             else {
@@ -62,15 +60,7 @@ struct ControlBar: View {
                 GameImage(name: "hand.raised.circle" , color: Color.black)
                 GameImage(name: "xmark.circle" , color: Color.black)
             }
-            
-            
-           
-            
-            //todo: there also needs to be a reset / new game
-            ///button added to the control bar.
         }
-        
-                
     }
 }
 
@@ -88,13 +78,14 @@ struct GameImage: View {
             .resizable()
             .foregroundColor(color)
             .frame(width: width, height: height)
+            .symbolRenderingMode(.hierarchical)
     }
 }
 
 
 struct ControlBar_Previews: PreviewProvider {
     static var previews: some View {
-        ControlBar(cardTable: CardTable())
+        ControlBar(cardTable: CardTable(), uiMessage: UIMessage())
             .environment(\.sizeCategory, .large)
     }
 }

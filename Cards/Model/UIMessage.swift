@@ -8,7 +8,7 @@
 import Foundation
 
 
-//UI Level
+//UI Level presentation
 
 class UIMessage: ObservableObject {
 
@@ -17,9 +17,10 @@ class UIMessage: ObservableObject {
   @Published var deck = Deck()
   @Published var holding = Stack<Player>()
   @Published var action = Action.start
+  @Published var status = Status.waiting
     
-    //update the presentation layer components
-    func handle(message: TableMessage, from: UUID) {
+    //update the presentation layer
+    func handle(message: TableMessage, from: UUID?) {
         
         //todo: check ableMessage action and each players score.
         //todo: check to see how many active players remain in the queue
@@ -33,6 +34,8 @@ class UIMessage: ObservableObject {
         action = message.action
         holding = message.holding
         action = message.action
+        status = message.status
+        
     }
     
 }
