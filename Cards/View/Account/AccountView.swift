@@ -6,33 +6,36 @@
 //
 
 import SwiftUI
+import GroupActivities
 
 struct AccountView: View {
     
     @ObservedObject var cardTable: CardTable
+    @StateObject var groupStateObserver = GroupStateObserver()
 
     var body: some View {
         VStack {
-            HStack(spacing: 71.0) {
+            HStack(spacing: 50.0) {
                 Text("Welcome, " + cardTable.localPlayer.name)
                     .font(.title)
                     .fontWeight(.bold)
-                    .frame(maxWidth: 350, alignment: .leading)
+                    .frame(maxWidth: 250, alignment: .leading)
                         
-                //check for actiive session
-                if cardTable.groupSession != nil {
                     
-                    Button {
-                        cardTable.deal()
-                    } label: {
+                    //check for valid session
+                    if cardTable.groupSession == nil && groupStateObserver.isEligibleForGroupSession {
                         
-                        GameImage(name: "play.circle", width: 45, height: 45,
-                                  color: Color.green)
+                        Button {
+                            cardTable.startSharing()
+                            
+                        } label: {
+                            GameImage(name: "person.2.circle", color: Color.green)
+                        }
+                        .buttonStyle(.borderedProminent)
                     }
-                    .buttonStyle(.borderless)
-                    
-                }//end if
-
+                    else {
+                        GameImage(name: "person.2.circle", color: Color.black)
+                    }
 
             }
         }

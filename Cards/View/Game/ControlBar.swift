@@ -12,30 +12,21 @@ import GroupActivities
 struct ControlBar: View {
     
     @ObservedObject var cardTable: CardTable
-    @StateObject var groupStateObserver = GroupStateObserver()
-    
-    
+        
     var body: some View {
         
-        HStack (alignment: .bottom, spacing: 35.0) {
-
-            //check for valid session
-            if cardTable.groupSession == nil && groupStateObserver.isEligibleForGroupSession {
-                
-                Button {
-                    cardTable.startSharing()
-                    
-                } label: {
-                    GameImage(name: "person.2.circle", color: Color.green)
-                }
-                .buttonStyle(.borderedProminent)
-            }
-            else {
-                GameImage(name: "person.2.circle", color: Color.black)
-            }
-            
+        HStack (alignment: .bottom, spacing: 30.0) {            
             
             if cardTable.groupSession != nil {
+                
+                //deal card
+                Button  {
+                    cardTable.deal()
+                } label: {
+                    GameImage(name: "play.circle")
+                }
+                .buttonStyle(.borderless)
+                
                 
                 //hit card
                 Button  {
@@ -66,8 +57,8 @@ struct ControlBar: View {
             }
             
             else {
+                GameImage(name: "play.circle", color: Color.black)
                 GameImage(name: "hand.thumbsup.circle", color: Color.black)
-                GameImage(name: "hand.raised.circle", color: Color.black)
                 GameImage(name: "hand.raised.circle" , color: Color.black)
                 GameImage(name: "xmark.circle" , color: Color.black)
             }
@@ -97,7 +88,6 @@ struct GameImage: View {
             .resizable()
             .foregroundColor(color)
             .frame(width: width, height: height)
-            .accessibilityLabel("Testing..")
     }
 }
 
@@ -106,6 +96,5 @@ struct ControlBar_Previews: PreviewProvider {
     static var previews: some View {
         ControlBar(cardTable: CardTable())
             .environment(\.sizeCategory, .large)
-            
     }
 }

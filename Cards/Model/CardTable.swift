@@ -15,11 +15,12 @@ import GroupActivities
 class CardTable: ObservableObject {
     
      var tMessage = TableMessage()
+     var status = Status.waiting
     
     @ObservedObject var uMessage = UIMessage()
     @Published var localPlayer = Player(name: "Wayne")
-    @Published var status: String = "Waiting for players.."
     @Published var groupSession: GroupSession<Cards>?
+    @Published var response: String = "Waiting for players.."
     
     var sessionMessenger: GroupSessionMessenger?
     var tasks = Set<Task<Void, Never>>()
@@ -40,7 +41,7 @@ class CardTable: ObservableObject {
             do {
                 _ = try await Cards().activate()
             } catch {
-                self.status = "failed to activate Cards activity: \(error)"
+                self.response = "failed to activate Cards activity: \(error)"
             }
         }
     }
@@ -66,16 +67,11 @@ class CardTable: ObservableObject {
         tMessage.action = .new
         sendMessage(message: tMessage)
         
-        self.status += "\n" + localPlayer.name + " just joined session.."
+        self.response += "\n" + localPlayer.name + " just joined session.."
                 
     }
 
     
-    //handle different scenarios here directly based on the .action enum.
-    func handle() {
-        
-    }
-
     
     //send message to participants
     func sendMessage(message: TableMessage) {
@@ -86,7 +82,7 @@ class CardTable: ObservableObject {
                 do {
                     try await message.send(tMessage, to: .all)
                 } catch {
-                    self.status = "unable to send message: \(error)"
+                    self.response = "unable to send message: \(error)"
                 }
             }
             
@@ -113,10 +109,13 @@ class CardTable: ObservableObject {
     //randomize the deck
     func deal() {
         
-        guard self.groupSession != nil else {
+        guard self.groupSession != nil && tMessage.players.count > 1 else {
             return
         }
         
+        //update status
+        self.status = .active
+                
         tMessage.deck.shuffle()
             
         //deal cards to all players
@@ -131,7 +130,7 @@ class CardTable: ObservableObject {
             }
         }
 
-        self.status = "dealing cards to players.."
+        self.response = "dealing cards to players.."
         
         //post message
         tMessage.action = .deal
@@ -149,7 +148,7 @@ class CardTable: ObservableObject {
                     
                     currentPlayer.hand.receive(card)
                     
-                    self.status = "hit button pressed.."
+                    self.response = "hit button pressed.."
                      
                     //post message
                     tMessage.action = .hit
@@ -175,7 +174,7 @@ class CardTable: ObservableObject {
                 tMessage.action = .hold
                 sendMessage(message: tMessage)
                 
-                self.status = localPlayer.name + " holds with their cards.."
+                self.response = localPlayer.name + " holds with their cards.."
             }
         }
     }

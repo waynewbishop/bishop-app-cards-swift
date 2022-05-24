@@ -15,7 +15,7 @@ struct CardTableView: View {
         VStack(alignment: .trailing) {
             
             //display dealing button if queued players is less than 2
-            Text(cardTable.status)
+            Text(cardTable.response)
                 .font(.title)
                 .frame(minWidth: 200, maxWidth: 350, minHeight: 200, maxHeight: 375)
         }
