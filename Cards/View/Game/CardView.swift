@@ -12,17 +12,22 @@ struct CardView: View {
     
     @ObservedObject var cardTable: CardTable
     @ObservedObject var uiMessage: UIMessage
-    
-    var players = Array<Player>()
-    
-    
+            
     var body: some View {
-        List(players) { item in
+                
+        List(uiMessage.players.elements) { item in
             HStack {
+                
                 GameImage(name: "person.circle.fill")
+                
                 VStack (alignment: .leading) {
                     Text(item.name)
-                    Text(String(item.hand.count) + " cards")
+                                    
+                    Text(String(item.hand.score) + " points")
+                        .font(.subheadline)
+                        .foregroundColor(Color.gray) +
+                    
+                    Text(", " + String(item.hand.count) + " cards")
                         .font(.subheadline)
                         .foregroundColor(Color.gray)
                 }
@@ -34,8 +39,7 @@ struct CardView: View {
 
 struct CardView_Previews: PreviewProvider {
     
-    //passing in a
     static var previews: some View {
-        CardView(cardTable: CardTable(), uiMessage: UIMessage(), players: UIMessage().players.testData())
+        CardView(cardTable: CardTable(), uiMessage: UIMessage().testData())
     }
 }

@@ -8,9 +8,9 @@
 import Foundation
 
 
-public class Card : Comparable, Codable {
+public class Card : Comparable, Codable, Identifiable {
    
-   var id = UUID() //individual cards
+   var uuid = UUID()
    var suit: Suit
    var unit: Unit
    var wildcard: Bool = false

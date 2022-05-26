@@ -7,10 +7,10 @@
 
 import Foundation
 
-class Hand : Codable {
+class Hand: Codable, Identifiable {
     
     var cards = Array<Card>()
-    
+    var uuid = UUID()
     
     //numer of cards - hearts, uno
     var count: Int {

@@ -39,17 +39,6 @@ class Queue<T: Codable & Identifiable> : Codable {
         self.elements.removeFirst()
     }
     
-    
-    func testData() -> Array<Player> {
-        
-        //create new test data
-        let testQueue = Queue<Player>()
-
-        testQueue.enQueue(Player(name: "Sam Warfield"))
-        testQueue.enQueue(Player(name: "Wayne Bishop"))
-        
-        return testQueue.elements
-    }
 }
 
 

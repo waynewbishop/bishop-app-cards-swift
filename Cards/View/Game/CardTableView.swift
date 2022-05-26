@@ -20,6 +20,10 @@ struct CardTableView: View {
             Text(cardTable.response)
                 .font(.title)
                 .frame(minWidth: 200, maxWidth: 350, minHeight: 200, maxHeight: 375)
+
+            //todo: turn this text into a subheadline and embed the CardView
+            //into the CardTableView hierarchy.
+            
         }
     }
     

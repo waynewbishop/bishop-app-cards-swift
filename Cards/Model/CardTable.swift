@@ -130,7 +130,7 @@ class CardTable: ObservableObject {
         uiMessage = UIMessage()
         tMessage = TableMessage()
         
-        // Teardown existing groupSession.
+        // teardown existing groupSession.
         sessionMessenger = nil
         tasks.forEach { $0.cancel() }
         tasks = []

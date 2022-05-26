@@ -38,4 +38,15 @@ class UIMessage: ObservableObject {
         
     }
     
+    //how can I create a test version of this complex object?
+    
+    func testData() -> UIMessage {
+        
+        let testMessage = UIMessage()
+        
+        testMessage.players.enQueue(Player(name: "Sam Warfield"))
+        testMessage.players.enQueue(Player(name: "Wayne Bishop"))
+        
+        return testMessage
+    }
 }
