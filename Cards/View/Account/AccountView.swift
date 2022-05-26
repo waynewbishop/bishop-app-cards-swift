@@ -36,7 +36,6 @@ struct AccountView: View {
                     else {
                         GameImage(name: "person.2.circle", width: 45, height: 45, color: Color.black)
                     }
-
             }
         }
         

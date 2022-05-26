@@ -15,7 +15,7 @@ import GroupActivities
 class CardTable: ObservableObject {
     
     var tMessage = TableMessage()
-    var uiMessage = UIMessage()
+   @ObservedObject var uiMessage = UIMessage()
     
     @Published var localPlayer = Player(name: "Wayne")
     @Published var groupSession: GroupSession<Cards>?
@@ -31,7 +31,23 @@ class CardTable: ObservableObject {
         }
         return player
     }
+
+
+    var isMyTurn: Bool {
+        if let current = self.current {
+            if current == localPlayer {
+                return true
+            }
+        }
+        else {
+            return false
+        }
+        return false
+    }
         
+    
+    //MARK: Group Messaging
+
     
     //start group activity
     func startSharing() {
@@ -59,7 +75,9 @@ class CardTable: ObservableObject {
         
         groupSession.join()
         
-        //add new local player to group queue
+        localPlayer.participantUUID = groupSession.localParticipant.id
+        
+        //add local player to game queue
         tMessage.players.enQueue(localPlayer)
                 
         tMessage.action = .new
@@ -69,7 +87,6 @@ class CardTable: ObservableObject {
                 
     }
 
-    
     
     //send message to participants
     func sendMessage(message: TableMessage) {
@@ -104,21 +121,37 @@ class CardTable: ObservableObject {
     }
 
 
+    
     func reset() {
+
         //todo: should there be a dedicated reset button or
         //should this process be added to an existing process?
+        
+        uiMessage = UIMessage()
+        tMessage = TableMessage()
+        
+        // Teardown existing groupSession.
+        sessionMessenger = nil
+        tasks.forEach { $0.cancel() }
+        tasks = []
+        if groupSession != nil {
+            groupSession?.leave()
+            groupSession = nil
+            self.startSharing()
+        }
+        
     }
+
     
-    
+    //MARK: Game Actions
+        
+        
     //randomize the deck
     func deal() {
         
         guard self.groupSession != nil && tMessage.players.count > 1 else {
             return
         }
-        
-        //update game status
-        tMessage.status = .active
                 
         tMessage.deck.shuffle()
             
@@ -136,8 +169,10 @@ class CardTable: ObservableObject {
 
         self.response = "dealing cards to players.."
         
-        //post message
+        //update status and action
         tMessage.action = .deal
+        tMessage.game = .active
+        
         sendMessage(message: tMessage)
     }
     
@@ -146,12 +181,11 @@ class CardTable: ObservableObject {
     func hit() {
         
         if let currentPlayer = self.current {
-            if currentPlayer.participantUUID == localPlayer.participantUUID {
+            if self.isMyTurn == true {
                 
                 if let card = tMessage.deck.cards.pop() {
                     
                     currentPlayer.hand.receive(card)
-                    
                     self.response = "hit button pressed.."
                      
                     //post message
@@ -166,20 +200,18 @@ class CardTable: ObservableObject {
     //remove player from the queue
     func hold() {
         
-        if let currentPlayer = self.current {
-            if currentPlayer.participantUUID == localPlayer.participantUUID {
-                
-                //move to finished
-                if let player = tMessage.players.deQueue() {
-                    tMessage.holding.push(player)
-                }
-                                
-                //post message
-                tMessage.action = .hold
-                sendMessage(message: tMessage)
-                
-                self.response = localPlayer.name + " holds with their cards.."
+        if self.isMyTurn == true {
+            
+            //move to finished
+            if let player = tMessage.players.deQueue() {
+                tMessage.holding.push(player)
             }
+                            
+            //post message
+            tMessage.action = .hold
+            sendMessage(message: tMessage)
+            
+            self.response = localPlayer.name + " holds with their cards.."
         }
     }
     

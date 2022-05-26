@@ -14,11 +14,11 @@ struct ControlBar: View {
     @ObservedObject var cardTable: CardTable
     @ObservedObject var uiMessage: UIMessage
 
-
+    
     var body: some View {
         HStack (alignment: .bottom, spacing: 30.0) {
             
-            if cardTable.groupSession != nil && uiMessage.players.count > 1 {
+            if uiMessage.game == .waiting && uiMessage.players.count > 1 {
                 Button  {
                     cardTable.deal()
                 } label: {
@@ -27,29 +27,26 @@ struct ControlBar: View {
             }
 
             
-            if cardTable.groupSession != nil && uiMessage.status == .active {
-                
-                if let current = cardTable.current {
-                    if current.participantUUID == cardTable.localPlayer.participantUUID {
+            if cardTable.groupSession != nil && uiMessage.game == .active {
+                if cardTable.isMyTurn == true {
                         
-                        Button  {
-                            cardTable.hit()
-                        } label: {
-                            GameImage(name: "hand.thumbsup.circle")
-                        }
+                    Button  {
+                        cardTable.hit()
+                    } label: {
+                        GameImage(name: "hand.thumbsup.circle")
+                    }
 
-                        
-                        Button  {
-                            cardTable.hold()
-                        } label: {
-                            GameImage(name: "hand.raised.circle")
-                        }
-                        
-                        Button  {
-                            cardTable.fold()
-                        } label: {
-                            GameImage(name: "xmark.circle")
-                        }
+                    
+                    Button  {
+                        cardTable.hold()
+                    } label: {
+                        GameImage(name: "hand.raised.circle")
+                    }
+                    
+                    Button  {
+                        cardTable.fold()
+                    } label: {
+                        GameImage(name: "xmark.circle")
                     }
                 }
             }

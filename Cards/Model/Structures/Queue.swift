@@ -22,19 +22,11 @@ class Queue<T: Codable & Identifiable> : Codable {
         self.elements.first
     }
     
-    //retrieve first element
-    
-//    func peek() -> T? {
-//        self.elements.first
-//    }
-    
     func remove(element: T) -> T? {
-        
         guard let index = elements.firstIndex(where: {$0.id == element.id }) else {
             return nil
         }
-        
-        return elements.remove(at: index)
+       return elements.remove(at: index)
     }
     
     //add item - back of queue
@@ -47,5 +39,20 @@ class Queue<T: Codable & Identifiable> : Codable {
         self.elements.removeFirst()
     }
     
+    
+    func testData() -> Array<Player> {
+        
+        //create new test data
+        let testQueue = Queue<Player>()
+
+        testQueue.enQueue(Player(name: "Sam Warfield"))
+        testQueue.enQueue(Player(name: "Wayne Bishop"))
+        
+        return testQueue.elements
+    }
 }
+
+
+
+
 

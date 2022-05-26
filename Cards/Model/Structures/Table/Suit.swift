@@ -10,7 +10,7 @@ import Foundation
 public class Suit: Equatable, Codable {
     
     var name: String //e.g. hearts
-    var scores = Array<Score>()
+    var units = Array<Unit>()
     
     //initialize names and values
     public init(of name: String = "") {
@@ -22,21 +22,21 @@ public class Suit: Equatable, Codable {
         generic model, each having the same rules and basis of
         comparision.
         */
-        scores.append(Score("A", 1, 11))
-        scores.append(Score("2", 2))
-        scores.append(Score("3", 3))
-        scores.append(Score("4", 4))
-        scores.append(Score("5", 5))
-        scores.append(Score("6", 6))
-        scores.append(Score("7", 7))
-        scores.append(Score("8", 8))
-        scores.append(Score("9", 9))
-        scores.append(Score("10", 10))
+        units.append(Unit("A", 1, 11))
+        units.append(Unit("2", 2))
+        units.append(Unit("3", 3))
+        units.append(Unit("4", 4))
+        units.append(Unit("5", 5))
+        units.append(Unit("6", 6))
+        units.append(Unit("7", 7))
+        units.append(Unit("8", 8))
+        units.append(Unit("9", 9))
+        units.append(Unit("10", 10))
 
         //special support for general games + blackjack
-        scores.append(Score("J", 11, 10))
-        scores.append(Score("Q", 12, 10))
-        scores.append(Score("K", 13, 10))
+        units.append(Unit("J", 11, 10))
+        units.append(Unit("Q", 12, 10))
+        units.append(Unit("K", 13, 10))
     }
     
     

@@ -17,7 +17,7 @@ class UIMessage: ObservableObject {
   @Published var deck = Deck()
   @Published var holding = Stack<Player>()
   @Published var action = Action.start
-  @Published var status = Status.waiting
+  @Published var game = Status.waiting
     
     //update the presentation layer
     func handle(message: TableMessage, from: UUID?) {
@@ -34,7 +34,7 @@ class UIMessage: ObservableObject {
         action = message.action
         holding = message.holding
         action = message.action
-        status = message.status
+        game = message.game
         
     }
     

@@ -22,15 +22,13 @@ class Deck: Codable {
 
         //scores template generates cards for the entire suit
         for suit in suits {
-            
-            for s in suit.scores {
-                
+            for s in suit.units {
                 let card = Card()
                 
                 card.suit.name = suit.name       //name of the suit 'hearts'
-                card.score.name = s.name         //name of card 'A'
-                card.score.value = s.value      //card value '1'
-                card.score.secondary = s.secondary
+                card.unit.name = s.name         //name of card 'A'
+                card.unit.value = s.value      //card value '1'
+                card.unit.secondary = s.secondary
                 
                 //push card to deck
                 self.cards.push(card)

@@ -28,18 +28,18 @@ class Hand : Codable {
                 
         for card in self.cards {
             
-            if card.score.value == 1 {
+            if card.unit.value == 1 {
                 hasAce = true
             }
             
             //add to total if the range is between 2 and 10
-            if number_range.contains(card.score.value) {
-                total += card.score.value
+            if number_range.contains(card.unit.value) {
+                total += card.unit.value
             }
             
             //add 10 points if range is between 11 and 13
-            if face_range.contains(card.score.value) {
-                if let secondary = card.score.secondary {
+            if face_range.contains(card.unit.value) {
+                if let secondary = card.unit.secondary {
                     total += secondary
                 }
             }

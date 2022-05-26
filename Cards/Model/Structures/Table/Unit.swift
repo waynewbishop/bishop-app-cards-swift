@@ -8,10 +8,9 @@
 import Foundation
 
 
-
 ///  Serves as the basis of comparsion for generic cards.
 
-class Score : Equatable, Codable {
+class Unit : Equatable, Codable {
     
     var name: String? //A
     var value: Int  //1
@@ -26,7 +25,7 @@ class Score : Equatable, Codable {
     
     
     //test primary and seconday scores
-    static public func == (lhs: Score, rhs: Score) -> Bool {
+    static public func == (lhs: Unit, rhs: Unit) -> Bool {
         return lhs.value == rhs.value
             && lhs.secondary == rhs.secondary
     }
