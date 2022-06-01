@@ -10,15 +10,12 @@ import SwiftUI
 struct DebugView: View {
     var body: some View {
         
-        /*
-         todo: this view to show a history of
-         all GroupActivity history, including when participants
-         join a session, what is the session id as well the
-         updated state of the TableMessage object.
-         */
-        VStack {
-            Text("this is test")
-            Text("second text")
+        VStack(alignment: .leading) {
+            ForEach((1...10).reversed(), id: \.self) {
+                Text("\($0)…")
+            }
+
+            Text("Ready or not, here I come!")
         }
         
     }

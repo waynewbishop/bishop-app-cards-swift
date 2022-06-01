@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
         
-    @ObservedObject var cardTable = CardTable()
-    @ObservedObject var uiMessage = UIMessage()
+    @StateObject var cardTable = CardTable()
+    @StateObject var uiMessage = UIMessage()
     
     /*
      todo: a new observed debug object goes here
@@ -20,24 +20,29 @@ struct ContentView: View {
     var body: some View {
         
         //main views
-        VStack {
+        ZStack {
             
-            //stores account view and start button
-            AccountView(cardTable: cardTable)
-            
-            
-            //stores players views and game objects
-            CardTableView(cardTable: cardTable, uiMessage: uiMessage)
-           
-            
-            //controls player actions
-            ControlBar(cardTable: cardTable, uiMessage: uiMessage)
-            
-        }
-        .task {
-            //callback from GroupActivity.activate()?
-            for await session in Cards.sessions() {
-                cardTable.configureGroupSession(session)
+            VStack {
+                
+                //stores account view and start button
+                AccountView(cardTable: cardTable)
+                
+                Spacer()
+                    .frame(width: 1.0, height: 10)
+                
+                //stores players views and game objects
+                CardTableView(cardTable: cardTable, uiMessage: uiMessage)
+               
+                
+                //controls player actions
+                ControlBar(cardTable: cardTable, uiMessage: uiMessage)
+                
+            }
+            .task {
+                //callback from GroupActivity.activate()?
+                for await session in Cards.sessions() {
+                    cardTable.configureGroupSession(session)
+                }
             }
         }
     }

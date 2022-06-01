@@ -14,17 +14,19 @@ struct CardTableView: View {
 
     
     var body: some View {
-        VStack(alignment: .trailing) {
+        VStack() {
             
-            //display dealing button if queued players is less than 2
             Text(cardTable.response)
-                .font(.title)
-                .frame(minWidth: 200, maxWidth: 350, minHeight: 200, maxHeight: 375)
-
-            //todo: turn this text into a subheadline and embed the CardView
-            //into the CardTableView hierarchy.
+                .font(.subheadline)
+                .frame(minWidth: 50, maxWidth: 450, minHeight: 50, maxHeight: 50)
+            
+            Spacer()
+                .frame(height: 50)
+            
+            CardView(cardTable: cardTable, uiMessage: UIMessage().testData())
             
         }
+        .frame(width: 350, height: 400, alignment: .center)
     }
     
 }

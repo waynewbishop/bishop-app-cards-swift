@@ -8,8 +8,6 @@
 import Foundation
 
 
-//todo: update class to support equatable protocol. Will reduce code when comparing players
-
 class Player: Codable, Equatable, Identifiable {
     
     let name: String

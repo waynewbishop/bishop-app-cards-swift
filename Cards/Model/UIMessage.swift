@@ -46,6 +46,7 @@ class UIMessage: ObservableObject {
         
         testMessage.players.enQueue(Player(name: "Sam Warfield"))
         testMessage.players.enQueue(Player(name: "Wayne Bishop"))
+        testMessage.players.enQueue(Player(name: "Steve Jobs"))
         
         return testMessage
     }

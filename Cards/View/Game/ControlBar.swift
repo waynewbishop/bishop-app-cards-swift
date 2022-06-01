@@ -76,6 +76,7 @@ struct GameImage: View {
             .foregroundColor(color)
             .frame(width: width, height: height)
             .symbolRenderingMode(.hierarchical)
+            .opacity(100)
     }
 }
 

@@ -190,10 +190,10 @@
 			isa = PBXGroup;
 			children = (
 				DA970DB0282F4CBA007EDB7A /* Debug */,
-				DAE7D602273C5A7900A0C8F0 /* ContentView.swift */,
 				DA19D9CE27ADC8A8001F097C /* CardTableView.swift */,
-				DA19D9D027ADD4F4001F097C /* ControlBar.swift */,
+				DAE7D602273C5A7900A0C8F0 /* ContentView.swift */,
 				DAA11A8A283ECBEC00C67B26 /* CardView.swift */,
+				DA19D9D027ADD4F4001F097C /* ControlBar.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
