@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct CardsApp: App {
+    
+    @StateObject var cardTable = CardTable()
+    @StateObject var uiMessage = UIMessage()
+    
     var body: some Scene {
         WindowGroup {
-            MainView()
+            MainView(cardTable: cardTable, uiMessage: uiMessage)
         }
     }
+    
 }
+

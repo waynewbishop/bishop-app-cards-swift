@@ -18,36 +18,12 @@ struct ControlBar: View {
     var body: some View {
         HStack (alignment: .bottom, spacing: 30.0) {
             
+            
             if uiMessage.game == .waiting && uiMessage.players.count > 1 {
                 Button  {
                     cardTable.deal()
                 } label: {
                     GameImage(name: "play.circle")
-                }
-            }
-
-            
-            if cardTable.groupSession != nil && uiMessage.game == .active {
-                if cardTable.isMyTurn == true {
-                        
-                    Button  {
-                        cardTable.hit()
-                    } label: {
-                        GameImage(name: "hand.thumbsup.circle")
-                    }
-
-                    
-                    Button  {
-                        cardTable.hold()
-                    } label: {
-                        GameImage(name: "hand.raised.circle")
-                    }
-                    
-                    Button  {
-                        cardTable.fold()
-                    } label: {
-                        GameImage(name: "xmark.circle")
-                    }
                 }
             }
             
@@ -57,6 +33,33 @@ struct ControlBar: View {
                 GameImage(name: "hand.raised.circle" , color: Color.black)
                 GameImage(name: "xmark.circle" , color: Color.black)
             }
+
+            
+            if cardTable.groupSession != nil && uiMessage.game == .active {
+                if cardTable.isMyTurn == true {
+                        
+                    Button  {
+                        cardTable.hit()
+                    } label: {
+                        GameImage(name: "hand.thumbsup.circle", color: Color.green)
+                    }
+
+                    
+                    Button  {
+                        cardTable.hold()
+                    } label: {
+                        GameImage(name: "hand.raised.circle", color: Color.green)
+                    }
+                    
+                    Button  {
+                        cardTable.fold()
+                    } label: {
+                        GameImage(name: "xmark.circle", color: Color.green)
+                    }
+                }
+            }
+          
+                        
         }
     }
 }
@@ -71,6 +74,9 @@ struct GameImage: View {
     var color: Color = Color.blue
     
     var body: some View {
+        
+        //incorporate this into a Vstack with text beneath..pass label as a parameter..
+        
         Image(systemName: name)
             .resizable()
             .foregroundColor(color)
@@ -83,7 +89,19 @@ struct GameImage: View {
 
 struct ControlBar_Previews: PreviewProvider {
     static var previews: some View {
-        ControlBar(cardTable: CardTable(), uiMessage: UIMessage())
-            .environment(\.sizeCategory, .large)
+        Group {
+            
+            //multiple users
+            ControlBar(cardTable: CardTable(), uiMessage: UIMessage().testMultiUser())
+                .environment(\.sizeCategory, .large)
+            
+            //a single user
+            ControlBar(cardTable: CardTable(), uiMessage: UIMessage().testSingleUser())
+                .environment(\.sizeCategory, .large)
+            
+            //no users - intial game launch
+            ControlBar(cardTable: CardTable(), uiMessage: UIMessage())
+                .environment(\.sizeCategory, .large)
+        }
     }
 }

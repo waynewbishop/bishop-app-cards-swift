@@ -112,6 +112,20 @@ class CardTable: ObservableObject {
                 
                 //receive tableMessage from api.
                 for await (response, context) in messenger.messages(of: TableMessage.self) {
+                    
+                    //find the previous player
+                    let previous = tMessage.players.elements.first(where: {$0.participantUUID == context.source.id} )
+                
+                    
+                    //todo: check to see how many active players remain in the queue
+                    //todo: if the queue is zero, check the holding list to determine the winner..
+                    //todo: use context.participant to determine who initiated the previous action.
+                    
+                    
+                    //todo: calculate the previous action. Did they bust or safe?
+                    //is anyone else left in the players queue? If so, enable resetting the game..
+                    
+                    
                     uiMessage.handle(message: response, from: context.source.id)
                 }
             }

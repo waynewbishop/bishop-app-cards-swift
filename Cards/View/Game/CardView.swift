@@ -17,38 +17,33 @@ struct CardView: View {
         
         VStack {
             
-            ForEach(uiMessage.players.elements) { item in
+            ForEach(uiMessage.players.elements) { player in
                 HStack {
                     
                     GameImage(name: "person.text.rectangle.fill", width: 45.0)
                     
                     VStack(alignment: .leading) {
-                        Text(item.name)
+                        Text(player.name)
                                         
-                        Text(String(item.hand.score) + " points")
+                        Text(String(player.hand.score) + " points")
                             .font(.subheadline)
                             .foregroundColor(Color.gray) +
                         
-                        Text(", " + String(item.hand.count) + " cards")
+                        Text(", " + String(player.hand.count) + " cards")
                             .font(.subheadline)
                             .foregroundColor(Color.gray)
                     }
                 
                     Spacer()
                     
-                    //todo: change the indicator depending on who's turn it is.
-                    GameImage(name: "checkmark.circle.fill", width: 20, height: 20, color: Color.green)
+                    //indicate the current player
+                    if player == cardTable.current {
+                        GameImage(name: "checkmark.circle.fill", width: 20, height: 20, color: Color.green)
+                    }
                 }
+                .padding(.leading, 10.0)
             }
             
-            /*
-            Spacer()
-                .frame(height: 30.0)
-            
-            //todo? move the cardtable.response here?
-            Text("this is a test..")
-                .font(.subheadline)
-             */
         }
        
     }
@@ -58,6 +53,6 @@ struct CardView: View {
 struct CardView_Previews: PreviewProvider {
     
     static var previews: some View {
-        CardView(cardTable: CardTable(), uiMessage: UIMessage().testData())
+        CardView(cardTable: CardTable(), uiMessage: UIMessage().testMultiUser())
     }
 }

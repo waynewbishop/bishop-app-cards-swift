@@ -23,10 +23,12 @@ struct CardTableView: View {
             Spacer()
                 .frame(height: 50)
             
-            CardView(cardTable: cardTable, uiMessage: UIMessage().testData())
+            ScrollView {
+                CardView(cardTable: cardTable, uiMessage: uiMessage)
+            }
             
         }
-        .frame(width: 350, height: 400, alignment: .center)
+        .frame(width: 300, height: 300, alignment: .center)
     }
     
 }

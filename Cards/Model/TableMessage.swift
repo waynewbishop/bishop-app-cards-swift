@@ -20,3 +20,15 @@ struct TableMessage: Codable {
     var game = Status.waiting
 }
 
+
+
+func testData() -> TableMessage {
+    
+    let testMessage = TableMessage()
+    
+    testMessage.players.enQueue(Player(name: "Sam Warfield"))
+    testMessage.players.enQueue(Player(name: "Wayne Bishop"))
+    testMessage.players.enQueue(Player(name: "Steve Jobs"))
+    
+    return testMessage
+}

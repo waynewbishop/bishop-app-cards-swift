@@ -8,9 +8,14 @@
 import SwiftUI
 
 struct MainView: View {
+    
+    @ObservedObject var cardTable: CardTable
+    @ObservedObject var uiMessage: UIMessage
+    
     var body: some View {
+        
         TabView {
-            ContentView()
+            ContentView(cardTable: cardTable, uiMessage: uiMessage)
                 .tabItem {
                     Label("Game", systemImage: "iphone.homebutton.radiowaves.left.and.right")
                 }
@@ -21,11 +26,15 @@ struct MainView: View {
                 }
         }
     }
-
+    
 }
+
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        Group {
+            MainView(cardTable: CardTable(), uiMessage: UIMessage().testSingleUser())
+            MainView(cardTable: CardTable(), uiMessage: UIMessage().testMultiUser())
+        }
     }
 }

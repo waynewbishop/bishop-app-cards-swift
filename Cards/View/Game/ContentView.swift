@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
-        
-    @StateObject var cardTable = CardTable()
-    @StateObject var uiMessage = UIMessage()
+
+    @ObservedObject var cardTable: CardTable
+    @ObservedObject var uiMessage: UIMessage
+    
     
     /*
      todo: a new observed debug object goes here
@@ -28,7 +29,7 @@ struct ContentView: View {
                 AccountView(cardTable: cardTable)
                 
                 Spacer()
-                    .frame(width: 1.0, height: 10)
+                    .frame(width: 1.0, height: 40)
                 
                 //stores players views and game objects
                 CardTableView(cardTable: cardTable, uiMessage: uiMessage)
@@ -50,6 +51,15 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Group {
+            //many users
+            ContentView(cardTable: CardTable(), uiMessage: UIMessage().testMultiUser())
+            
+            //single user
+            ContentView(cardTable: CardTable(), uiMessage: UIMessage().testSingleUser())
+                        
+            //no users
+            ContentView(cardTable: CardTable(), uiMessage: UIMessage())
+        }
     }
 }

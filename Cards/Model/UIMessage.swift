@@ -22,12 +22,6 @@ class UIMessage: ObservableObject {
     //update the presentation layer
     func handle(message: TableMessage, from: UUID?) {
         
-        //todo: check ableMessage action and each players score.
-        //todo: check to see how many active players remain in the queue
-        //todo: if the queue is zero, check the holding list to determine the winner..
-        //todo: use context.participant to determine who initiated the previous action.
-        //todo: if the queue isn't empty, let players know who's turn it is next.
-        
         players = message.players
         discard = message.discard
         deck = message.deck
@@ -38,16 +32,23 @@ class UIMessage: ObservableObject {
         
     }
     
-    //how can I create a test version of this complex object?
-    
-    func testData() -> UIMessage {
+    //test multiple users
+    func testMultiUser() -> UIMessage {
         
         let testMessage = UIMessage()
-        
         testMessage.players.enQueue(Player(name: "Sam Warfield"))
         testMessage.players.enQueue(Player(name: "Wayne Bishop"))
         testMessage.players.enQueue(Player(name: "Steve Jobs"))
         
+        return testMessage
+    }
+
+    
+    //test single user
+    func testSingleUser() -> UIMessage {
+        
+        let testMessage = UIMessage()
+        testMessage.players.enQueue(Player(name: "Ben Wong"))
         return testMessage
     }
 }
