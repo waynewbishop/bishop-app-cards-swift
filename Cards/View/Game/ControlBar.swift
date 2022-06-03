@@ -23,17 +23,17 @@ struct ControlBar: View {
                 Button  {
                     cardTable.deal()
                 } label: {
-                    GameImage(name: "play.circle")
+                    GameImage(name: "play.circle", width: 50.0, height: 50.0, color: Color.green, label: "Deal")
                 }
             }
             
+            /*
             else {
-                GameImage(name: "play.circle", color: Color.black)
-                GameImage(name: "hand.thumbsup.circle", color: Color.black)
-                GameImage(name: "hand.raised.circle" , color: Color.black)
-                GameImage(name: "xmark.circle" , color: Color.black)
+                GameImage(name: "hand.thumbsup.circle", color: Color.black, label: "Hit")
+                GameImage(name: "hand.raised.circle" , color: Color.black, label: "Hold")
+                GameImage(name: "xmark.circle" , color: Color.black, label: "Done")
             }
-
+            */
             
             if cardTable.groupSession != nil && uiMessage.game == .active {
                 if cardTable.isMyTurn == true {
@@ -41,20 +41,20 @@ struct ControlBar: View {
                     Button  {
                         cardTable.hit()
                     } label: {
-                        GameImage(name: "hand.thumbsup.circle", color: Color.green)
+                        GameImage(name: "hand.thumbsup.circle", color: Color.green, label: "Hit")
                     }
 
                     
                     Button  {
                         cardTable.hold()
                     } label: {
-                        GameImage(name: "hand.raised.circle", color: Color.green)
+                        GameImage(name: "hand.raised.circle", color: Color.green, label: "Hold")
                     }
                     
                     Button  {
                         cardTable.fold()
                     } label: {
-                        GameImage(name: "xmark.circle", color: Color.green)
+                        GameImage(name: "xmark.circle", color: Color.green, label: "Done")
                     }
                 }
             }
@@ -72,17 +72,22 @@ struct GameImage: View {
     var width: CGFloat = 35.0
     var height: CGFloat = 35.0
     var color: Color = Color.blue
+    var label: String = ""
     
     var body: some View {
         
-        //incorporate this into a Vstack with text beneath..pass label as a parameter..
+        VStack {
+            Image(systemName: name)
+                .resizable()
+                .foregroundColor(color)
+                .frame(width: width, height: height)
+                .symbolRenderingMode(.hierarchical)
+            
+            Text(label)
+                .font(.footnote)
+                .foregroundColor(Color.gray)
+        }
         
-        Image(systemName: name)
-            .resizable()
-            .foregroundColor(color)
-            .frame(width: width, height: height)
-            .symbolRenderingMode(.hierarchical)
-            .opacity(100)
     }
 }
 

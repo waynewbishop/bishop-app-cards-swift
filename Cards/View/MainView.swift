@@ -20,7 +20,7 @@ struct MainView: View {
                     Label("Game", systemImage: "iphone.homebutton.radiowaves.left.and.right")
                 }
 
-            AccountDetailView()
+            AccountSheetView()
                 .tabItem {
                     Label("Account", systemImage: "person.fill")
                 }
@@ -35,6 +35,7 @@ struct MainView_Previews: PreviewProvider {
         Group {
             MainView(cardTable: CardTable(), uiMessage: UIMessage().testSingleUser())
             MainView(cardTable: CardTable(), uiMessage: UIMessage().testMultiUser())
+            MainView(cardTable: CardTable(), uiMessage: UIMessage())
         }
     }
 }

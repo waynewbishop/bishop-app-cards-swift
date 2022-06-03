@@ -11,17 +11,19 @@ struct CardTableView: View {
     
     @ObservedObject var cardTable: CardTable
     @ObservedObject var uiMessage: UIMessage
-
+    
+    let frameSize: CGFloat = 50.0
     
     var body: some View {
         VStack() {
             
             Text(cardTable.response)
-                .font(.subheadline)
-                .frame(minWidth: 50, maxWidth: 450, minHeight: 50, maxHeight: 50)
+                .font(.headline)
+                .foregroundColor(Color.blue)
+                .frame(minWidth: frameSize, maxWidth: 450, minHeight: frameSize, maxHeight: frameSize)
             
             Spacer()
-                .frame(height: 50)
+                .frame(height: frameSize)
             
             ScrollView {
                 CardView(cardTable: cardTable, uiMessage: uiMessage)
@@ -30,11 +32,14 @@ struct CardTableView: View {
         }
         .frame(width: 300, height: 300, alignment: .center)
     }
-    
 }
 
 struct CardTableView_Previews: PreviewProvider {
     static var previews: some View {
-        CardTableView(cardTable: CardTable(), uiMessage: UIMessage())
+        Group {
+            CardTableView(cardTable: CardTable(), uiMessage: UIMessage().testMultiUser())
+            CardTableView(cardTable: CardTable(), uiMessage: UIMessage().testSingleUser())
+            CardTableView(cardTable: CardTable(), uiMessage: UIMessage())
+        }
    }
 }

@@ -12,11 +12,6 @@ struct ContentView: View {
     @ObservedObject var cardTable: CardTable
     @ObservedObject var uiMessage: UIMessage
     
-    
-    /*
-     todo: a new observed debug object goes here
-     that can also be referenced by the CardTableView instance..
-    */
 
     var body: some View {
         
@@ -29,11 +24,20 @@ struct ContentView: View {
                 AccountView(cardTable: cardTable)
                 
                 Spacer()
-                    .frame(width: 1.0, height: 40)
+                    .frame(width: UIScreen.main.bounds.width, height: 30)
                 
-                //stores players views and game objects
-                CardTableView(cardTable: cardTable, uiMessage: uiMessage)
-               
+                //load card table based on game status
+                if uiMessage.game == .waiting && uiMessage.players.count > 1 {
+                    
+                    //todo: add a big spacer here..
+                    
+                    //stores players views and game objects
+                    CardTableView(cardTable: cardTable, uiMessage: uiMessage)
+                }
+                else {
+                    InfoView(cardTable: cardTable, uiMessage: uiMessage)
+                }
+                
                 
                 //controls player actions
                 ControlBar(cardTable: cardTable, uiMessage: uiMessage)
@@ -60,6 +64,7 @@ struct ContentView_Previews: PreviewProvider {
                         
             //no users
             ContentView(cardTable: CardTable(), uiMessage: UIMessage())
+                
         }
     }
 }
