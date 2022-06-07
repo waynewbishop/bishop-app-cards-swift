@@ -24,6 +24,11 @@ struct MainView: View {
                 .tabItem {
                     Label("Account", systemImage: "person.fill")
                 }
+            
+            HistoryView()
+                .tabItem {
+                    Label("History", systemImage: "person.fill")
+                }
         }
     }
     

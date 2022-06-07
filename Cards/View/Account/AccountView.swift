@@ -14,33 +14,33 @@ struct AccountView: View {
     @StateObject var groupStateObserver = GroupStateObserver()
 
     var body: some View {
-        VStack {
-            HStack(spacing: 50.0) {
-                Text("Welcome, " + cardTable.localPlayer.name)
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .frame(maxWidth: 250, alignment: .leading)
-                        
+        HStack(spacing: 50.0) {
+        
+        //todo: remove this and replace with just: "cards"
+            
+        Text("Welcome, " + cardTable.localPlayer.name)
+            .font(.title)
+            .fontWeight(.bold)
+            .frame(maxWidth: 250, alignment: .leading)
+                
+            
+            //check for valid session
+            if cardTable.groupSession == nil && groupStateObserver.isEligibleForGroupSession {
+                Button {
+                    cardTable.startSharing()
                     
-                    //check for valid session
-                    if cardTable.groupSession == nil && groupStateObserver.isEligibleForGroupSession {
-                        
-                        Button {
-                            cardTable.startSharing()
-                            
-                        } label: {
-                            GameImage(name: "person.2.circle", width: 45, height: 45, color: Color.green)
-                        }
-                        .buttonStyle(.borderedProminent)
-                    }
-                    else {
-                        GameImage(name: "person.2.circle", width: 45, height: 45, color: Color.black)
-                    }
+                } label: {
+                    GameImage(name: "person.2.circle", width: 45, height: 45, color: Color.green)
+                }
+                .buttonStyle(.borderedProminent)
+            }
+            else {
+                GameImage(name: "person.2.circle", width: 45, height: 45, color: Color.black)
             }
         }
-        
     }
 }
+
 
 struct AccountView_Previews: PreviewProvider {
     static var previews: some View {

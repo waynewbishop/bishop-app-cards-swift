@@ -104,6 +104,8 @@ class CardTable: ObservableObject {
         } //end task
     }
     
+    //todo: when late joiner are added to the session, they can be listed in the carousel, but
+    //are not selected to play and are marked as spectators until a new round is started.
     
     func configureReceiveMessage() {
         

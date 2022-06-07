@@ -17,8 +17,7 @@ struct ControlBar: View {
     
     var body: some View {
         HStack (alignment: .bottom, spacing: 30.0) {
-            
-            
+                        
             if uiMessage.game == .waiting && uiMessage.players.count > 1 {
                 Button  {
                     cardTable.deal()
@@ -33,7 +32,8 @@ struct ControlBar: View {
                 GameImage(name: "hand.raised.circle" , color: Color.black, label: "Hold")
                 GameImage(name: "xmark.circle" , color: Color.black, label: "Done")
             }
-            */
+             */
+            
             
             if cardTable.groupSession != nil && uiMessage.game == .active {
                 if cardTable.isMyTurn == true {

@@ -23,7 +23,7 @@ struct CardTableView: View {
                 .frame(minWidth: frameSize, maxWidth: 450, minHeight: frameSize, maxHeight: frameSize)
             
             Spacer()
-                .frame(height: frameSize)
+                .frame(height: 20)
             
             ScrollView {
                 CardView(cardTable: cardTable, uiMessage: uiMessage)

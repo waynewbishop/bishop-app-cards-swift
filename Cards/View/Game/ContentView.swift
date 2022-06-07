@@ -16,38 +16,32 @@ struct ContentView: View {
     var body: some View {
         
         //main views
-        ZStack {
+        VStack {
             
-            VStack {
-                
-                //stores account view and start button
-                AccountView(cardTable: cardTable)
-                
-                Spacer()
-                    .frame(width: UIScreen.main.bounds.width, height: 30)
-                
-                //load card table based on game status
-                if uiMessage.game == .waiting && uiMessage.players.count > 1 {
-                    
-                    //todo: add a big spacer here..
-                    
-                    //stores players views and game objects
-                    CardTableView(cardTable: cardTable, uiMessage: uiMessage)
-                }
-                else {
-                    InfoView(cardTable: cardTable, uiMessage: uiMessage)
-                }
-                
-                
-                //controls player actions
+            //stores account view and start button
+            AccountView(cardTable: cardTable)
+            
+            Spacer()
+                .frame(width: UIScreen.main.bounds.width, height: 30)
+            
+            //check game status
+            if uiMessage.game == .waiting && uiMessage.players.count > 0 {
+                CardTableView(cardTable: cardTable, uiMessage: uiMessage)
                 ControlBar(cardTable: cardTable, uiMessage: uiMessage)
-                
             }
-            .task {
-                //callback from GroupActivity.activate()?
-                for await session in Cards.sessions() {
-                    cardTable.configureGroupSession(session)
-                }
+            
+            else {
+                InfoView(cardTable: cardTable, uiMessage: uiMessage)
+            }
+                    
+            Spacer()
+                .frame(width: UIScreen.main.bounds.width, height: 30)
+            
+        }
+        .task {
+            //callback from GroupActivity.activate()?
+            for await session in Cards.sessions() {
+                cardTable.configureGroupSession(session)
             }
         }
     }
