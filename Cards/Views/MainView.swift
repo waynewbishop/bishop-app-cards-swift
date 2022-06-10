@@ -19,15 +19,10 @@ struct MainView: View {
                 .tabItem {
                     Label("Game", systemImage: "iphone.homebutton.radiowaves.left.and.right")
                 }
-
-            AccountSheetView()
-                .tabItem {
-                    Label("Account", systemImage: "person.fill")
-                }
             
-            HistoryView()
+            HistoryView(cardTable: cardTable, uiMessage: uiMessage)
                 .tabItem {
-                    Label("History", systemImage: "person.fill")
+                    Label("History", systemImage: "line.3.horizontal")
                 }
         }
     }

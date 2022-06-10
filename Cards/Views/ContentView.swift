@@ -18,16 +18,16 @@ struct ContentView: View {
         //main views
         VStack {
             
-            //stores account view and start button
-            AccountView(cardTable: cardTable)
-            
             Spacer()
                 .frame(width: UIScreen.main.bounds.width, height: 30)
             
             //check game status
             if uiMessage.game == .waiting && uiMessage.players.count > 0 {
+                
+                HeaderView(cardTable: cardTable)
                 CardTableView(cardTable: cardTable, uiMessage: uiMessage)
                 ControlBar(cardTable: cardTable, uiMessage: uiMessage)
+                
             }
             
             else {

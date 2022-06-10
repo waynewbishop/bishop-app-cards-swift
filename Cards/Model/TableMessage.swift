@@ -10,6 +10,7 @@ import Combine
 
 
 /// model definition for sending and recieving messages - network level
+/// todo: is there a 64KB file size limit on messages? what is our current footprint? 
 struct TableMessage: Codable {
     
     var players = Queue<Player>()

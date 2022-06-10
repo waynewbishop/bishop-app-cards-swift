@@ -15,22 +15,25 @@ struct CardTableView: View {
     let frameSize: CGFloat = 50.0
     
     var body: some View {
-        VStack() {
-            
+                
+        VStack(alignment: .leading) {
+
+            /*
             Text(cardTable.response)
                 .font(.headline)
                 .foregroundColor(Color.blue)
                 .frame(minWidth: frameSize, maxWidth: 450, minHeight: frameSize, maxHeight: frameSize)
+            */
             
             Spacer()
-                .frame(height: 20)
+                .frame(height: 40)
             
             ScrollView {
                 CardView(cardTable: cardTable, uiMessage: uiMessage)
             }
             
         }
-        .frame(width: 300, height: 300, alignment: .center)
+        .frame(width: 300, height: 300)
     }
 }
 

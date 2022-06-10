@@ -16,25 +16,16 @@ struct InfoView: View {
 
     var body: some View {
                 
+        
         VStack {
-            HStack(alignment: .top) {
-                VStack {
-                    GameImage(name: "person.icloud.fill", width: 55, height: 38)
-                }
-                
-                VStack {
-                    Text("Welcome to Cards! This game allows you to play Blackjack with two or more friends when connected through Facetime.")
-                        .font(.subheadline)
-                        .multilineTextAlignment(.leading)
-                        .frame(width: 255)
-                }
-            }
+            GameImage(name: "person.2.circle.fill", width: 90, height: 90)
             
+            Text("Welcome to Cards! This game allows you to play Blackjack with two or more friends when connected through Facetime.")
+                .font(.body)
+                .multilineTextAlignment(.leading)
+                .frame(width: 310)
+         
             
-            Spacer()
-                .frame(width: UIScreen.main.bounds.width, height: 30)
-                
-            //check for valid session
             if cardTable.groupSession == nil && groupStateObserver.isEligibleForGroupSession {
                 
                 //todo: check for a localuser.name. If empty, present the settings infosheet for them
@@ -45,10 +36,10 @@ struct InfoView: View {
                         .font(.body)
                 }
             }
-
+            
+            Spacer()
+                .frame(width: UIScreen.main.bounds.width, height: 90)
         }
-        
-        
     }
 }
 

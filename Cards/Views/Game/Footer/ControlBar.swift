@@ -16,23 +16,16 @@ struct ControlBar: View {
 
     
     var body: some View {
-        HStack (alignment: .bottom, spacing: 30.0) {
+        HStack (alignment: .bottom, spacing: 40.0) {
                         
             if uiMessage.game == .waiting && uiMessage.players.count > 1 {
                 Button  {
                     cardTable.deal()
                 } label: {
-                    GameImage(name: "play.circle", width: 50.0, height: 50.0, color: Color.green, label: "Deal")
+                    GameImage(name: "play.circle", color: Color.green, label: "Deal")
                 }
             }
             
-            /*
-            else {
-                GameImage(name: "hand.thumbsup.circle", color: Color.black, label: "Hit")
-                GameImage(name: "hand.raised.circle" , color: Color.black, label: "Hold")
-                GameImage(name: "xmark.circle" , color: Color.black, label: "Done")
-            }
-             */
             
             
             if cardTable.groupSession != nil && uiMessage.game == .active {
@@ -58,9 +51,16 @@ struct ControlBar: View {
                     }
                 }
             }
-          
+            
+            
+            else {
+                GameImage(name: "hand.thumbsup.circle", color: Color.black, label: "Hit")
+                GameImage(name: "hand.raised.circle" , color: Color.black, label: "Hold")
+                GameImage(name: "xmark.circle" , color: Color.black, label: "Done")
+            }
                         
         }
+        .frame(width: 300, height: 70)
     }
 }
 

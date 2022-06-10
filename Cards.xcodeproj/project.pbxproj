@@ -20,8 +20,7 @@
 		DA87D0FA2819F0DD00888F2D /* CardTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA87D0F92819F0DD00888F2D /* CardTable.swift */; };
 		DA8A6F15282CBC9F00C0030D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8A6F14282CBC9F00C0030D /* MainView.swift */; };
 		DA8ABF68279B4ED5004F965D /* Scoreable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8ABF67279B4ED5004F965D /* Scoreable.swift */; };
-		DA970D9F282D9621007EDB7A /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA970D9E282D9621007EDB7A /* AccountView.swift */; };
-		DA970DAB282DB8D5007EDB7A /* AccountSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA970DAA282DB8D5007EDB7A /* AccountSheetView.swift */; };
+		DA970D9F282D9621007EDB7A /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA970D9E282D9621007EDB7A /* HeaderView.swift */; };
 		DAA11A892838883800C67B26 /* UIMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA11A882838883800C67B26 /* UIMessage.swift */; };
 		DAA11A8B283ECBEC00C67B26 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA11A8A283ECBEC00C67B26 /* CardView.swift */; };
 		DAA11A8D28497C9C00C67B26 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA11A8C28497C9C00C67B26 /* InfoView.swift */; };
@@ -73,8 +72,7 @@
 		DA8A6F1328298A4000C0030D /* CardsDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CardsDebug.entitlements; sourceTree = "<group>"; };
 		DA8A6F14282CBC9F00C0030D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		DA8ABF67279B4ED5004F965D /* Scoreable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scoreable.swift; sourceTree = "<group>"; };
-		DA970D9E282D9621007EDB7A /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
-		DA970DAA282DB8D5007EDB7A /* AccountSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSheetView.swift; sourceTree = "<group>"; };
+		DA970D9E282D9621007EDB7A /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		DAA11A882838883800C67B26 /* UIMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMessage.swift; sourceTree = "<group>"; };
 		DAA11A8A283ECBEC00C67B26 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		DAA11A8C28497C9C00C67B26 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
@@ -158,14 +156,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		DA109C8A27A1ED0300B93244 /* View */ = {
+		DA109C8A27A1ED0300B93244 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				DA8A6F14282CBC9F00C0030D /* MainView.swift */,
+				DAE7D602273C5A7900A0C8F0 /* ContentView.swift */,
+				DAA11A8C28497C9C00C67B26 /* InfoView.swift */,
 				DA970DA3282D9AE1007EDB7A /* Game */,
 				DA970DA2282D9ACE007EDB7A /* Account */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		DA87D0F02819E91600888F2D /* Rules */ = {
@@ -180,8 +180,6 @@
 		DA970DA2282D9ACE007EDB7A /* Account */ = {
 			isa = PBXGroup;
 			children = (
-				DA970D9E282D9621007EDB7A /* AccountView.swift */,
-				DA970DAA282DB8D5007EDB7A /* AccountSheetView.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -189,14 +187,45 @@
 		DA970DA3282D9AE1007EDB7A /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				DA19D9CE27ADC8A8001F097C /* CardTableView.swift */,
-				DAE7D602273C5A7900A0C8F0 /* ContentView.swift */,
-				DAA11A8A283ECBEC00C67B26 /* CardView.swift */,
-				DA19D9D027ADD4F4001F097C /* ControlBar.swift */,
-				DAA11A8C28497C9C00C67B26 /* InfoView.swift */,
-				DA42A398284D88DE00B14618 /* HistoryView.swift */,
+				DAD912B22852F1FF00CE281A /* Other */,
+				DAD912AF2852F17A00CE281A /* Header */,
+				DAD912B02852F1A700CE281A /* Body */,
+				DAD912B12852F1D500CE281A /* Footer */,
 			);
 			path = Game;
+			sourceTree = "<group>";
+		};
+		DAD912AF2852F17A00CE281A /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				DA970D9E282D9621007EDB7A /* HeaderView.swift */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		DAD912B02852F1A700CE281A /* Body */ = {
+			isa = PBXGroup;
+			children = (
+				DA19D9CE27ADC8A8001F097C /* CardTableView.swift */,
+				DAA11A8A283ECBEC00C67B26 /* CardView.swift */,
+			);
+			path = Body;
+			sourceTree = "<group>";
+		};
+		DAD912B12852F1D500CE281A /* Footer */ = {
+			isa = PBXGroup;
+			children = (
+				DA19D9D027ADD4F4001F097C /* ControlBar.swift */,
+			);
+			path = Footer;
+			sourceTree = "<group>";
+		};
+		DAD912B22852F1FF00CE281A /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				DA42A398284D88DE00B14618 /* HistoryView.swift */,
+			);
+			path = Other;
 			sourceTree = "<group>";
 		};
 		DAE7D5F4273C5A7900A0C8F0 = {
@@ -225,7 +254,7 @@
 				DA8A6F1328298A4000C0030D /* CardsDebug.entitlements */,
 				DAE7D600273C5A7900A0C8F0 /* CardsApp.swift */,
 				DA87D0F02819E91600888F2D /* Rules */,
-				DA109C8A27A1ED0300B93244 /* View */,
+				DA109C8A27A1ED0300B93244 /* Views */,
 				DA109C8927A1ECFD00B93244 /* Model */,
 				DAE7D604273C5A7B00A0C8F0 /* Assets.xcassets */,
 				DAE7D606273C5A7B00A0C8F0 /* Preview Content */,
@@ -406,8 +435,7 @@
 				DA425B18273DC55D00418FC2 /* Game.swift in Sources */,
 				DA42A399284D88DE00B14618 /* HistoryView.swift in Sources */,
 				DAE7D634273C5B8D00A0C8F0 /* Unit.swift in Sources */,
-				DA970DAB282DB8D5007EDB7A /* AccountSheetView.swift in Sources */,
-				DA970D9F282D9621007EDB7A /* AccountView.swift in Sources */,
+				DA970D9F282D9621007EDB7A /* HeaderView.swift in Sources */,
 				DA8A6F15282CBC9F00C0030D /* MainView.swift in Sources */,
 				DA87D0F32819ECFA00888F2D /* Stack.swift in Sources */,
 				DA19D9CF27ADC8A8001F097C /* CardTableView.swift in Sources */,
