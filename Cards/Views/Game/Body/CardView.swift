@@ -40,8 +40,11 @@ struct CardView: View {
                     if player == cardTable.current {
                         GameImage(name: "checkmark.circle.fill", width: 20, height: 20, color: Color.green)
                     }
+                    else {
+                        GameImage(name: "checkmark.circle.fill", width: 20, height: 20, color: Color.gray)
+                    }
                 }
-                .padding(.leading, 10.0)
+                .padding(.horizontal, 10.0)
             }
             
         }

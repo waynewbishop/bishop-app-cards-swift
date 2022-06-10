@@ -32,7 +32,7 @@ struct InfoView: View {
                 //to complete.
                 
                 Button(role: .none, action: cardTable.startSharing) {
-                    Text("Shart Sharing")
+                    Text("Connect")
                         .font(.body)
                 }
             }

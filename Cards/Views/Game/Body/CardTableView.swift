@@ -12,21 +12,11 @@ struct CardTableView: View {
     @ObservedObject var cardTable: CardTable
     @ObservedObject var uiMessage: UIMessage
     
-    let frameSize: CGFloat = 50.0
-    
     var body: some View {
                 
         VStack(alignment: .leading) {
-
-            /*
-            Text(cardTable.response)
-                .font(.headline)
-                .foregroundColor(Color.blue)
-                .frame(minWidth: frameSize, maxWidth: 450, minHeight: frameSize, maxHeight: frameSize)
-            */
-            
             Spacer()
-                .frame(height: 40)
+                .frame(height: 45)
             
             ScrollView {
                 CardView(cardTable: cardTable, uiMessage: uiMessage)

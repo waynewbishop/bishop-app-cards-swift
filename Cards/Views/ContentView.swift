@@ -33,9 +33,6 @@ struct ContentView: View {
             else {
                 InfoView(cardTable: cardTable, uiMessage: uiMessage)
             }
-                    
-            Spacer()
-                .frame(width: UIScreen.main.bounds.width, height: 30)
             
         }
         .task {
