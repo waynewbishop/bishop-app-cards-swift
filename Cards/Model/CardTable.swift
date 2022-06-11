@@ -12,10 +12,13 @@ import GroupActivities
 
 
 @MainActor
+
 class CardTable: ObservableObject {
     
+   // var game: Playable
     var tMessage = TableMessage()
-   @ObservedObject var uiMessage = UIMessage()
+    
+    @ObservedObject var uiMessage = UIMessage()
     
     @Published var localPlayer = Player(name: "Wayne")
     @Published var groupSession: GroupSession<Cards>?
@@ -23,7 +26,12 @@ class CardTable: ObservableObject {
     
     var sessionMessenger: GroupSessionMessenger?
     var tasks = Set<Task<Void, Never>>()
-    
+ 
+    /*
+    init(game: Playable = Blackjack()) {
+        self.game = game
+    }
+     */
 
     var current: Player? {
         guard let player = tMessage.players.peek else {
@@ -89,7 +97,12 @@ class CardTable: ObservableObject {
 
     
     //send message to participants
-    func sendMessage(message: TableMessage) {
+    func sendMessage(message: Codable) {
+        
+//        Checking byte count
+//        let encoder = JSONEncoder()
+//        let data = try! encoder.encode(message)
+//        print(data)
         
         Task {
             if let message = self.sessionMessenger {

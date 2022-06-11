@@ -65,6 +65,20 @@ struct ControlBar: View {
 }
 
 
+/*
+struct GameCard: View {
+    
+    var card: Card
+    
+    var body: some View {
+        //code goes here..
+        //todo: now build the UI to create a Swift native card
+        //representation..
+    }
+}
+*/
+
+ 
 //custom image definition
 struct GameImage: View {
     

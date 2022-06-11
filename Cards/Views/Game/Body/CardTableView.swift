@@ -34,5 +34,6 @@ struct CardTableView_Previews: PreviewProvider {
             CardTableView(cardTable: CardTable(), uiMessage: UIMessage().testSingleUser())
             CardTableView(cardTable: CardTable(), uiMessage: UIMessage())
         }
+        
    }
 }

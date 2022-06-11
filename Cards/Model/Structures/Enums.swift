@@ -16,9 +16,13 @@ import Foundation
 
 //player actions (that effect the card table)
 enum Action: Codable {
-    case start, new, deal, hit, hold, bust, fold, winner
+    case start, new, deal, hit, hold, fold
 }
 
+//outcome of a player's calculated hand
+enum Outcome: Codable {
+    case bust, winner, safe
+}
 
 //game status - may not be required
 enum Status: Codable {
