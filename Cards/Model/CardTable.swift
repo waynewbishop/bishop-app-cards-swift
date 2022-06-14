@@ -15,7 +15,11 @@ import GroupActivities
 
 class CardTable: ObservableObject {
     
-   // var game: Playable
+    /*
+     todo: game is implemented as an optional protocol
+     based on some additional UI that is passed at runtime.
+     */
+    var game: Playable?
     var tMessage = TableMessage()
     
     @ObservedObject var uiMessage = UIMessage()
@@ -27,12 +31,6 @@ class CardTable: ObservableObject {
     var sessionMessenger: GroupSessionMessenger?
     var tasks = Set<Task<Void, Never>>()
  
-    /*
-    init(game: Playable = Blackjack()) {
-        self.game = game
-    }
-     */
-
     var current: Player? {
         guard let player = tMessage.players.peek else {
             return nil
@@ -73,7 +71,7 @@ class CardTable: ObservableObject {
     func configureGroupSession(_ groupSession: GroupSession<Cards>) {
         
         self.groupSession = groupSession
-        
+                
         //create the messenger for the session
         let messenger = GroupSessionMessenger(session: groupSession)
         self.sessionMessenger = messenger

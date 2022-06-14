@@ -10,7 +10,7 @@
 		DA19D9CF27ADC8A8001F097C /* CardTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA19D9CE27ADC8A8001F097C /* CardTableView.swift */; };
 		DA19D9D127ADD4F4001F097C /* ControlBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA19D9D027ADD4F4001F097C /* ControlBar.swift */; };
 		DA29B120274715AB00B53871 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA29B11F274715AA00B53871 /* Queue.swift */; };
-		DA42A399284D88DE00B14618 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA42A398284D88DE00B14618 /* HistoryView.swift */; };
+		DA42A399284D88DE00B14618 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA42A398284D88DE00B14618 /* ScoreView.swift */; };
 		DA478EDE2823140F00B42EB5 /* Cards.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA478EDD2823140F00B42EB5 /* Cards.swift */; };
 		DA478EE0282465E600B42EB5 /* TableMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA478EDF282465E600B42EB5 /* TableMessage.swift */; };
 		DA87D0F32819ECFA00888F2D /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA87D0F22819ECFA00888F2D /* Stack.swift */; };
@@ -60,7 +60,7 @@
 		DA19D9CE27ADC8A8001F097C /* CardTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTableView.swift; sourceTree = "<group>"; };
 		DA19D9D027ADD4F4001F097C /* ControlBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlBar.swift; sourceTree = "<group>"; };
 		DA29B11F274715AA00B53871 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
-		DA42A398284D88DE00B14618 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		DA42A398284D88DE00B14618 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		DA478EDD2823140F00B42EB5 /* Cards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cards.swift; sourceTree = "<group>"; };
 		DA478EDF282465E600B42EB5 /* TableMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableMessage.swift; sourceTree = "<group>"; };
 		DA87D0F22819ECFA00888F2D /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
@@ -220,7 +220,7 @@
 		DAD912B22852F1FF00CE281A /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				DA42A398284D88DE00B14618 /* HistoryView.swift */,
+				DA42A398284D88DE00B14618 /* ScoreView.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -429,7 +429,7 @@
 				DAA11A8B283ECBEC00C67B26 /* CardView.swift in Sources */,
 				DAA11A892838883800C67B26 /* UIMessage.swift in Sources */,
 				DA19D9D127ADD4F4001F097C /* ControlBar.swift in Sources */,
-				DA42A399284D88DE00B14618 /* HistoryView.swift in Sources */,
+				DA42A399284D88DE00B14618 /* ScoreView.swift in Sources */,
 				DAE7D634273C5B8D00A0C8F0 /* Unit.swift in Sources */,
 				DAD912B428542B1A00CE281A /* Blackjack.swift in Sources */,
 				DA970D9F282D9621007EDB7A /* HeaderView.swift in Sources */,
@@ -618,8 +618,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -649,8 +648,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

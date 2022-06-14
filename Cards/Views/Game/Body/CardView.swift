@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct CardView: View {
     
     @ObservedObject var cardTable: CardTable

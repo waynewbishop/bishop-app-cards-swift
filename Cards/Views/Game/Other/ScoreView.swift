@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HistoryView: View {
+struct ScoreView: View {
     
     @ObservedObject var cardTable: CardTable
     @ObservedObject var uiMessage: UIMessage
@@ -15,8 +15,12 @@ struct HistoryView: View {
     var body: some View {
         
         HStack(alignment: .top) {
+            
+            //todo: show different content here
+            //depending weather or not a game has been started.
+            
             VStack(alignment: .leading) {
-                Text("History")
+                Text("Score")
                     .font(.title)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.leading)
@@ -38,6 +42,6 @@ struct HistoryView: View {
 
 struct historyView_Previews: PreviewProvider {
     static var previews: some View {
-        HistoryView(cardTable: CardTable(), uiMessage: UIMessage())
+        ScoreView(cardTable: CardTable(), uiMessage: UIMessage())
     }
 }

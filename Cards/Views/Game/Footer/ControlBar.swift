@@ -13,9 +13,9 @@ struct ControlBar: View {
     
     @ObservedObject var cardTable: CardTable
     @ObservedObject var uiMessage: UIMessage
-
     
     var body: some View {
+        
         HStack (alignment: .bottom, spacing: 40.0) {
                         
             if uiMessage.game == .waiting && uiMessage.players.count > 1 {
@@ -26,7 +26,9 @@ struct ControlBar: View {
                 }
             }
             
-            
+            //todo: refactor this to support a single set of buttons that
+            //can be enabled or disabled depending on the game state and/or
+            //other specific factors
             
             if cardTable.groupSession != nil && uiMessage.game == .active {
                 if cardTable.isMyTurn == true {
@@ -36,6 +38,7 @@ struct ControlBar: View {
                     } label: {
                         GameImage(name: "hand.thumbsup.circle", color: Color.green, label: "Hit")
                     }
+
 
                     
                     Button  {
@@ -54,9 +57,9 @@ struct ControlBar: View {
             
             
             else {
-                GameImage(name: "hand.thumbsup.circle", color: Color.black, label: "Hit")
-                GameImage(name: "hand.raised.circle" , color: Color.black, label: "Hold")
-                GameImage(name: "xmark.circle" , color: Color.black, label: "Done")
+                GameImage(name: "hand.thumbsup.circle", color: Color.gray, label: "Hit")
+                GameImage(name: "hand.raised.circle" , color: Color.gray, label: "Hold")
+                GameImage(name: "xmark.circle" , color: Color.gray, label: "Done")
             }
                         
         }

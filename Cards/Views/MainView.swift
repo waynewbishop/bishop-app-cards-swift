@@ -20,9 +20,9 @@ struct MainView: View {
                     Label("Game", systemImage: "iphone.homebutton.radiowaves.left.and.right")
                 }
             
-            HistoryView(cardTable: cardTable, uiMessage: uiMessage)
+            ScoreView(cardTable: cardTable, uiMessage: uiMessage)
                 .tabItem {
-                    Label("History", systemImage: "line.3.horizontal")
+                    Label("Score", systemImage: "line.3.horizontal")
                 }
         }
     }
