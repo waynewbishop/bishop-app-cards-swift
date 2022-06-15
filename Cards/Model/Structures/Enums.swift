@@ -28,3 +28,8 @@ enum Outcome: Codable {
 enum Status: Codable {
     case waiting, started, active, completed
 }
+
+//the type of game being played
+enum Game: Codable {
+    case blackjack, hearts, poker, undecided
+}

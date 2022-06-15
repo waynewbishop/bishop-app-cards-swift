@@ -8,10 +8,11 @@
 import Foundation
 
 
-@MainActor
-
 protocol Playable {
+
     
+    /// The game name / description
+    var description: String {get set}
     
     /// Returns a player's  score
     /// - Parameter player: The specified player

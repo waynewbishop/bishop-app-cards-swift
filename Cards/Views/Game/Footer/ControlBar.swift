@@ -18,7 +18,7 @@ struct ControlBar: View {
         
         HStack (alignment: .bottom, spacing: 40.0) {
                         
-            if uiMessage.game == .waiting && uiMessage.players.count > 1 {
+            if uiMessage.status == .waiting && uiMessage.players.count > 1 {
                 Button  {
                     cardTable.deal()
                 } label: {
@@ -30,7 +30,7 @@ struct ControlBar: View {
             //can be enabled or disabled depending on the game state and/or
             //other specific factors
             
-            if cardTable.groupSession != nil && uiMessage.game == .active {
+            if cardTable.groupSession != nil && uiMessage.status == .active {
                 if cardTable.isMyTurn == true {
                         
                     Button  {

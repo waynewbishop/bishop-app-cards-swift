@@ -10,6 +10,7 @@
 		DA19D9CF27ADC8A8001F097C /* CardTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA19D9CE27ADC8A8001F097C /* CardTableView.swift */; };
 		DA19D9D127ADD4F4001F097C /* ControlBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA19D9D027ADD4F4001F097C /* ControlBar.swift */; };
 		DA29B120274715AB00B53871 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA29B11F274715AA00B53871 /* Queue.swift */; };
+		DA2F106128582A1A00BCCC1A /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2F106028582A1A00BCCC1A /* Tree.swift */; };
 		DA42A399284D88DE00B14618 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA42A398284D88DE00B14618 /* ScoreView.swift */; };
 		DA478EDE2823140F00B42EB5 /* Cards.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA478EDD2823140F00B42EB5 /* Cards.swift */; };
 		DA478EE0282465E600B42EB5 /* TableMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA478EDF282465E600B42EB5 /* TableMessage.swift */; };
@@ -60,6 +61,7 @@
 		DA19D9CE27ADC8A8001F097C /* CardTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTableView.swift; sourceTree = "<group>"; };
 		DA19D9D027ADD4F4001F097C /* ControlBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlBar.swift; sourceTree = "<group>"; };
 		DA29B11F274715AA00B53871 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
+		DA2F106028582A1A00BCCC1A /* Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
 		DA42A398284D88DE00B14618 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		DA478EDD2823140F00B42EB5 /* Cards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cards.swift; sourceTree = "<group>"; };
 		DA478EDF282465E600B42EB5 /* TableMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableMessage.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 				DA87D0F22819ECFA00888F2D /* Stack.swift */,
 				DA87D0F42819ED1E00888F2D /* Enums.swift */,
 				DA87D0F62819EE2900888F2D /* Node.swift */,
+				DA2F106028582A1A00BCCC1A /* Tree.swift */,
 			);
 			path = Structures;
 			sourceTree = "<group>";
@@ -435,6 +438,7 @@
 				DA970D9F282D9621007EDB7A /* HeaderView.swift in Sources */,
 				DA8A6F15282CBC9F00C0030D /* MainView.swift in Sources */,
 				DA87D0F32819ECFA00888F2D /* Stack.swift in Sources */,
+				DA2F106128582A1A00BCCC1A /* Tree.swift in Sources */,
 				DA19D9CF27ADC8A8001F097C /* CardTableView.swift in Sources */,
 				DAE7D62E273C5B6000A0C8F0 /* Deck.swift in Sources */,
 				DA87D0F72819EE2900888F2D /* Node.swift in Sources */,

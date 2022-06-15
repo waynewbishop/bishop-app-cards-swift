@@ -11,6 +11,12 @@ import Foundation
 class BlackJack : Playable {
 
     
+    /// The game name / description
+    var description: String = "Blackjack"
+    
+    
+    //todo: move the score code to this function..
+    
     /// <#Description#>
     /// - Parameter player: <#player description#>
     /// - Returns: <#description#>
@@ -61,6 +67,10 @@ class BlackJack : Playable {
          create a RankTree data structure. Use the players scopre
          as a basis for the BST evaluation
          */
+        
+        //the tree gets created here, with the basis of
+        //comparision being self.score from the blackjack game
+        //rules.
         
         return [Player]()
     }

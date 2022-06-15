@@ -18,7 +18,9 @@ struct TableMessage: Codable {
     var deck = Deck()
     var holding = Stack<Player>()
     var action = Action.start
-    var game = Status.waiting
+    var status = Status.waiting
+    var game = Game.undecided
+    
 }
 
 

@@ -15,14 +15,12 @@ import GroupActivities
 
 class CardTable: ObservableObject {
     
-    /*
-     todo: game is implemented as an optional protocol
-     based on some additional UI that is passed at runtime.
-     */
-    var game: Playable?
     var tMessage = TableMessage()
     
     @ObservedObject var uiMessage = UIMessage()
+
+    //todo: how to we broadcast the game being played is blackjack?
+    @Published var game: Playable? = BlackJack()
     
     @Published var localPlayer = Player(name: "Wayne")
     @Published var groupSession: GroupSession<Cards>?
@@ -138,7 +136,6 @@ class CardTable: ObservableObject {
                     //todo: calculate the previous action. Did they bust or safe?
                     //is anyone else left in the players queue? If so, enable resetting the game..
                     
-                    
                     uiMessage.handle(message: response, from: context.source.id)
                 }
             }
@@ -198,7 +195,7 @@ class CardTable: ObservableObject {
         
         //update status and action
         tMessage.action = .deal
-        tMessage.game = .active
+        tMessage.status = .active
         
         sendMessage(message: tMessage)
     }
