@@ -19,7 +19,7 @@ struct ContentView: View {
         VStack {
             
             Spacer()
-                .frame(width: UIScreen.main.bounds.width, height: 30)
+                .frame(width: UIScreen.main.bounds.width, height: 1)
             
             //check game status
             if uiMessage.status == .waiting && uiMessage.players.count > 0 {

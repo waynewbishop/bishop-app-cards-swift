@@ -69,6 +69,7 @@ class CardTable: ObservableObject {
     func configureGroupSession(_ groupSession: GroupSession<Cards>) {
         
         self.groupSession = groupSession
+        
                 
         //create the messenger for the session
         let messenger = GroupSessionMessenger(session: groupSession)

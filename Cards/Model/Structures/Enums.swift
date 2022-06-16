@@ -21,7 +21,7 @@ enum Action: Codable {
 
 //outcome of a player's calculated hand
 enum Outcome: Codable {
-    case bust, winner, safe
+    case bust, winner, safe, undecided
 }
 
 //game status - may not be required

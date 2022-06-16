@@ -22,24 +22,23 @@ class UIMessage: ObservableObject {
 
     func handle(message: TableMessage, from: UUID?) {
         
-        let rules: Playable?
-        
-        //todo: update all the players hands in the queue.
-        //with the correct calculated score from the previous send..
         players = message.players
         
-        //todo: complete adding score property to hand.
-        /*
+        //calculate player score and outcome
         if message.game == .blackjack {
-            rules = BlackJack()
+            let rules: Playable = BlackJack()
+            var total: Int = 0
+                
             for player in message.players.elements {
-                player.hand.score = rules?.score(of: player)
-         
-                //the outcome of the player can also be determined at this spot as well
-                //this is perfect because we can update the this data before sending it to SwiftUI..
+                total = rules.score(of: player)
+                
+                player.hand.score = total
+                player.outcome = rules.evaluate(player: player)
             }
         }
-        */
+        
+        //todo: run a filter on players collection to determine if they are any safe
+        //players. If not the game is over..
         
         discard = message.discard
         deck = message.deck

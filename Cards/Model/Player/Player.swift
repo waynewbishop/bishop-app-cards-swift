@@ -15,7 +15,7 @@ class Player: Codable, Equatable, Identifiable {
 
     var participantUUID: UUID? //from GroupSession
     var hand = Hand()
-    var isSpectator: Bool = false
+    var outcome = Outcome.undecided
     
     public init(name: String = "default") {
         self.name = name
