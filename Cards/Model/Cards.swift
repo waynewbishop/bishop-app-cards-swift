@@ -21,7 +21,8 @@ import GroupActivities
 struct Cards: GroupActivity {
     var metadata: GroupActivityMetadata {
         var metadata = GroupActivityMetadata()
-        metadata.title = NSLocalizedString("Cards Game", comment: "Cards with Friends..")
+        metadata.title = NSLocalizedString("Cards", comment: "Cards with Friends..")
+        metadata.subtitle = "Play fun card games with friends"
         metadata.type = .generic
         return metadata
     }

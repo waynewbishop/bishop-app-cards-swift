@@ -14,6 +14,8 @@ protocol Playable {
     /// The game name / description
     var description: String {get set}
     
+    var numCards: Int {get set} //set the number of initial cards assigned to each player (depends on game)
+    
     /// Returns a player's  score
     /// - Parameter player: The specified player
     /// - Returns: A generic comparable value (e.g. Int)

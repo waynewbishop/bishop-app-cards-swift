@@ -10,13 +10,11 @@ import Combine
 import SwiftUI
 import GroupActivities
 
-
 @MainActor
 
 class CardTable: ObservableObject {
     
     var tMessage = TableMessage()
-    
     @ObservedObject var uiMessage = UIMessage()
 
     //todo: how to we broadcast the game being played is blackjack?
@@ -28,7 +26,7 @@ class CardTable: ObservableObject {
     
     var sessionMessenger: GroupSessionMessenger?
     var tasks = Set<Task<Void, Never>>()
- 
+     
     var current: Player? {
         guard let player = tMessage.players.peek else {
             return nil
@@ -69,7 +67,6 @@ class CardTable: ObservableObject {
     func configureGroupSession(_ groupSession: GroupSession<Cards>) {
         
         self.groupSession = groupSession
-        
                 
         //create the messenger for the session
         let messenger = GroupSessionMessenger(session: groupSession)
@@ -125,18 +122,8 @@ class CardTable: ObservableObject {
                 //receive tableMessage from api.
                 for await (response, context) in messenger.messages(of: TableMessage.self) {
                     
-                    //find the previous player
-                    let previous = tMessage.players.elements.first(where: {$0.participantUUID == context.source.id} )
-                
-                    
-                    //todo: check to see how many active players remain in the queue
-                    //todo: if the queue is zero, check the holding list to determine the winner..
-                    //todo: use context.participant to determine who initiated the previous action.
-                    
-                    
-                    //todo: calculate the previous action. Did they bust or safe?
-                    //is anyone else left in the players queue? If so, enable resetting the game..
-                    
+                    //todo: apply the calculation rules here, update the tMessage and send a copy to the UIMessage
+
                     uiMessage.handle(message: response, from: context.source.id)
                 }
             }
@@ -146,6 +133,12 @@ class CardTable: ObservableObject {
     }
 
 
+    //todo: recieve and handle changes in the tableMessage response.
+    func handle(message: TableMessage, from: UUID?) {
+        
+    }
+    
+    
     
     func reset() {
 
@@ -164,12 +157,22 @@ class CardTable: ObservableObject {
             groupSession = nil
             self.startSharing()
         }
-        
+    }
+
+    
+    
+    //obtain a player's score
+    func newScore(of player: Player) -> Int {
+        if let rules = self.game {
+            let score = rules.score(of: player)
+            return score
+        }
+        return 0
     }
 
     
     //MARK: Game Actions
-        
+    
         
     //randomize the deck
     func deal() {
@@ -190,6 +193,8 @@ class CardTable: ObservableObject {
                     p.hand.receive(card)
                 }
             }
+            
+            p.hand.score = newScore(of: p)
         }
 
         self.response = "dealing cards to players.."
@@ -244,7 +249,17 @@ class CardTable: ObservableObject {
     //remove from current game
     func fold() {
         
-        _ = self.tMessage.players.remove(element: localPlayer)
+        //_ = self.tMessage.players.remove(element: localPlayer)
+        
+        //they are not removed from the players queue.
+        //we change the color of their row to show
+        //some disabled status.
+        
+        if let current = self.current {
+            if isMyTurn == true {
+                current.outcome = .hold
+            }
+        }
 
          /*
          note: if they fold they are out of the game but are still
@@ -254,5 +269,4 @@ class CardTable: ObservableObject {
         tMessage.action = .fold
         sendMessage(message: tMessage)
     }
-    
 }

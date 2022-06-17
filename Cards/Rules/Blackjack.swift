@@ -11,15 +11,14 @@ import Foundation
 class BlackJack : Playable {
     
     var description: String = "Blackjack"
-    
+    var numCards: Int = 2
 
     /// Evaluate a specific player's hand
     /// - Parameter hand: A player's hand
     /// - Returns: A specific outcome enumeration
     func evaluate(player: Player) -> Outcome {
         
-        let score = player.hand.score
-        
+        let score = self.score(of: player)
         let scoreRange = 1..<21
         
         if score == scoreRange.upperBound {
@@ -56,22 +55,18 @@ class BlackJack : Playable {
     func rank(players: [Player]) -> [Player] {
         
         /*
-         create a RankTree data structure. Use the players scopre
-         as a basis for the BST evaluation
+         call sorted() function on players.elements
+         collection. Basis for sorting is the player.hand.score
          */
-        
-        //the tree gets created here, with the basis of
-        //comparision being self.score from the blackjack game
-        //rules.
-        
+                
         return [Player]()
     }
     
 
     
-    /// <#Description#>
-    /// - Parameter player: <#player description#>
-    /// - Returns: <#description#>
+    /// Calculates players Blackjack score
+    /// - Parameter player: The selected player
+    /// - Returns: The score
     func score(of player: Player) -> Int {
 
         var total: Int = 0

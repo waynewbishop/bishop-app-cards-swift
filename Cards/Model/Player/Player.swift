@@ -12,11 +12,11 @@ class Player: Codable, Equatable, Identifiable {
     
     let name: String
     var uuid = UUID()
-
-    var participantUUID: UUID? //from GroupSession
     var hand = Hand()
     var outcome = Outcome.undecided
-    
+
+    var participantUUID: UUID? //from GroupSession
+
     public init(name: String = "default") {
         self.name = name
     }
