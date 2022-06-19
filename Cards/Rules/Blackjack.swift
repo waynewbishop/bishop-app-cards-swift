@@ -11,8 +11,9 @@ import Foundation
 class BlackJack : Playable {
     
     var description: String = "Blackjack"
-    var numCards: Int = 2
+    var numberOfCardsToDeal: Int = 2
 
+    
     /// Evaluate a specific player's hand
     /// - Parameter hand: A player's hand
     /// - Returns: A specific outcome enumeration
@@ -35,34 +36,17 @@ class BlackJack : Playable {
     
     
     
-    /// Find any winning hands
-    /// - Parameter hands: A collection of player's hands
-    /// - Returns: A filtered series of player's hands
-    func winning(players: [Player]) -> [Player] {
-        
-        let results = players.filter { player in
-            return self.score(of: player) == 21
-        }
-        
-        return results
-    }
-    
-    
-    
     /// Ranks a hand collection
     /// - Parameter hands: a collection of player's hands
     /// - Returns: An ordered collection of player's hands
     func rank(players: [Player]) -> [Player] {
-        
-        /*
-         call sorted() function on players.elements
-         collection. Basis for sorting is the player.hand.score
-         */
-                
-        return [Player]()
+       return players.sorted()
     }
     
-
+    
+    func score(of player: inout Player) {
+        print("something goes here..")
+    }
     
     /// Calculates players Blackjack score
     /// - Parameter player: The selected player

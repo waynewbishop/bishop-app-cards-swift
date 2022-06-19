@@ -22,24 +22,7 @@ class UIMessage: ObservableObject {
 
     func handle(message: TableMessage, from: UUID?) {
         
-        players = message.players
-        
-        //calculate player score and outcome
-        if message.game == .blackjack {
-            let rules: Playable = BlackJack()
-            var total: Int = 0
-                
-            for player in message.players.elements {
-                total = rules.score(of: player)
-                
-                player.hand.score = total
-                player.outcome = rules.evaluate(player: player)
-            }
-        }
-        
-        //todo: run a filter on players collection to determine if they are any safe
-        //players. If not the game is over..
-        
+        players = message.players        
         discard = message.discard
         deck = message.deck
         action = message.action

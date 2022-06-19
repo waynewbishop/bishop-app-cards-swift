@@ -29,4 +29,9 @@ class Player: Codable, Equatable, Identifiable {
     
 }
 
-            
+
+extension Player: Comparable {
+    static func < (lhs: Player, rhs: Player) -> Bool {
+        lhs.hand.score > rhs.hand.score
+    }
+}

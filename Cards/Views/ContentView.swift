@@ -31,7 +31,7 @@ struct ContentView: View {
             }
             
             else {
-                InfoView(cardTable: cardTable, uiMessage: uiMessage)
+                LobbyView(cardTable: cardTable, uiMessage: uiMessage)
             }
             
         }

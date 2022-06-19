@@ -18,9 +18,9 @@ class CardTable: ObservableObject {
     @ObservedObject var uiMessage = UIMessage()
 
     //todo: how to we broadcast the game being played is blackjack?
-    @Published var game: Playable? = BlackJack()
+    var game: Playable? = BlackJack()
+    var localPlayer = Player(name: "Wayne")
     
-    @Published var localPlayer = Player(name: "Wayne")
     @Published var groupSession: GroupSession<Cards>?
     @Published var response: String = "Waiting for players.."
     
@@ -159,23 +159,18 @@ class CardTable: ObservableObject {
         }
     }
 
-    
-    
-    //obtain a player's score
-    func newScore(of player: Player) -> Int {
-        if let rules = self.game {
-            let score = rules.score(of: player)
-            return score
-        }
-        return 0
-    }
 
     
     //MARK: Game Actions
     
         
     //randomize the deck
+    
     func deal() {
+        
+        // maybe
+        //func deal(game: Playable) {
+//        self.game = game // start of a new game
         
         guard self.groupSession != nil && tMessage.players.count > 1 else {
             return
@@ -194,7 +189,8 @@ class CardTable: ObservableObject {
                 }
             }
             
-            p.hand.score = newScore(of: p)
+            //calculate per player
+            
         }
 
         self.response = "dealing cards to players.."
@@ -236,6 +232,8 @@ class CardTable: ObservableObject {
             if let player = tMessage.players.deQueue() {
                 tMessage.holding.push(player)
             }
+            
+            
                             
             //post message
             tMessage.action = .hold

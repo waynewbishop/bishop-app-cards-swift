@@ -14,24 +14,14 @@ protocol Playable {
     /// The game name / description
     var description: String {get set}
     
-    var numCards: Int {get set} //set the number of initial cards assigned to each player (depends on game)
+    var numberOfCardsToDeal: Int {get} //set the number of initial cards assigned to each player (depends on game)
     
     /// Returns a player's  score
     /// - Parameter player: The specified player
     /// - Returns: A generic comparable value (e.g. Int)
     func score(of player:  Player) -> Int
-
     
-    /// Evaluate a specific player's hand
-    /// - Parameter hand: A player's hand
-    /// - Returns: A specific outcome enumeration
-    func evaluate(player: Player) -> Outcome
-    
-    
-    /// Find any winning hands
-    /// - Parameter hands: A collection of player's hands
-    /// - Returns: A filtered series of player's hands
-    func winning(players: [Player]) -> [Player]
+//    func score(of player: inout Player) //refactor score calculations to make this work.. 
     
     
     /// Ranks a hand collection
