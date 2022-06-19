@@ -8,7 +8,7 @@
 import SwiftUI
 import GroupActivities
 
-struct InfoView: View {
+struct LobbyView: View {
     
     @ObservedObject var cardTable: CardTable
     @ObservedObject var uiMessage: UIMessage
@@ -45,6 +45,6 @@ struct InfoView: View {
 
 struct InfoView_Previews: PreviewProvider {
     static var previews: some View {
-        InfoView(cardTable: CardTable(), uiMessage: UIMessage())
+        LobbyView(cardTable: CardTable(), uiMessage: UIMessage())
     }
 }
