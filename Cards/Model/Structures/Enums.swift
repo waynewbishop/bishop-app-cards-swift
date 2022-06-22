@@ -8,11 +8,11 @@
 import Foundation
 
 
-/*
- describes the action associated with the latest mutated state
- of TableMessage
- */
-
+//the type of game being played
+enum GameType: String, Codable, CaseIterable, Identifiable {
+    case Blackjack, Poker, Hearts, undecided
+    var id: Self { self }
+}
 
 //player actions (that effect the card table)
 enum Action: Codable {
@@ -28,9 +28,4 @@ enum Outcome: Codable {
 //game status - may not be required
 enum GameStatus: Codable {
     case waiting, started, active, completed
-}
-
-//the type of game being played
-enum GameType: Codable {
-    case blackjack, hearts, poker, undecided
 }

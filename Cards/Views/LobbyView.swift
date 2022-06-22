@@ -7,18 +7,26 @@
 
 import SwiftUI
 import GroupActivities
-
+import UIKit
 
 struct LobbyView: View {
     
+    @StateObject var groupStateObserver = GroupStateObserver()
+    
     @ObservedObject var cardTable: CardTable
     @ObservedObject var uiMessage: UIMessage
-    @StateObject var groupStateObserver = GroupStateObserver()
+    
+    @State private var screenName: String = ""
+    @State private var selectedFlavor: GameType = .Blackjack
+    @State private var buttonLabel: String = "Start Game"
+    
+    @State var isSharingControllerPresented: Bool =  false
+    
 
     var body: some View {
-                
-        
+                        
         ZStack {
+            
             VStack {
                 GameImage(name: "suit.spade.fill", width: 50, height: 50)
                 
@@ -27,22 +35,68 @@ struct LobbyView: View {
                     .fontWeight(.bold)
                     .padding(7)
                 
-                Text("Cards allows you to play the game of your choice when connected with friends via Facetime or iMessage. Choose the game you'd like to play.")
+                
+                Text("Cards allows you to play the game of your choice when connected with friends via Facetime or iMessage.")
                     .font(.subheadline)
                     .multilineTextAlignment(.leading)
-                    .frame(width: 300)
-             
+                    .padding(.bottom)
                 
-                if cardTable.groupSession == nil && groupStateObserver.isEligibleForGroupSession {
-                    
-                    //todo: check for a localuser.name. If empty, present the settings infosheet for them
-                    //to complete.
-                    
-                    Button(role: .none, action: cardTable.startSharing) {
-                        Text("Start")
-                            .font(.body)
+                
+                TextField(
+                    "Screen Name",
+                    text: $screenName
+                )
+                .disableAutocorrection(true)
+                .textFieldStyle(.roundedBorder)
+                .padding([.bottom, ], 40)
+                     
+                /*
+                 only present starting game options for the person
+                 who initiates the game session. whoever starts their
+                 app after being invited will receive their session id
+                 afterwards
+                 */
+                
+                if groupStateObserver.isEligibleForGroupSession == false {
+                    HStack {
+                        Text("Choose the game you'd like to play")
+                            .font(.caption)
+                            .multilineTextAlignment(.leading)
+                            .padding(.bottom)
+                        
+                        Spacer()
                     }
+                        
+                    Picker("GameSelection", selection: $selectedFlavor) {
+                        Text("Blackjack").tag(GameType.Blackjack)
+                        Text("Poker").tag(GameType.Poker)
+                        Text("Hearts").tag(GameType.Hearts)
+                    }
+                    .pickerStyle(.segmented)
+                    .padding([.bottom], 20)
                 }
+                
+
+                if cardTable.groupSession == nil {
+                    
+                    //todo: wrap all of this into a navigationView
+                    //this lobbyView should also be the default view
+                    //when first starting the game.
+                    
+                    Button  {
+                        if groupStateObserver.isEligibleForGroupSession {
+                            cardTable.startSharing()
+                            buttonLabel = "Join Game"
+                        }
+                        else {
+                            self.isSharingControllerPresented = true
+                        }
+                    } label: {
+                        Text(buttonLabel)
+                    }
+                    // .sheet(isPresented: $isSharingControllerPresented, content:   )
+                }
+                
                 
                 Spacer()
                     .frame(width: UIScreen.main.bounds.width, height: 90)
@@ -51,6 +105,7 @@ struct LobbyView: View {
         }
     }
 }
+
 
 struct InfoView_Previews: PreviewProvider {
     static var previews: some View {

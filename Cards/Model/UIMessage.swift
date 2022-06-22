@@ -18,6 +18,7 @@ class UIMessage: ObservableObject {
   @Published var holding = Stack<Player>()
   @Published var action = Action.start
   @Published var status = GameStatus.waiting
+  @Published var game = GameType.undecided
                 
 
     func handle(message: TableMessage, from: UUID?) {
@@ -29,6 +30,7 @@ class UIMessage: ObservableObject {
         holding = message.holding
         action = message.action
         status = message.status
+        game = message.game
     }
     
     //test multiple users
