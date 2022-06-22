@@ -24,12 +24,13 @@ enum Outcome: Codable {
     case bust, winner, safe, hold, fold, undecided
 }
 
+
 //game status - may not be required
-enum Status: Codable {
+enum GameStatus: Codable {
     case waiting, started, active, completed
 }
 
 //the type of game being played
-enum Game: Codable {
+enum GameType: Codable {
     case blackjack, hearts, poker, undecided
 }

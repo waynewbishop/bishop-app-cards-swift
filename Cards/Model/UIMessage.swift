@@ -17,7 +17,7 @@ class UIMessage: ObservableObject {
   @Published var deck = Deck()
   @Published var holding = Stack<Player>()
   @Published var action = Action.start
-  @Published var status = Status.waiting
+  @Published var status = GameStatus.waiting
                 
 
     func handle(message: TableMessage, from: UUID?) {
@@ -34,6 +34,8 @@ class UIMessage: ObservableObject {
     //test multiple users
     func testMultiUser() -> UIMessage {
         
+        //set the status and points for these specific players
+        
         let testMessage = UIMessage()
         testMessage.players.enQueue(Player(name: "Sam Warfield"))
         testMessage.players.enQueue(Player(name: "Wayne Bishop"))
@@ -47,7 +49,7 @@ class UIMessage: ObservableObject {
     func testSingleUser() -> UIMessage {
         
         let testMessage = UIMessage()
-        testMessage.players.enQueue(Player(name: "Ben Wong"))
+        testMessage.players.enQueue(Player(name: "Ben-Fong Torres"))
         return testMessage
     }
 }

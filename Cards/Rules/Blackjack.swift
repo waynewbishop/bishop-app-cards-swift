@@ -17,21 +17,26 @@ class BlackJack : Playable {
     /// Evaluate a specific player's hand
     /// - Parameter hand: A player's hand
     /// - Returns: A specific outcome enumeration
-    func evaluate(player: Player) -> Outcome {
+    func evaluate(player: inout Player) {
         
         let score = self.score(of: player)
         let scoreRange = 1..<21
+        var result = Outcome.undecided
         
         if score == scoreRange.upperBound {
-            return .winner
+            result = .winner
         }
         
         else if scoreRange.contains(score) {
-            return .safe
+            result = .safe
         }
         else {
-            return .bust
+            result = .bust
         }
+        
+        //assign score and outcome
+        player.hand.score = score
+        player.outcome = result
     }
     
     
@@ -43,10 +48,6 @@ class BlackJack : Playable {
        return players.sorted()
     }
     
-    
-    func score(of player: inout Player) {
-        print("something goes here..")
-    }
     
     /// Calculates players Blackjack score
     /// - Parameter player: The selected player

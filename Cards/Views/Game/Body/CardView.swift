@@ -33,6 +33,7 @@ struct CardRow: View {
     
     var player: Player
     var cardTable: CardTable
+    var checkColor = Color.gray
         
     var body: some View {
         
@@ -59,6 +60,15 @@ struct CardRow: View {
             if player == cardTable.current {
                 GameImage(name: "checkmark.circle.fill", width: 20, height: 20, color: Color.green)
             }
+            
+            else if player.outcome == .winner {
+                GameImage(name: "checkmark.seal.fill", width: 20, height: 20, color: Color.yellow)
+            }
+            
+            //todo: run and load other images
+            //based on the player.outcome status.
+            //fold, hold and bust
+                        
             else {
                 GameImage(name: "checkmark.circle.fill", width: 20, height: 20, color: Color.gray)
             }

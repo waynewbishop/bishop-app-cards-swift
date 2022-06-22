@@ -8,6 +8,7 @@
 import SwiftUI
 import GroupActivities
 
+
 struct LobbyView: View {
     
     @ObservedObject var cardTable: CardTable
@@ -17,28 +18,36 @@ struct LobbyView: View {
     var body: some View {
                 
         
-        VStack {
-            GameImage(name: "person.2.circle.fill", width: 90, height: 90)
-            
-            Text("Welcome to Cards! This game allows you to play Blackjack with two or more friends when connected through Facetime.")
-                .font(.body)
-                .multilineTextAlignment(.leading)
-                .frame(width: 310)
-         
-            
-            if cardTable.groupSession == nil && groupStateObserver.isEligibleForGroupSession {
+        ZStack {
+            VStack {
+                GameImage(name: "suit.spade.fill", width: 50, height: 50)
                 
-                //todo: check for a localuser.name. If empty, present the settings infosheet for them
-                //to complete.
+                Text("Welcome to Cards")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .padding(7)
                 
-                Button(role: .none, action: cardTable.startSharing) {
-                    Text("Start")
-                        .font(.body)
+                Text("Cards allows you to play the game of your choice when connected with friends via Facetime or iMessage. Choose the game you'd like to play.")
+                    .font(.subheadline)
+                    .multilineTextAlignment(.leading)
+                    .frame(width: 300)
+             
+                
+                if cardTable.groupSession == nil && groupStateObserver.isEligibleForGroupSession {
+                    
+                    //todo: check for a localuser.name. If empty, present the settings infosheet for them
+                    //to complete.
+                    
+                    Button(role: .none, action: cardTable.startSharing) {
+                        Text("Start")
+                            .font(.body)
+                    }
                 }
+                
+                Spacer()
+                    .frame(width: UIScreen.main.bounds.width, height: 90)
             }
-            
-            Spacer()
-                .frame(width: UIScreen.main.bounds.width, height: 90)
+            .frame(width: 300)
         }
     }
 }

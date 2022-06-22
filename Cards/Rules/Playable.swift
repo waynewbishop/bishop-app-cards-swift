@@ -16,6 +16,8 @@ protocol Playable {
     
     var numberOfCardsToDeal: Int {get} //set the number of initial cards assigned to each player (depends on game)
     
+    func evaluate(player: inout Player)
+    
     /// Returns a player's  score
     /// - Parameter player: The specified player
     /// - Returns: A generic comparable value (e.g. Int)

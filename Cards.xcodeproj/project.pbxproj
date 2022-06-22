@@ -162,7 +162,6 @@
 				DAE7D602273C5A7900A0C8F0 /* ContentView.swift */,
 				DAA11A8C28497C9C00C67B26 /* LobbyView.swift */,
 				DA970DA3282D9AE1007EDB7A /* Game */,
-				DA970DA2282D9ACE007EDB7A /* Account */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -174,13 +173,6 @@
 				DAD912B328542B1A00CE281A /* Blackjack.swift */,
 			);
 			path = Rules;
-			sourceTree = "<group>";
-		};
-		DA970DA2282D9ACE007EDB7A /* Account */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Account;
 			sourceTree = "<group>";
 		};
 		DA970DA3282D9AE1007EDB7A /* Game */ = {

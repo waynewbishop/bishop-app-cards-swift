@@ -10,6 +10,8 @@ import Combine
 import SwiftUI
 import GroupActivities
 
+
+
 @MainActor
 
 class CardTable: ObservableObject {
@@ -189,8 +191,8 @@ class CardTable: ObservableObject {
                 }
             }
             
-            //calculate per player
-            
+            //calculate score and outcome
+           // game?.evaluate(player: &p) //this doesn't work. Need to pass value and return tuple
         }
 
         self.response = "dealing cards to players.."
@@ -232,8 +234,7 @@ class CardTable: ObservableObject {
             if let player = tMessage.players.deQueue() {
                 tMessage.holding.push(player)
             }
-            
-            
+                        
                             
             //post message
             tMessage.action = .hold
