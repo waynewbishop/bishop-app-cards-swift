@@ -21,18 +21,10 @@ struct ContentView: View {
             Spacer()
                 .frame(width: UIScreen.main.bounds.width, height: 1)
             
-            //check game status
-            if uiMessage.status == .waiting && uiMessage.players.count > 0 {
-                
-                HeaderView(cardTable: cardTable)
-                CardTableView(cardTable: cardTable, uiMessage: uiMessage)
-                ControlBar(cardTable: cardTable, uiMessage: uiMessage)
-                
-            }
-            
-            else {
-                LobbyView(cardTable: cardTable, uiMessage: uiMessage)
-            }
+                        
+            HeaderView(cardTable: cardTable)
+            CardTableView(cardTable: cardTable, uiMessage: uiMessage)
+            ControlBar(cardTable: cardTable, uiMessage: uiMessage)
             
         }
         .task {

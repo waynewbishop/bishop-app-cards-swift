@@ -8,6 +8,8 @@
 import SwiftUI
 import GroupActivities
 import UIKit
+import Foundation
+
 
 struct LobbyView: View {
     
@@ -17,7 +19,7 @@ struct LobbyView: View {
     @ObservedObject var uiMessage: UIMessage
     
     @State private var screenName: String = ""
-    @State private var selectedFlavor: GameType = .Blackjack
+    @State private var selectedGame: GameType = .Blackjack
     @State private var buttonLabel: String = "Start Game"
     
     @State var isSharingControllerPresented: Bool =  false
@@ -67,7 +69,7 @@ struct LobbyView: View {
                         Spacer()
                     }
                         
-                    Picker("GameSelection", selection: $selectedFlavor) {
+                    Picker("GameSelection", selection: $selectedGame) {
                         Text("Blackjack").tag(GameType.Blackjack)
                         Text("Poker").tag(GameType.Poker)
                         Text("Hearts").tag(GameType.Hearts)
@@ -83,21 +85,21 @@ struct LobbyView: View {
                     //this lobbyView should also be the default view
                     //when first starting the game.
                     
-                    Button  {
+                    Button (buttonLabel)  {
                         if groupStateObserver.isEligibleForGroupSession {
                             cardTable.startSharing()
                             buttonLabel = "Join Game"
                         }
                         else {
                             self.isSharingControllerPresented = true
+                            buttonLabel = "Start Game"
                         }
-                    } label: {
-                        Text(buttonLabel)
                     }
-                    // .sheet(isPresented: $isSharingControllerPresented, content:   )
+                    .sheet(isPresented: $isSharingControllerPresented) {
+                       // GroupActivitySharingView()
+                    }
+
                 }
-                
-                
                 Spacer()
                     .frame(width: UIScreen.main.bounds.width, height: 90)
             }
@@ -107,7 +109,8 @@ struct LobbyView: View {
 }
 
 
-struct InfoView_Previews: PreviewProvider {
+
+struct LobbyView_Previews: PreviewProvider {
     static var previews: some View {
         LobbyView(cardTable: CardTable(), uiMessage: UIMessage())
     }

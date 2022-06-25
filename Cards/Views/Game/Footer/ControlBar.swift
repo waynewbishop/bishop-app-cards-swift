@@ -13,6 +13,7 @@ struct ControlBar: View {
     
     @ObservedObject var cardTable: CardTable
     @ObservedObject var uiMessage: UIMessage
+    @State private var dealState: Bool = false
     
     var body: some View {
         
@@ -25,21 +26,28 @@ struct ControlBar: View {
                     GameImage(name: "play.circle", color: Color.green, label: "Deal")
                 }
             }
+            else {
+                GameImage(name: "play.circle", color: Color.gray, label: "Deal")
+            }
             
             //todo: refactor this to support a single set of buttons that
             //can be enabled or disabled depending on the game state and/or
             //other specific factors
             
-            if cardTable.groupSession != nil && uiMessage.status == .active {
+            if uiMessage.status == .active && uiMessage.players.count > 1 {
                 if cardTable.isMyTurn == true {
+                    
+                    Button  {
+                        cardTable.deal()
+                    } label: {
+                        GameImage(name: "play.circle", color: Color.gray, label: "Deal")
+                    }
                         
                     Button  {
                         cardTable.hit()
                     } label: {
                         GameImage(name: "hand.thumbsup.circle", color: Color.green, label: "Hit")
                     }
-
-
                     
                     Button  {
                         cardTable.hold()
@@ -66,20 +74,6 @@ struct ControlBar: View {
         .frame(width: 300, height: 70)
     }
 }
-
-
-/*
-struct GameCard: View {
-    
-    var card: Card
-    
-    var body: some View {
-        //code goes here..
-        //todo: now build the UI to create a Swift native card
-        //representation..
-    }
-}
-*/
 
  
 //custom image definition

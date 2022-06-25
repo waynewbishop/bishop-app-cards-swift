@@ -22,7 +22,7 @@ struct MainView: View {
             
             ScoreView(cardTable: cardTable, uiMessage: uiMessage)
                 .tabItem {
-                    Label("Score", systemImage: "line.3.horizontal")
+                    Label("Score", systemImage: "number.circle")
                 }
         }
     }

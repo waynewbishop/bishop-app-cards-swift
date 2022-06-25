@@ -15,7 +15,7 @@ struct CardsApp: App {
     
     var body: some Scene {
         WindowGroup {
-            MainView(cardTable: cardTable, uiMessage: uiMessage)
+            LobbyView(cardTable: cardTable, uiMessage: uiMessage)
         }
     }
     

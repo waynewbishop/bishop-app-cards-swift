@@ -7,6 +7,9 @@
 
 import SwiftUI
 import GroupActivities
+import UIKit
+import Foundation
+
 
 struct HeaderView: View {
     
@@ -15,14 +18,21 @@ struct HeaderView: View {
     var body: some View {
         
         VStack {
-            HStack {
-                Text("Cards")
+            HStack (alignment: .center) {
+                //cardTable.tMessage.game.rawvalue
+                Text("Blackjack")
                     .font(.title)
                     .fontWeight(.bold)
                 .multilineTextAlignment(.leading)
-                Spacer()                
+                
+                Spacer()
+                
+                Button(action: cardTable.startSharing) {
+                    Text("Invite")
+                }
+                .font(.subheadline)
             }
-            
+                        
             HStack {
                 Text(cardTable.response)
                     .font(.subheadline)
@@ -31,10 +41,28 @@ struct HeaderView: View {
                 Spacer()
             }
         }
-        .padding(.leading, 10.0)
+        .padding(10.0)
         .frame(width: 300, height: 70)
     }
 }
+
+
+
+struct GroupActivitySharingView: UIViewControllerRepresentable {
+    
+    var activity = Cards()
+    typealias UIViewControllerType = GroupActivitySharingController
+    
+    func makeUIViewController(context: Context) -> GroupActivitySharingController {
+         return try! GroupActivitySharingController(activity)
+    }
+    
+    func updateUIViewController(_ uiViewController: GroupActivitySharingController, context: Context) {
+        //what goes here?
+    }
+            
+}
+
 
 
 struct HeaderView_Previews: PreviewProvider {
