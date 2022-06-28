@@ -20,7 +20,7 @@ class CardTable: ObservableObject {
 
     //todo: how to we broadcast the game being played is blackjack?
     var game: Playable? = BlackJack()
-    var localPlayer = Player(name: "Wayne")
+    @Published var localPlayer = Player(name: "Wayne")
     
     @Published var groupSession: GroupSession<Cards>?
     @Published var response: String = "Waiting for players.."

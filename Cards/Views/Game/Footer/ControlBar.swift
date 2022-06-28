@@ -21,6 +21,7 @@ struct ControlBar: View {
                         
             if uiMessage.status == .waiting && uiMessage.players.count > 1 {
                 Button  {
+                    dealState.toggle()
                     cardTable.deal()
                 } label: {
                     GameImage(name: "play.circle", color: Color.green, label: "Deal")

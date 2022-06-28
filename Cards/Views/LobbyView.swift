@@ -12,24 +12,19 @@ import Foundation
 
 
 struct LobbyView: View {
-    
-    
+        
     @ObservedObject var cardTable: CardTable
     @ObservedObject var uiMessage: UIMessage
     
     @StateObject var groupStateObserver = GroupStateObserver()
     
-    @State private var screenName: String = ""
     @State private var selectedGame: GameType = .Blackjack
     @State private var buttonLabel: String = "Start Game"
     @State private var isGamePresented = false
-    
-    
 
+    
     var body: some View {
-                        
         ZStack {
-            
             VStack {
                 GameImage(name: "suit.spade.fill", width: 50, height: 50)
                 
@@ -43,11 +38,15 @@ struct LobbyView: View {
                     .font(.subheadline)
                     .multilineTextAlignment(.leading)
                     .padding(.bottom)
-                
+            
+                /*
+                 ObservableObject will provide you with a binding to any contained property automatically via the $-prefix syntax:
+
+                 */
                 
                 TextField(
                     "Screen Name",
-                    text: $screenName
+                    text: $cardTable.localPlayer.name
                 )
                 .disableAutocorrection(true)
                 .textFieldStyle(.roundedBorder)
@@ -79,13 +78,9 @@ struct LobbyView: View {
                     .padding([.bottom], 20)
                 }
                 
-                    
-                //todo: action invokes a cardTableView as a model windoww.
             
                 Button (buttonLabel)  {
-                    
                     isGamePresented.toggle()
-                    
                     if groupStateObserver.isEligibleForGroupSession {
                         buttonLabel = "Join Game"
                     }
@@ -93,8 +88,8 @@ struct LobbyView: View {
                         buttonLabel = "Start Game"
                     }
                 }
-                
                 //present as a modal dialog
+
                 .fullScreenCover(isPresented: $isGamePresented) {
                     MainView(cardTable: cardTable, uiMessage: uiMessage)
                 }

@@ -10,7 +10,7 @@ import Foundation
 
 class Player: Codable, Equatable, Identifiable {
     
-    let name: String
+    var name: String
     var uuid = UUID()
     var hand = Hand()
     var outcome = Outcome.undecided

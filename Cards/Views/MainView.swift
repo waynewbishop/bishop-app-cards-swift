@@ -9,10 +9,11 @@ import SwiftUI
 
 struct MainView: View {
     
-    @Environment(\.presentationMode) var presentationMode
+    //@Environment(\.presentationMode) var presentationMode
     
     @ObservedObject var cardTable: CardTable
     @ObservedObject var uiMessage: UIMessage
+
     
     var body: some View {
         
