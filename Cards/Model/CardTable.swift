@@ -229,11 +229,7 @@ class CardTable: ObservableObject {
         
         if self.isMyTurn == true {
             
-            //move to finished
-            if let player = tMessage.players.deQueue() {
-                tMessage.holding.push(player)
-            }
-                        
+            //reset the status of the queued player outcome to .hold
                             
             //post message
             tMessage.action = .hold

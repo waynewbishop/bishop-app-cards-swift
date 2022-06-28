@@ -14,6 +14,8 @@ import Foundation
 struct HeaderView: View {
     
     @ObservedObject var cardTable: CardTable
+    @StateObject var groupStateObserver = GroupStateObserver()
+    @State var isSharingControllerPresented: Bool =  false
 
     var body: some View {
         
@@ -27,9 +29,10 @@ struct HeaderView: View {
                 
                 Spacer()
                 
-                Button(action: cardTable.startSharing) {
-                    Text("Invite")
+                Button ("Invite") {
+                    isSharingControllerPresented = true
                 }
+                .sheet(isPresented: $isSharingControllerPresented, content: SharePlayView.init)
                 .font(.subheadline)
             }
                         
@@ -48,7 +51,7 @@ struct HeaderView: View {
 
 
 
-struct GroupActivitySharingView: UIViewControllerRepresentable {
+struct SharePlayView: UIViewControllerRepresentable {
     
     var activity = Cards()
     typealias UIViewControllerType = GroupActivitySharingController
@@ -60,7 +63,6 @@ struct GroupActivitySharingView: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: GroupActivitySharingController, context: Context) {
         //what goes here?
     }
-            
 }
 
 

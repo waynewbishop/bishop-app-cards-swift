@@ -15,7 +15,6 @@ class UIMessage: ObservableObject {
   @Published var players = Queue<Player>()
   @Published var discard = Array<Card>()
   @Published var deck = Deck()
-  @Published var holding = Stack<Player>()
   @Published var action = Action.start
   @Published var status = GameStatus.waiting
   @Published var game = GameType.undecided
@@ -27,7 +26,6 @@ class UIMessage: ObservableObject {
         discard = message.discard
         deck = message.deck
         action = message.action
-        holding = message.holding
         action = message.action
         status = message.status
         game = message.game

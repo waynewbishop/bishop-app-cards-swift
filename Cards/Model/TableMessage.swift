@@ -16,7 +16,6 @@ struct TableMessage: Codable {
     var players = Queue<Player>()
     var discard = Array<Card>()
     var deck = Deck()
-    var holding = Stack<Player>()
     var action = Action.start
     var status = GameStatus.waiting
     var game = GameType.undecided

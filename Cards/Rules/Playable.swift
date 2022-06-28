@@ -9,7 +9,6 @@ import Foundation
 
 
 protocol Playable {
-
     
     /// The game name / description
     var description: String {get set}

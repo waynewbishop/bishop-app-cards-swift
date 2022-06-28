@@ -23,6 +23,7 @@ class Unit : Equatable, Codable {
         self.secondary = secondary
     }
     
+    //todo: where's the equatable protocol conformance??
     
     //test primary and seconday scores
     static public func == (lhs: Unit, rhs: Unit) -> Bool {

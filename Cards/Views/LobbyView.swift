@@ -13,16 +13,17 @@ import Foundation
 
 struct LobbyView: View {
     
-    @StateObject var groupStateObserver = GroupStateObserver()
     
     @ObservedObject var cardTable: CardTable
     @ObservedObject var uiMessage: UIMessage
     
+    @StateObject var groupStateObserver = GroupStateObserver()
+    
     @State private var screenName: String = ""
     @State private var selectedGame: GameType = .Blackjack
     @State private var buttonLabel: String = "Start Game"
+    @State private var isGamePresented = false
     
-    @State var isSharingControllerPresented: Bool =  false
     
 
     var body: some View {
@@ -78,28 +79,26 @@ struct LobbyView: View {
                     .padding([.bottom], 20)
                 }
                 
-
-                if cardTable.groupSession == nil {
                     
-                    //todo: wrap all of this into a navigationView
-                    //this lobbyView should also be the default view
-                    //when first starting the game.
+                //todo: action invokes a cardTableView as a model windoww.
+            
+                Button (buttonLabel)  {
                     
-                    Button (buttonLabel)  {
-                        if groupStateObserver.isEligibleForGroupSession {
-                            cardTable.startSharing()
-                            buttonLabel = "Join Game"
-                        }
-                        else {
-                            self.isSharingControllerPresented = true
-                            buttonLabel = "Start Game"
-                        }
+                    isGamePresented.toggle()
+                    
+                    if groupStateObserver.isEligibleForGroupSession {
+                        buttonLabel = "Join Game"
                     }
-                    .sheet(isPresented: $isSharingControllerPresented) {
-                       // GroupActivitySharingView()
+                    else {
+                        buttonLabel = "Start Game"
                     }
-
                 }
+                
+                //present as a modal dialog
+                .fullScreenCover(isPresented: $isGamePresented) {
+                    MainView(cardTable: cardTable, uiMessage: uiMessage)
+                }
+                
                 Spacer()
                     .frame(width: UIScreen.main.bounds.width, height: 90)
             }

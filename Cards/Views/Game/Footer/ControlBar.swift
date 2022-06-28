@@ -30,9 +30,6 @@ struct ControlBar: View {
                 GameImage(name: "play.circle", color: Color.gray, label: "Deal")
             }
             
-            //todo: refactor this to support a single set of buttons that
-            //can be enabled or disabled depending on the game state and/or
-            //other specific factors
             
             if uiMessage.status == .active && uiMessage.players.count > 1 {
                 if cardTable.isMyTurn == true {
