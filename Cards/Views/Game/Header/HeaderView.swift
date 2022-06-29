@@ -21,8 +21,7 @@ struct HeaderView: View {
         
         VStack {
             HStack (alignment: .center) {
-                //cardTable.tMessage.game.rawvalue
-                Text("Blackjack")
+                Text(cardTable.game!.description)
                     .font(.title)
                     .fontWeight(.bold)
                 .multilineTextAlignment(.leading)

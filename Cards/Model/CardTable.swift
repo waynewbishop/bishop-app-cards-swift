@@ -18,9 +18,8 @@ class CardTable: ObservableObject {
     var tMessage = TableMessage()
     @ObservedObject var uiMessage = UIMessage()
 
-    //todo: how to we broadcast the game being played is blackjack?
-    var game: Playable? = BlackJack()
-    @Published var localPlayer = Player(name: "Wayne")
+    @Published var game: Playable? = BlackJack()
+    @Published var localPlayer = Player()
     
     @Published var groupSession: GroupSession<Cards>?
     @Published var response: String = "Waiting for players.."

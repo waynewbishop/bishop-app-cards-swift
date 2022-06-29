@@ -38,6 +38,7 @@
 		DAE7D634273C5B8D00A0C8F0 /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE7D633273C5B8D00A0C8F0 /* Unit.swift */; };
 		DAE7D638273C5C4200A0C8F0 /* Suit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE7D637273C5C4200A0C8F0 /* Suit.swift */; };
 		DAE7D641273C89C400A0C8F0 /* Hand.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE7D640273C89C400A0C8F0 /* Hand.swift */; };
+		DAF62655286BCFCE0063763C /* Poker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF62654286BCFCE0063763C /* Poker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,7 @@
 		DAE7D633273C5B8D00A0C8F0 /* Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		DAE7D637273C5C4200A0C8F0 /* Suit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Suit.swift; sourceTree = "<group>"; };
 		DAE7D640273C89C400A0C8F0 /* Hand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hand.swift; sourceTree = "<group>"; };
+		DAF62654286BCFCE0063763C /* Poker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 			children = (
 				DAE7D62F273C5B7000A0C8F0 /* Playable.swift */,
 				DAD912B328542B1A00CE281A /* Blackjack.swift */,
+				DAF62654286BCFCE0063763C /* Poker.swift */,
 			);
 			path = Rules;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 				DAE7D632273C5B7F00A0C8F0 /* Player.swift in Sources */,
 				DA478EDE2823140F00B42EB5 /* Cards.swift in Sources */,
 				DA29B120274715AB00B53871 /* Queue.swift in Sources */,
+				DAF62655286BCFCE0063763C /* Poker.swift in Sources */,
 				DAE7D638273C5C4200A0C8F0 /* Suit.swift in Sources */,
 				DA478EE0282465E600B42EB5 /* TableMessage.swift in Sources */,
 				DA87D0F52819ED1E00888F2D /* Enums.swift in Sources */,

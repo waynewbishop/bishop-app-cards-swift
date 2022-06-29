@@ -21,6 +21,8 @@ struct LobbyView: View {
     @State private var selectedGame: GameType = .Blackjack
     @State private var buttonLabel: String = "Start Game"
     @State private var isGamePresented = false
+    @State private var screenName: String = ""
+    @State private var isStartDisabled: Bool = true
 
     
     var body: some View {
@@ -40,14 +42,28 @@ struct LobbyView: View {
                     .padding(.bottom)
             
                 /*
-                 ObservableObject will provide you with a binding to any contained property automatically via the $-prefix syntax:
-
+                 ObservableObject will provide you with a binding to any contained property
+                 automatically via the $-prefix syntax:
                  */
                 
                 TextField(
                     "Screen Name",
-                    text: $cardTable.localPlayer.name
+                    text: $screenName
                 )
+                .onChange(of: screenName, perform: { newValue in
+                    if newValue.count == 0 {
+                       isStartDisabled = true
+                    }
+                    else {
+                        if selectedGame == .Blackjack {
+                            isStartDisabled = false
+                            cardTable.localPlayer.name = newValue
+                        }
+                    }
+                    
+                    print(newValue)
+                })
+                
                 .disableAutocorrection(true)
                 .textFieldStyle(.roundedBorder)
                 .padding([.bottom, ], 40)
@@ -68,12 +84,27 @@ struct LobbyView: View {
                         
                         Spacer()
                     }
-                        
+                    
                     Picker("GameSelection", selection: $selectedGame) {
                         Text("Blackjack").tag(GameType.Blackjack)
                         Text("Poker").tag(GameType.Poker)
                         Text("Hearts").tag(GameType.Hearts)
                     }
+                    .onChange(of: selectedGame, perform: { newValue in
+
+                        //define protocol
+                        if newValue == .Blackjack {
+                            if screenName.count > 0 {
+                                cardTable.game = Poker()
+                                isStartDisabled = false
+                            }
+                        }
+                        else if (newValue == .Poker) || (newValue == .Hearts) {
+                            isStartDisabled = true
+                        }
+                            
+                    })
+                    
                     .pickerStyle(.segmented)
                     .padding([.bottom], 20)
                 }
@@ -88,8 +119,9 @@ struct LobbyView: View {
                         buttonLabel = "Start Game"
                     }
                 }
+                .disabled(isStartDisabled)
+                
                 //present as a modal dialog
-
                 .fullScreenCover(isPresented: $isGamePresented) {
                     MainView(cardTable: cardTable, uiMessage: uiMessage)
                 }
