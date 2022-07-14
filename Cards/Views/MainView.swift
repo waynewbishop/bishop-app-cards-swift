@@ -13,7 +13,6 @@ struct MainView: View {
     
     @ObservedObject var cardTable: CardTable
     @ObservedObject var uiMessage: UIMessage
-
     
     var body: some View {
         

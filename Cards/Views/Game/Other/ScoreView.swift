@@ -29,15 +29,24 @@ struct ScoreView: View {
                     .frame(height: 50)
                 
                 Text("some list goes here..")
-                
             }
             
             Spacer()
+            
+            Menu("Options") {
+                Button("Order Now", action: placeOrder)
+                Button("Adjust Order", action: adjustOrder)
+                Button("Cancel", action: cancelOrder)
+            }
+            
         }
         
     }
-    
 }
+
+func placeOrder() {}
+func adjustOrder() {}
+func cancelOrder() {}
 
 
 struct historyView_Previews: PreviewProvider {

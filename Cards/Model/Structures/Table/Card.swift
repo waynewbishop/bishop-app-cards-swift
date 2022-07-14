@@ -8,7 +8,7 @@
 import Foundation
 
 
-public class Card : Comparable, Codable, Identifiable {
+public class Card : Comparable, Codable, Identifiable, Equatable {
    
    var uuid = UUID()
    var suit: Suit

@@ -12,8 +12,8 @@ protocol Playable {
     
     /// The game name / description
     var description: String {get set}
-    
     var numberOfCardsToDeal: Int {get} //set the number of initial cards assigned to each player (depends on game)
+    
     
     func evaluate(player: inout Player)
     

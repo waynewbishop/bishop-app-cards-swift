@@ -46,10 +46,10 @@ class CardTable: ObservableObject {
         }
         return false
     }
-        
+
+    
     
     //MARK: Group Messaging
-
     
     //start group activity
     func startSharing() {
@@ -140,13 +140,19 @@ class CardTable: ObservableObject {
     
     
     
-    func reset() {
+    func newDeal() {
 
         //todo: should there be a dedicated reset button or
         //should this process be added to an existing process?
         
         uiMessage = UIMessage()
         tMessage = TableMessage()
+        
+        /*
+         todo: we just reset the cardTable objects but keep all
+         exiting group session information active. this includes the
+         game type. 
+         */
         
         // teardown existing groupSession.
         sessionMessenger = nil
@@ -157,6 +163,9 @@ class CardTable: ObservableObject {
             groupSession = nil
             self.startSharing()
         }
+        
+        self.deal()
+        
     }
 
 
@@ -165,6 +174,10 @@ class CardTable: ObservableObject {
     
         
     //randomize the deck
+    
+    func start(game: Playable) {
+        
+    }
     
     func deal() {
         

@@ -23,6 +23,7 @@
 		DAA11A892838883800C67B26 /* UIMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA11A882838883800C67B26 /* UIMessage.swift */; };
 		DAA11A8B283ECBEC00C67B26 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA11A8A283ECBEC00C67B26 /* CardView.swift */; };
 		DAA11A8D28497C9C00C67B26 /* LobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA11A8C28497C9C00C67B26 /* LobbyView.swift */; };
+		DAD846342880D5A100B6B3B7 /* ShareController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD846332880D5A100B6B3B7 /* ShareController.swift */; };
 		DAD912B428542B1A00CE281A /* Blackjack.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD912B328542B1A00CE281A /* Blackjack.swift */; };
 		DAE7D601273C5A7900A0C8F0 /* CardsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE7D600273C5A7900A0C8F0 /* CardsApp.swift */; };
 		DAE7D603273C5A7900A0C8F0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE7D602273C5A7900A0C8F0 /* ContentView.swift */; };
@@ -76,6 +77,7 @@
 		DAA11A882838883800C67B26 /* UIMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMessage.swift; sourceTree = "<group>"; };
 		DAA11A8A283ECBEC00C67B26 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		DAA11A8C28497C9C00C67B26 /* LobbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyView.swift; sourceTree = "<group>"; };
+		DAD846332880D5A100B6B3B7 /* ShareController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareController.swift; sourceTree = "<group>"; };
 		DAD912B328542B1A00CE281A /* Blackjack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blackjack.swift; sourceTree = "<group>"; };
 		DAE7D5FD273C5A7900A0C8F0 /* Cards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAE7D600273C5A7900A0C8F0 /* CardsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsApp.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				DA970D9E282D9621007EDB7A /* HeaderView.swift */,
+				DAD846332880D5A100B6B3B7 /* ShareController.swift */,
 			);
 			path = Header;
 			sourceTree = "<group>";
@@ -425,6 +428,7 @@
 			files = (
 				DA87D0FA2819F0DD00888F2D /* CardTable.swift in Sources */,
 				DAA11A8B283ECBEC00C67B26 /* CardView.swift in Sources */,
+				DAD846342880D5A100B6B3B7 /* ShareController.swift in Sources */,
 				DAA11A892838883800C67B26 /* UIMessage.swift in Sources */,
 				DA19D9D127ADD4F4001F097C /* ControlBar.swift in Sources */,
 				DA42A399284D88DE00B14618 /* ScoreView.swift in Sources */,

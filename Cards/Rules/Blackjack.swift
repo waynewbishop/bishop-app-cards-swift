@@ -10,7 +10,7 @@ import Foundation
 
 class BlackJack : Playable {
     
-    var description: String = "Blackjack"
+    lazy var description: String = "Blackjack"
     var numberOfCardsToDeal: Int = 2
 
     

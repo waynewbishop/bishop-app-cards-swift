@@ -52,22 +52,25 @@ struct ControlBar: View {
                     } label: {
                         GameImage(name: "hand.raised.circle", color: Color.green, label: "Hold")
                     }
-                    
-                    Button  {
-                        cardTable.fold()
-                    } label: {
-                        GameImage(name: "xmark.circle", color: Color.green, label: "Done")
-                    }
                 }
             }
-            
-            
             else {
                 GameImage(name: "hand.thumbsup.circle", color: Color.gray, label: "Hit")
                 GameImage(name: "hand.raised.circle" , color: Color.gray, label: "Hold")
-                GameImage(name: "xmark.circle" , color: Color.gray, label: "Done")
+                GameImage(name: "xmark.circle" , color: Color.gray, label: "Fold")
             }
-                        
+            
+            if uiMessage.status == .active {
+                Button  {
+                    cardTable.fold()
+                    //todo: is this the reset function to disconnect from the
+                    //game? 
+                } label: {
+                    GameImage(name: "xmark.circle", color: Color.green, label: "Fold")
+                }
+            }
+            
+                                    
         }
         .frame(width: 300, height: 70)
     }

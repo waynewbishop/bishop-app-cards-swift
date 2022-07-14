@@ -20,6 +20,7 @@ enum Action: Codable {
 }
 
 //outcome of a player's calculated hand
+//todo: could this be a property associated with the protocol?
 enum Outcome: Codable {
     case bust, winner, safe, hold, fold, undecided
 }

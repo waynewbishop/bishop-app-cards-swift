@@ -12,8 +12,7 @@ struct CardTableView: View {
     @ObservedObject var cardTable: CardTable
     @ObservedObject var uiMessage: UIMessage
     
-    var body: some View {
-                
+    var body: some View {                
         VStack(alignment: .leading) {
             Spacer()
                 .frame(height: 45)

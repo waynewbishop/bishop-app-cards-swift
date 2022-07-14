@@ -16,7 +16,7 @@ struct HeaderView: View {
     @ObservedObject var cardTable: CardTable
     @StateObject var groupStateObserver = GroupStateObserver()
     @State var isSharingControllerPresented: Bool =  false
-
+    
     var body: some View {
         
         VStack {
@@ -28,11 +28,27 @@ struct HeaderView: View {
                 
                 Spacer()
                 
+                 Menu("Options") {
+                     //Button("Invite", action: placeOrder)
+                     //todo: rename subview here.. //add parameters..
+                     Button(action: {}) {
+                         ExtractedView()
+                     }
+                     .padding()
+
+                     Button("New Game", action: adjustOrder)
+                     Button("Quit", action: cancelOrder)
+                 }
+                 .font(.subheadline)
+                                  
+                
+                /*
                 Button ("Invite") {
                     isSharingControllerPresented = true
                 }
-                .sheet(isPresented: $isSharingControllerPresented, content: SharePlayView.init)
+                .sheet(isPresented: $isSharingControllerPresented, content: ShareController.init)
                 .font(.subheadline)
+                */
             }
                         
             HStack {
@@ -40,6 +56,7 @@ struct HeaderView: View {
                     .font(.subheadline)
                     .foregroundColor(Color.gray)
                 .multilineTextAlignment(.leading)
+                
                 Spacer()
             }
         }
@@ -49,21 +66,14 @@ struct HeaderView: View {
 }
 
 
-
-struct SharePlayView: UIViewControllerRepresentable {
-    
-    var activity = Cards()
-    typealias UIViewControllerType = GroupActivitySharingController
-    
-    func makeUIViewController(context: Context) -> GroupActivitySharingController {
-         return try! GroupActivitySharingController(activity)
-    }
-    
-    func updateUIViewController(_ uiViewController: GroupActivitySharingController, context: Context) {
-        //what goes here?
+struct ExtractedView: View {
+    var body: some View {
+        HStack {
+            Image(systemName: "gift")
+            Text("Send")
+        }
     }
 }
-
 
 
 struct HeaderView_Previews: PreviewProvider {
@@ -73,3 +83,4 @@ struct HeaderView_Previews: PreviewProvider {
         }
     }
 }
+

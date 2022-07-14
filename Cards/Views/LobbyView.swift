@@ -54,13 +54,15 @@ struct LobbyView: View {
                     if newValue.count == 0 {
                        isStartDisabled = true
                     }
+                    
                     else {
                         if selectedGame == .Blackjack {
-                            isStartDisabled = false
+                            cardTable.game = BlackJack()
                             cardTable.localPlayer.name = newValue
+                            isStartDisabled = false
                         }
                     }
-                    
+                                         
                     print(newValue)
                 })
                 
@@ -75,7 +77,8 @@ struct LobbyView: View {
                  afterwards
                  */
                 
-                if groupStateObserver.isEligibleForGroupSession == false {
+                //update to check active group session.
+                if cardTable.groupSession == nil {
                     HStack {
                         Text("Choose the game you'd like to play")
                             .font(.caption)
@@ -91,11 +94,11 @@ struct LobbyView: View {
                         Text("Hearts").tag(GameType.Hearts)
                     }
                     .onChange(of: selectedGame, perform: { newValue in
-
                         //define protocol
                         if newValue == .Blackjack {
                             if screenName.count > 0 {
-                                cardTable.game = Poker()
+                                cardTable.game = BlackJack()
+                                cardTable.localPlayer.name = screenName
                                 isStartDisabled = false
                             }
                         }
@@ -104,19 +107,19 @@ struct LobbyView: View {
                         }
                             
                     })
-                    
                     .pickerStyle(.segmented)
                     .padding([.bottom], 20)
                 }
                 
             
                 Button (buttonLabel)  {
-                    isGamePresented.toggle()
-                    if groupStateObserver.isEligibleForGroupSession {
+                    if cardTable.groupSession != nil {
                         buttonLabel = "Join Game"
                     }
                     else {
                         buttonLabel = "Start Game"
+                        //todo: should we also activate the new session here?
+                        cardTable.startSharing()
                     }
                 }
                 .disabled(isStartDisabled)

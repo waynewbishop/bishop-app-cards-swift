@@ -8,10 +8,9 @@
 import Foundation
 
 class Poker: Playable {
-    
-    var description: String = "Poker"
+        
+    lazy var description: String = "Poker"  //change to computed property..?
     var numberOfCardsToDeal: Int = 5
-
     
     func evaluate(player: inout Player) {
         print("testing")
