@@ -10,8 +10,42 @@ import Foundation
 
 //UI Level presentation
 
+
+/// Game Player Manager
+class Players: Codable {
+    private var activePlayers = Queue<Player>()
+    private var dealer: Player? //todo: the dealer may or may not be in the player's queue..
+    private var waitingPlayers: [Player] = []
+    
+    var nextPlayer: Player? {
+        activePlayers.peek
+    }
+    
+    var count: Int {
+        activePlayers.count
+    }
+    
+    //updates the player
+    func dealer(is player: Player) {
+        guard self.dealer == nil else {
+            return
+        }
+        
+        self.dealer = player
+    }
+    
+    func add(player: Player) {
+        activePlayers.enQueue(player)
+    }
+    
+    func remove(player: Player) -> Player? {
+        activePlayers.remove(element: player)
+    }
+}
+
 class UIMessage: ObservableObject {
 
+  @Published var foo = Players()
   @Published var players = Queue<Player>()
   @Published var discard = Array<Card>()
   @Published var deck = Deck()

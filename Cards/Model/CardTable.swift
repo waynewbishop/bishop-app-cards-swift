@@ -19,7 +19,7 @@ class CardTable: ObservableObject {
     @ObservedObject var uiMessage = UIMessage()
 
     @Published var game: Playable? = BlackJack()
-    @Published var localPlayer = Player()
+    @Published var localPlayer = Player() //Is this information being filled in using the lobby.
     
     @Published var groupSession: GroupSession<Cards>?
     @Published var response: String = "Waiting for players.."
@@ -62,6 +62,8 @@ class CardTable: ObservableObject {
         }
     }
 
+    //todo: when late joiner are added to the session, they can be listed in the carousel, but
+    //are not selected to play and are marked as spectators until a new round is started.
     
     //add the existing user to the shared session
     func configureGroupSession(_ groupSession: GroupSession<Cards>) {
@@ -111,8 +113,6 @@ class CardTable: ObservableObject {
         } //end task
     }
     
-    //todo: when late joiner are added to the session, they can be listed in the carousel, but
-    //are not selected to play and are marked as spectators until a new round is started.
     
     func configureReceiveMessage() {
         
@@ -184,6 +184,7 @@ class CardTable: ObservableObject {
         // maybe
         //func deal(game: Playable) {
 //        self.game = game // start of a new game
+        Players().dealer(is: localPlayer)
         
         guard self.groupSession != nil && tMessage.players.count > 1 else {
             return

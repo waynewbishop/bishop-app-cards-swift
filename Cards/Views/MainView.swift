@@ -22,6 +22,8 @@ struct MainView: View {
                     Label("Game", systemImage: "iphone.homebutton.radiowaves.left.and.right")
                 }
             
+            //todo: is this really needed? Would be nice
+            //to include everything in a single interface..
             ScoreView(cardTable: cardTable, uiMessage: uiMessage)
                 .tabItem {
                     Label("Score", systemImage: "number.circle")

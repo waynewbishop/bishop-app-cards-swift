@@ -20,7 +20,6 @@ struct ContentView: View {
             
             Spacer()
                 .frame(width: UIScreen.main.bounds.width, height: 1)
-            
                         
             HeaderView(cardTable: cardTable)
             CardTableView(cardTable: cardTable, uiMessage: uiMessage)

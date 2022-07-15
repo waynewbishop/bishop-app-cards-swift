@@ -123,12 +123,23 @@ struct LobbyView: View {
                     }
                 }
                 .disabled(isStartDisabled)
+
+                
+                //configure the new group session
+                .task {
+                    //callback from GroupActivity.activate()?
+                    for await session in Cards.sessions() {
+                        cardTable.configureGroupSession(session)
+                    }
+                }
+                
                 
                 //present as a modal dialog
                 .fullScreenCover(isPresented: $isGamePresented) {
                     MainView(cardTable: cardTable, uiMessage: uiMessage)
                 }
                 
+                                
                 Spacer()
                     .frame(width: UIScreen.main.bounds.width, height: 90)
             }

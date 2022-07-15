@@ -13,6 +13,7 @@ class Player: Codable, Equatable, Identifiable {
     var name: String
     var uuid = UUID()
     var hand = Hand()
+    var isDealer: Bool = false
     var outcome = Outcome.undecided
 
     var participantUUID: UUID? //from GroupSession
