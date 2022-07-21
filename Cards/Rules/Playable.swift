@@ -10,19 +10,18 @@ import Foundation
 
 protocol Playable {
     
-    /// The game name / description
     var description: String {get set}
-    var numberOfCardsToDeal: Int {get} //set the number of initial cards assigned to each player (depends on game)
+    var cardsToDeal: Int {get}
     
     
-    func evaluate(player: inout Player)
+    func evaluate(player: Player) -> Outcome
+
     
     /// Returns a player's  score
     /// - Parameter player: The specified player
     /// - Returns: A generic comparable value (e.g. Int)
     func score(of player:  Player) -> Int
     
-//    func score(of player: inout Player) //refactor score calculations to make this work.. 
     
     
     /// Ranks a hand collection
@@ -30,5 +29,3 @@ protocol Playable {
     /// - Returns: An ordered collection of player's hands
     func rank(players: [Player]) -> [Player]
 }
-
-

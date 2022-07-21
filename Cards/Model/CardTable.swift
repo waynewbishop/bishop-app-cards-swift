@@ -18,7 +18,7 @@ class CardTable: ObservableObject {
     var tMessage = TableMessage()
     @ObservedObject var uiMessage = UIMessage()
 
-    @Published var game: Playable? = BlackJack()
+    @Published var rules: Playable? = BlackJack()
     @Published var localPlayer = Player() //Is this information being filled in using the lobby.
     
     @Published var groupSession: GroupSession<Cards>?
@@ -69,23 +69,30 @@ class CardTable: ObservableObject {
     func configureGroupSession(_ groupSession: GroupSession<Cards>) {
         
         self.groupSession = groupSession
+        
                 
         //create the messenger for the session
         let messenger = GroupSessionMessenger(session: groupSession)
         self.sessionMessenger = messenger
         
+        
         //configure system to receive messages..
-        self.configureReceiveMessage()
+        self.receiveMessage()
+        
         
         groupSession.join()
         
+        
         localPlayer.participantUUID = groupSession.localParticipant.id
+        
         
         //add local player to game queue
         tMessage.players.enQueue(localPlayer)
+        
                 
         tMessage.action = .new
         sendMessage(message: tMessage)
+        
         
         self.response += "\n" + localPlayer.name + " just joined session.."
                 
@@ -114,7 +121,7 @@ class CardTable: ObservableObject {
     }
     
     
-    func configureReceiveMessage() {
+    func receiveMessage() {
         
         if let messenger = self.sessionMessenger {
             let task = Task {
@@ -173,11 +180,6 @@ class CardTable: ObservableObject {
     //MARK: Game Actions
     
         
-    //randomize the deck
-    
-    func start(game: Playable) {
-        
-    }
     
     func deal() {
         
@@ -203,8 +205,12 @@ class CardTable: ObservableObject {
                 }
             }
             
-            //calculate score and outcome
-           // game?.evaluate(player: &p) //this doesn't work. Need to pass value and return tuple
+            //make this into its own method..
+            if let rules = self.rules {
+                p.hand.score = rules.score(of: p)
+                p.outcome = rules.evaluate(player: p)
+            }
+            
         }
 
         self.response = "dealing cards to players.."

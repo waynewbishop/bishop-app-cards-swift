@@ -19,11 +19,14 @@ import GroupActivities
 //an object that returns the metadata computed property
 
 struct Cards: GroupActivity {
+    
     var metadata: GroupActivityMetadata {
+        
         var metadata = GroupActivityMetadata()
         metadata.title = NSLocalizedString("Cards", comment: "Cards with Friends..")
         metadata.subtitle = "Play fun card games with friends"
         metadata.type = .generic
         return metadata
+        
     }
 }

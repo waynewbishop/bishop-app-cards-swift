@@ -57,7 +57,7 @@ struct LobbyView: View {
                     
                     else {
                         if selectedGame == .Blackjack {
-                            cardTable.game = BlackJack()
+                            cardTable.rules = BlackJack()
                             cardTable.localPlayer.name = newValue
                             isStartDisabled = false
                         }
@@ -97,7 +97,7 @@ struct LobbyView: View {
                         //define protocol
                         if newValue == .Blackjack {
                             if screenName.count > 0 {
-                                cardTable.game = BlackJack()
+                                cardTable.rules = BlackJack()
                                 cardTable.localPlayer.name = screenName
                                 isStartDisabled = false
                             }

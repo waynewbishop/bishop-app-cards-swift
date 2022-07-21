@@ -26,6 +26,8 @@
 		DAD846342880D5A100B6B3B7 /* ShareController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD846332880D5A100B6B3B7 /* ShareController.swift */; };
 		DAD846372881195600B6B3B7 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD846362881195600B6B3B7 /* PlayerView.swift */; };
 		DAD846392881196E00B6B3B7 /* HandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD846382881196E00B6B3B7 /* HandView.swift */; };
+		DAD8463B2882386400B6B3B7 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD8463A2882386400B6B3B7 /* GameManager.swift */; };
+		DAD8463D28832AB800B6B3B7 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD8463C28832AB800B6B3B7 /* Game.swift */; };
 		DAD912B428542B1A00CE281A /* Blackjack.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD912B328542B1A00CE281A /* Blackjack.swift */; };
 		DAE7D601273C5A7900A0C8F0 /* CardsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE7D600273C5A7900A0C8F0 /* CardsApp.swift */; };
 		DAE7D603273C5A7900A0C8F0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE7D602273C5A7900A0C8F0 /* ContentView.swift */; };
@@ -82,6 +84,8 @@
 		DAD846332880D5A100B6B3B7 /* ShareController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareController.swift; sourceTree = "<group>"; };
 		DAD846362881195600B6B3B7 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		DAD846382881196E00B6B3B7 /* HandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandView.swift; sourceTree = "<group>"; };
+		DAD8463A2882386400B6B3B7 /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
+		DAD8463C28832AB800B6B3B7 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		DAD912B328542B1A00CE281A /* Blackjack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blackjack.swift; sourceTree = "<group>"; };
 		DAE7D5FD273C5A7900A0C8F0 /* Cards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAE7D600273C5A7900A0C8F0 /* CardsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsApp.swift; sourceTree = "<group>"; };
@@ -152,8 +156,10 @@
 		DA109C8927A1ECFD00B93244 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				DA478EDD2823140F00B42EB5 /* Cards.swift */,
+				DAD8463A2882386400B6B3B7 /* GameManager.swift */,
+				DAD8463C28832AB800B6B3B7 /* Game.swift */,
 				DA87D0F92819F0DD00888F2D /* CardTable.swift */,
+				DA478EDD2823140F00B42EB5 /* Cards.swift */,
 				DA478EDF282465E600B42EB5 /* TableMessage.swift */,
 				DAA11A882838883800C67B26 /* UIMessage.swift */,
 				DA109C8527A1EA5A00B93244 /* Player */,
@@ -459,6 +465,7 @@
 				DA87D0F72819EE2900888F2D /* Node.swift in Sources */,
 				DAE7D603273C5A7900A0C8F0 /* ContentView.swift in Sources */,
 				DAE7D630273C5B7000A0C8F0 /* Playable.swift in Sources */,
+				DAD8463B2882386400B6B3B7 /* GameManager.swift in Sources */,
 				DAE7D62C273C5B4D00A0C8F0 /* Card.swift in Sources */,
 				DAE7D641273C89C400A0C8F0 /* Hand.swift in Sources */,
 				DAA11A8D28497C9C00C67B26 /* LobbyView.swift in Sources */,
@@ -470,6 +477,7 @@
 				DA478EE0282465E600B42EB5 /* TableMessage.swift in Sources */,
 				DA87D0F52819ED1E00888F2D /* Enums.swift in Sources */,
 				DAE7D601273C5A7900A0C8F0 /* CardsApp.swift in Sources */,
+				DAD8463D28832AB800B6B3B7 /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

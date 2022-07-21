@@ -11,37 +11,39 @@ import Foundation
 //UI Level presentation
 
 
-/// Game Player Manager
+//players management
 class Players: Codable {
-    private var activePlayers = Queue<Player>()
-    private var dealer: Player? //todo: the dealer may or may not be in the player's queue..
-    private var waitingPlayers: [Player] = []
     
-    var nextPlayer: Player? {
-        activePlayers.peek
+    private var active = Queue<Player>()
+    private var dealer: Player?
+    private var waiting: [Player] = []
+
+    
+    var next: Player? {
+        active.peek
     }
     
-    var count: Int {
-        activePlayers.count
-    }
     
-    //updates the player
-    func dealer(is player: Player) {
+    //sets the dealer
+    func setDealer(as player: Player) {
+        
         guard self.dealer == nil else {
             return
         }
-        
-        self.dealer = player
     }
+    
     
     func add(player: Player) {
-        activePlayers.enQueue(player)
+        active.enQueue(player)
     }
     
+    
     func remove(player: Player) -> Player? {
-        activePlayers.remove(element: player)
+        active.remove(element: player)
     }
 }
+
+
 
 class UIMessage: ObservableObject {
 

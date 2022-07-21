@@ -10,10 +10,10 @@ import Foundation
 class Poker: Playable {
         
     lazy var description: String = "Poker"  //change to computed property..?
-    var numberOfCardsToDeal: Int = 5
+    var cardsToDeal: Int = 5
     
-    func evaluate(player: inout Player) {
-        print("testing")
+    func evaluate(player: Player) -> Outcome {
+        return .undecided
     }
     
     func score(of player: Player) -> Int {

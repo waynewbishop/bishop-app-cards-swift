@@ -11,32 +11,28 @@ import Foundation
 class BlackJack : Playable {
     
     lazy var description: String = "Blackjack"
-    var numberOfCardsToDeal: Int = 2
+    var cardsToDeal: Int = 2
 
     
     /// Evaluate a specific player's hand
     /// - Parameter hand: A player's hand
     /// - Returns: A specific outcome enumeration
-    func evaluate(player: inout Player) {
+
+    func evaluate(player: Player) -> Outcome {
         
-        let score = self.score(of: player)
+        let score = player.hand.score
         let scoreRange = 1..<21
-        var result = Outcome.undecided
         
         if score == scoreRange.upperBound {
-            result = .winner
+           return  .winner
         }
         
         else if scoreRange.contains(score) {
-            result = .safe
+           return .safe
         }
         else {
-            result = .bust
+           return .bust
         }
-        
-        //assign score and outcome
-        player.hand.score = score
-        player.outcome = result
     }
     
     
@@ -52,6 +48,8 @@ class BlackJack : Playable {
     /// Calculates players Blackjack score
     /// - Parameter player: The selected player
     /// - Returns: The score
+    
+    
     func score(of player: Player) -> Int {
 
         var total: Int = 0
