@@ -43,6 +43,7 @@
 		DAE7D634273C5B8D00A0C8F0 /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE7D633273C5B8D00A0C8F0 /* Unit.swift */; };
 		DAE7D638273C5C4200A0C8F0 /* Suit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE7D637273C5C4200A0C8F0 /* Suit.swift */; };
 		DAE7D641273C89C400A0C8F0 /* Hand.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE7D640273C89C400A0C8F0 /* Hand.swift */; };
+		DAED26D02889F30000C2982A /* Players.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAED26CF2889F30000C2982A /* Players.swift */; };
 		DAF62655286BCFCE0063763C /* Poker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF62654286BCFCE0063763C /* Poker.swift */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +105,7 @@
 		DAE7D633273C5B8D00A0C8F0 /* Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		DAE7D637273C5C4200A0C8F0 /* Suit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Suit.swift; sourceTree = "<group>"; };
 		DAE7D640273C89C400A0C8F0 /* Hand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hand.swift; sourceTree = "<group>"; };
+		DAED26CF2889F30000C2982A /* Players.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Players.swift; sourceTree = "<group>"; };
 		DAF62654286BCFCE0063763C /* Poker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,6 +137,7 @@
 		DA109C8527A1EA5A00B93244 /* Player */ = {
 			isa = PBXGroup;
 			children = (
+				DAED26CF2889F30000C2982A /* Players.swift */,
 				DAE7D631273C5B7F00A0C8F0 /* Player.swift */,
 				DAE7D640273C89C400A0C8F0 /* Hand.swift */,
 			);
@@ -455,6 +458,7 @@
 				DA42A399284D88DE00B14618 /* ScoreView.swift in Sources */,
 				DAE7D634273C5B8D00A0C8F0 /* Unit.swift in Sources */,
 				DAD912B428542B1A00CE281A /* Blackjack.swift in Sources */,
+				DAED26D02889F30000C2982A /* Players.swift in Sources */,
 				DA970D9F282D9621007EDB7A /* HeaderView.swift in Sources */,
 				DAD846372881195600B6B3B7 /* PlayerView.swift in Sources */,
 				DA8A6F15282CBC9F00C0030D /* MainView.swift in Sources */,

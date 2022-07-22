@@ -186,7 +186,8 @@ class CardTable: ObservableObject {
         // maybe
         //func deal(game: Playable) {
 //        self.game = game // start of a new game
-        Players().dealer(is: localPlayer)
+        Players().setDealer(as: localPlayer)
+        
         
         guard self.groupSession != nil && tMessage.players.count > 1 else {
             return

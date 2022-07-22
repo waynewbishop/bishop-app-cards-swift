@@ -52,16 +52,24 @@ class Game {
     }
     
     
+    
     func addLocalPlayer(with participantUUID: UUID) {
+                
         
-        /*
-         todo: determine if the game has already started
-         if so, the player as added to the waiting players queue..
-         */
-        
-        localPlayer.participantUUID = participantUUID        
-        tMessage.players.enQueue(localPlayer)
+        localPlayer.participantUUID = participantUUID
         tMessage.action = .new
+
+        
+        if tMessage.status == .active {
+            /*
+             todo: determine if the game has already started
+             if so, the player as added to the waiting players queue..
+             */
+        }
+        else {
+            tMessage.players.addActive(localPlayer)
+        }
+
         
         
         if let delegate = delegate {
@@ -79,6 +87,10 @@ class Game {
     func deal() {
 
         
+        guard tMessage.players.dealer != nil else {
+            return
+        }
+        
         guard tMessage.players.count > 1 else {
             return
         }
@@ -91,12 +103,14 @@ class Game {
             delegate.willReceiveResponse(response: "Error: game rules not defined..")
             return
         }
-        
-                        
+                
+
+        //set the dealer
+        tMessage.players.setDealer(as: localPlayer)
         tMessage.deck.shuffle()
             
         //deal cards to all players
-        for p in tMessage.players.elements {
+        for p in tMessage.players.active.elements {
             
             //assign two cards per player
             for _ in 0..<rule.cardsToDeal {
@@ -127,6 +141,7 @@ class Game {
     //receive a card
     func hit() {
         
+        
         guard tMessage.players.count > 1 else {
             return
         }
@@ -154,10 +169,6 @@ class Game {
                 localPlayer.outcome = rule.evaluate(player: p)
 
                 
-                _ = tMessage.players.deQueue()
-                 tMessage.players.enQueue(p)
-
-                
                 delegate.willReceiveResponse(response: "hit button pressed..")
                 delegate.willReceiveMessage(message: tMessage)
              }
@@ -167,8 +178,15 @@ class Game {
     
     
     
-    //they are remove as active players for the current session
+    //move player from active to waiting status..
     func hold() {
+        
+        
+        //todo: we need some type of Playable
+        //rule to determine when the game is over..
+        //how this works will be determined based on the game
+        //being played
+
         
         guard tMessage.players.count > 1 else {
             return
@@ -195,8 +213,10 @@ class Game {
          connected to the shareplay session.
          */
         
-        tMessage.action = .fold
+        tMessage.action = .hold
         delegate.willReceiveMessage(message: tMessage)
+        delegate.willReceiveResponse(response: "\(localPlayer.name) + is now holding..")
+                
     }
     
 }

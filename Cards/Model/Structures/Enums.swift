@@ -7,6 +7,9 @@
 
 import Foundation
 
+enum Turns: Codable {
+    case single, continuous, undecided
+}
 
 //the type of game being played
 enum GameType: String, Codable, CaseIterable, Identifiable {

@@ -13,7 +13,6 @@ class Player: Codable, Equatable, Identifiable {
     var name: String
     var uuid = UUID()
     var hand = Hand()
-    var isDealer: Bool = false
     var outcome = Outcome.undecided
 
     var participantUUID: UUID? //from GroupSession
@@ -22,7 +21,7 @@ class Player: Codable, Equatable, Identifiable {
         self.name = name
     }
     
-    //test primary and seconday scores
+
     static public func == (lhs: Player, rhs: Player) -> Bool {
         return lhs.uuid == rhs.uuid
         && lhs.participantUUID == rhs.participantUUID

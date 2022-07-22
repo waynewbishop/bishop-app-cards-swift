@@ -13,7 +13,7 @@ import Combine
 /// todo: is there a 64KB file size limit on messages? what is our current footprint? 
 struct TableMessage: Codable {
     
-    var players = Queue<Player>()
+    var players = Players()
     var discard = Array<Card>()
     var deck = Deck()
     var action = Action.start
@@ -28,9 +28,11 @@ func testData() -> TableMessage {
     
     let testMessage = TableMessage()
     
-    testMessage.players.enQueue(Player(name: "Sam Warfield"))
-    testMessage.players.enQueue(Player(name: "Wayne Bishop"))
-    testMessage.players.enQueue(Player(name: "Steve Jobs"))
+    testMessage.players.addActive(Player(name: "Sam Warfield"))
+    
+ //   testMessage.players.enQueue(Player(name: "Sam Warfield"))
+ //   testMessage.players.enQueue(Player(name: "Wayne Bishop"))
+ //   testMessage.players.enQueue(Player(name: "Steve Jobs"))
     
     return testMessage
 }
