@@ -21,7 +21,7 @@ struct ControlBar: View {
         
         HStack (alignment: .bottom, spacing: 40.0) {
                         
-            if uiMessage.status == .waiting && uiMessage.players.count > 1 {
+            if uiMessage.status == .waiting && uiMessage.players.active.count > 1 {
                 Button  {
                     dealState.toggle()
                     gameManager.game.deal()
@@ -34,7 +34,7 @@ struct ControlBar: View {
             }
             
             
-            if uiMessage.status == .active && uiMessage.players.count > 1 {
+            if uiMessage.status == .active && uiMessage.players.active.count > 1 {
                 if gameManager.game.isMyTurn == true {
                     
                     Button  {

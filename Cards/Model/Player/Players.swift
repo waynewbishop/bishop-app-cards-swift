@@ -13,32 +13,10 @@ import Foundation
 class Players: Codable {
     
     var active = Queue<Player>()
-    var waiting: [Player] = []
-  //var dealer: Dealerable?
-    var dealer: Player?
-    
-    
-//    var dealer: Dealerable? {
-//        waiting.filter({ $0.isDealer })
-//    }
-    
-    var peek: Player? {
-        active.peek
-    }
- 
-    var count: Int {
-        active.count
-    }
-    
-    //sets the dealer
-    func setDealer(as player: Player) {
+    var holding = Queue<Player>()
+    var waiting = Queue<Player>()
         
-        guard self.dealer == nil else {
-            return
-        }
-        
-        self.dealer = player
-    }
+    var dealer = Dealer()
     
     
     func reset() {
@@ -47,17 +25,4 @@ class Players: Codable {
     }
     
     
-    func addActive(_ player: Player) {
-        active.enQueue(player)
-    }
-
-    
-    func addWaiting(_ player: Player) {
-        waiting.append(player)
-    }
-    
-    
-    func remove(_ player: Player) -> Player? {
-        active.remove(element: player)
-    }
 }

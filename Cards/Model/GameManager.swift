@@ -23,6 +23,7 @@ import GroupActivities
 class GameManager: ObservableObject, GameDelegate {
 
     @ObservedObject var uiMessage = UIMessage()
+    
     @Published var groupSession: GroupSession<Cards>?
     @Published var response: String = "Waiting for players.."
     @Published var game = Game()
@@ -90,11 +91,16 @@ class GameManager: ObservableObject, GameDelegate {
     }
 
     
+    //todo: do we need a decision tree to determine when players are
+    //playing versus the dealer as well as when the game ends?
+    
+    
     func receiveMessage() {
         if let messenger = self.sessionMessenger {
             let task = Task {
                 for await (response, context) in messenger.messages(of: TableMessage.self) {
                     uiMessage.handle(message: response, from: context.source.id)
+                                
                 }
             }
             tasks.insert(task)
@@ -113,5 +119,23 @@ class GameManager: ObservableObject, GameDelegate {
         self.response = response
     }
     
+    
+
+    //MARK: test different games
+    
+    func testGameBlackJack() -> GameManager {
+        
+        let blackjack: GameManager = GameManager()
+        blackjack.game.setRules(rulebook: BlackJack())
+        return blackjack
+    }
+    
+
+    func testGamePoker() -> GameManager {
+        
+        let poker: GameManager = GameManager()
+        poker.game.setRules(rulebook: Poker())
+        return poker
+    }
     
 }

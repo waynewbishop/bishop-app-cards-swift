@@ -10,7 +10,7 @@ import Combine
 import SwiftUI
 import GroupActivities
 
-
+/*
 @MainActor
 
 class CardTable: ObservableObject {
@@ -28,7 +28,7 @@ class CardTable: ObservableObject {
     var tasks = Set<Task<Void, Never>>()
      
     var current: Player? {
-        guard let player = tMessage.players.peek else {
+        guard let player = tMessage.players.active.peek else {
             return nil
         }
         return player
@@ -186,10 +186,10 @@ class CardTable: ObservableObject {
         // maybe
         //func deal(game: Playable) {
 //        self.game = game // start of a new game
-        Players().setDealer(as: localPlayer)
+//        Players().setDealer(as: localPlayer)
         
         
-        guard self.groupSession != nil && tMessage.players.count > 1 else {
+        guard self.groupSession != nil && tMessage.players.active.count > 1 else {
             return
         }
                 
@@ -284,3 +284,6 @@ class CardTable: ObservableObject {
         sendMessage(message: tMessage)
     }
 }
+
+*/
+

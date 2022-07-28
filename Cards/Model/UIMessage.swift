@@ -39,9 +39,9 @@ class UIMessage: ObservableObject {
         
         let testMessage = UIMessage()
         
-        testMessage.players.addActive(Player(name: "Sam Warfield"))
-        testMessage.players.addActive(Player(name: "Wayne Bishop"))
-        testMessage.players.addActive(Player(name: "Steve Jobs"))
+        testMessage.players.active.enQueue(Player(name: "Sam Warfield"))
+        testMessage.players.active.enQueue(Player(name: "Wayne Bishop"))
+        testMessage.players.active.enQueue(Player(name: "Steve Jobs"))
         
         return testMessage
     }
@@ -52,7 +52,7 @@ class UIMessage: ObservableObject {
     func testSingleUser() -> UIMessage {
         
         let testMessage = UIMessage()
-        testMessage.players.addActive(Player(name: "Ben-Fong Torres"))
+        testMessage.players.active.enQueue(Player(name: "Ben-Fong Torres"))
         return testMessage
     }
 }

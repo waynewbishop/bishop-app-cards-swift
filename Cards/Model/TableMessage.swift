@@ -24,15 +24,18 @@ struct TableMessage: Codable {
 
 
 
-func testData() -> TableMessage {
-    
-    let testMessage = TableMessage()
-    
-    testMessage.players.addActive(Player(name: "Sam Warfield"))
-    
+/*
+ func testData() -> TableMessage {
+ 
+ let testMessage = TableMessage()
+ 
+ testMessage.players.addActive(Player(name: "Sam Warfield"))
+ 
  //   testMessage.players.enQueue(Player(name: "Sam Warfield"))
  //   testMessage.players.enQueue(Player(name: "Wayne Bishop"))
  //   testMessage.players.enQueue(Player(name: "Steve Jobs"))
-    
-    return testMessage
-}
+ 
+ return testMessage
+ }
+ */
+

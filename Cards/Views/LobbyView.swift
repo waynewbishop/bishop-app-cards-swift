@@ -15,8 +15,6 @@ struct LobbyView: View {
         
     @ObservedObject var gameManager: GameManager
     
-    @StateObject var groupStateObserver = GroupStateObserver()
-    
     @State private var selectedGame: GameType = .Blackjack
     @State private var buttonLabel: String = "Start Game"
     @State private var isGamePresented = false
@@ -97,8 +95,8 @@ struct LobbyView: View {
                         //define protocol
                         if newValue == .Blackjack {
                             if screenName.count > 0 {
-                                
-                                gameManager.game.rules = BlackJack()
+                    
+                                gameManager.game.setRules(rulebook: BlackJack())
                                 gameManager.game.localPlayer.name = screenName
                                 isStartDisabled = false
                             }
@@ -119,16 +117,14 @@ struct LobbyView: View {
                     }
                     else {
                         buttonLabel = "Start Game"
-                        //todo: should we also activate the new session here?
                         gameManager.startSharing()
                     }
                 }
                 .disabled(isStartDisabled)
 
                 
-                //configure the new group session
+                //callback from GroupActivity.activate()
                 .task {
-                    //callback from GroupActivity.activate()?
                     for await session in Cards.sessions() {
                         gameManager.configureGroupSession(session)
                     }

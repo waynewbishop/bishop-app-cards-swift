@@ -14,6 +14,7 @@ struct HandView: View {
 
     var body: some View {
         ZStack {
+                        
             ForEach(0..<colors.count) {
                 
                 //todo: Rectangle will be the custom card

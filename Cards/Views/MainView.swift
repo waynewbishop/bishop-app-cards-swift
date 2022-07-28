@@ -11,6 +11,7 @@ struct MainView: View {
 
     
     @ObservedObject var gameManager: GameManager
+    @StateObject var uiMessage = UIMessage()
     
     /*
      note: even though the GameManager observes changes in the UIMessage, the message
@@ -18,8 +19,6 @@ struct MainView: View {
      changes in UIMessage state.
      */
     
-    @StateObject var uiMessage = UIMessage()
-
     
     var body: some View {
         
@@ -42,7 +41,8 @@ struct MainView: View {
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            MainView(gameManager: GameManager(), uiMessage: UIMessage())
+            MainView(gameManager: GameManager().testGameBlackJack(), uiMessage: UIMessage().testSingleUser())
+            MainView(gameManager: GameManager().testGamePoker(), uiMessage: UIMessage())
         }
     }
 }

@@ -12,14 +12,7 @@ class BlackJack : Playable  {
     
     lazy var description: String = "Blackjack"
     var cardsToDeal: Int = 2
-    
-    var dealer = BlackJackDealer()
-    
-    
-    func dealerBot() {
-        //todo: is this defined as a algorithmic decision tree?
-    }
-  
+      
     
     func evaluate(player: Player) -> Outcome {
         

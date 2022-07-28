@@ -14,11 +14,6 @@ class Player: Codable, Equatable, Identifiable {
     var uuid = UUID()
     var hand = Hand()
     var outcome = Outcome.undecided
-    
-//    var isDealer: Bool {
-//        self is Dealerable
-//    }
-
     var participantUUID: UUID? //from GroupSession
     
 

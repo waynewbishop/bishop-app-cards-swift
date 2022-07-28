@@ -22,11 +22,12 @@ class Game {
     var localPlayer = Player()
     var tMessage = TableMessage()
     var rules: Playable?
-    
+    var dealer = Dealer()
         
+    
     //who's the current player
     var current: Player? {
-        guard let player = tMessage.players.peek else {
+        guard let player = tMessage.players.active.peek else {
             return nil
         }
         return player
@@ -53,9 +54,8 @@ class Game {
     }
     
     
-    
+    //called when a new group session is added
     func addLocalPlayer(with participantUUID: UUID) {
-                
         
         localPlayer.participantUUID = participantUUID
         tMessage.action = .new
@@ -68,7 +68,7 @@ class Game {
              */
         }
         else {
-            tMessage.players.addActive(localPlayer)
+            tMessage.players.active.enQueue(localPlayer)
         }
         
         
@@ -87,11 +87,7 @@ class Game {
     func deal() {
 
         
-        guard tMessage.players.dealer != nil else {
-            return
-        }
-        
-        guard tMessage.players.count > 1 else {
+        guard tMessage.players.active.count > 1 else {
             return
         }
         
@@ -104,9 +100,6 @@ class Game {
             return
         }
                 
-
-        //set the dealer
-        tMessage.players.setDealer(as: localPlayer)
         tMessage.deck.shuffle()
             
         //deal cards to all players
@@ -125,6 +118,8 @@ class Game {
             p.outcome = rule.evaluate(player: p)
 
         }
+
+        //todo: assign two card to the dealer
         
         
         //update status and action
@@ -142,7 +137,7 @@ class Game {
     func hit() {
         
         
-        guard tMessage.players.count > 1 else {
+        guard tMessage.players.active.count > 1 else {
             return
         }
         
@@ -187,7 +182,7 @@ class Game {
         //being played
 
         
-        guard tMessage.players.count > 1 else {
+        guard tMessage.players.active.count > 1 else {
             return
         }
         

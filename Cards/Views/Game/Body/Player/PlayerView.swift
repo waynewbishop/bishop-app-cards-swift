@@ -8,10 +8,7 @@
 import SwiftUI
 
 struct PlayerView: View {
-    
-    @ObservedObject var cardTable: CardTable
-    @ObservedObject var uiMessage: UIMessage
-    
+        
     var body: some View {
         
         VStack {
@@ -48,6 +45,6 @@ struct PlayerView: View {
 
 struct PlayerView_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerView(cardTable: CardTable(), uiMessage: UIMessage())
+        PlayerView()
     }
 }
