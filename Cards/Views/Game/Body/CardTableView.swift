@@ -9,8 +9,9 @@ import SwiftUI
 
 struct CardTableView: View {
     
-    @ObservedObject var cardTable: CardTable
+    @ObservedObject var gameManager: GameManager
     @ObservedObject var uiMessage: UIMessage
+
     
     var body: some View {                
         VStack(alignment: .leading) {
@@ -18,21 +19,20 @@ struct CardTableView: View {
                 .frame(height: 45)
             
             ScrollView {
-                CardView(cardTable: cardTable, uiMessage: uiMessage)
+                CardView(gameManager: gameManager, uiMessage: uiMessage)
             }
-            
         }
         .frame(width: 300, height: 300)
     }
 }
 
+
 struct CardTableView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            CardTableView(cardTable: CardTable(), uiMessage: UIMessage().testMultiUser())
-            CardTableView(cardTable: CardTable(), uiMessage: UIMessage().testSingleUser())
-            CardTableView(cardTable: CardTable(), uiMessage: UIMessage())
+            CardTableView(gameManager: GameManager(), uiMessage: UIMessage().testMultiUser())
+            CardTableView(gameManager: GameManager(), uiMessage: UIMessage().testSingleUser())
+            CardTableView(gameManager: GameManager(), uiMessage: UIMessage())
         }
-        
    }
 }

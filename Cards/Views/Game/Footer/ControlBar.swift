@@ -11,8 +11,10 @@ import GroupActivities
 
 struct ControlBar: View {
     
-    @ObservedObject var cardTable: CardTable
+    @ObservedObject var gameManager: GameManager
     @ObservedObject var uiMessage: UIMessage
+
+    
     @State private var dealState: Bool = false
     
     var body: some View {
@@ -22,7 +24,7 @@ struct ControlBar: View {
             if uiMessage.status == .waiting && uiMessage.players.count > 1 {
                 Button  {
                     dealState.toggle()
-                    cardTable.deal()
+                    gameManager.game.deal()
                 } label: {
                     GameImage(name: "play.circle", color: Color.green, label: "Deal")
                 }
@@ -33,22 +35,22 @@ struct ControlBar: View {
             
             
             if uiMessage.status == .active && uiMessage.players.count > 1 {
-                if cardTable.isMyTurn == true {
+                if gameManager.game.isMyTurn == true {
                     
                     Button  {
-                        cardTable.deal()
+                        gameManager.game.deal()
                     } label: {
                         GameImage(name: "play.circle", color: Color.gray, label: "Deal")
                     }
                         
                     Button  {
-                        cardTable.hit()
+                        gameManager.game.hit()
                     } label: {
                         GameImage(name: "hand.thumbsup.circle", color: Color.green, label: "Hit")
                     }
                     
                     Button  {
-                        cardTable.hold()
+                        gameManager.game.hold()
                     } label: {
                         GameImage(name: "hand.raised.circle", color: Color.green, label: "Hold")
                     }
@@ -62,7 +64,7 @@ struct ControlBar: View {
             
             if uiMessage.status == .active {
                 Button  {
-                    cardTable.fold()
+                    gameManager.game.hold()
                     //todo: is this the reset function to disconnect from the
                     //game? 
                 } label: {
@@ -107,18 +109,9 @@ struct GameImage: View {
 struct ControlBar_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            
-            //multiple users
-            ControlBar(cardTable: CardTable(), uiMessage: UIMessage().testMultiUser())
-                .environment(\.sizeCategory, .large)
-            
-            //a single user
-            ControlBar(cardTable: CardTable(), uiMessage: UIMessage().testSingleUser())
-                .environment(\.sizeCategory, .large)
-            
-            //no users - intial game launch
-            ControlBar(cardTable: CardTable(), uiMessage: UIMessage())
-                .environment(\.sizeCategory, .large)
+            ControlBar(gameManager: GameManager(), uiMessage: UIMessage().testMultiUser())
+            ControlBar(gameManager: GameManager(), uiMessage: UIMessage().testSingleUser())
+            ControlBar(gameManager: GameManager(), uiMessage: UIMessage())
         }
     }
 }

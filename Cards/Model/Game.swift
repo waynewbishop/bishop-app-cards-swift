@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 protocol GameDelegate: AnyObject {
     
     func willReceiveMessage(message: TableMessage)
@@ -69,7 +70,6 @@ class Game {
         else {
             tMessage.players.addActive(localPlayer)
         }
-
         
         
         if let delegate = delegate {
@@ -180,7 +180,6 @@ class Game {
     
     //move player from active to waiting status..
     func hold() {
-        
         
         //todo: we need some type of Playable
         //rule to determine when the game is over..

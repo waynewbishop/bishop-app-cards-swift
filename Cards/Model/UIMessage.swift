@@ -10,8 +10,6 @@ import Foundation
 
 //UI Level presentation
 
-
-
 class UIMessage: ObservableObject {
 
   @Published var players = Players()
@@ -19,7 +17,7 @@ class UIMessage: ObservableObject {
   @Published var deck = Deck()
   @Published var action = Action.start
   @Published var status = GameStatus.waiting
-  @Published var game = GameType.undecided
+  @Published var game = GameType.undecided //todo: this type needs to be removed..not required..
                 
 
     func handle(message: TableMessage, from: UUID?) {
@@ -33,25 +31,28 @@ class UIMessage: ObservableObject {
         game = message.game
     }
     
+    
     //test multiple users
     func testMultiUser() -> UIMessage {
         
         //set the status and points for these specific players
         
         let testMessage = UIMessage()
-        testMessage.players.enQueue(Player(name: "Sam Warfield"))
-        testMessage.players.enQueue(Player(name: "Wayne Bishop"))
-        testMessage.players.enQueue(Player(name: "Steve Jobs"))
+        
+        testMessage.players.addActive(Player(name: "Sam Warfield"))
+        testMessage.players.addActive(Player(name: "Wayne Bishop"))
+        testMessage.players.addActive(Player(name: "Steve Jobs"))
         
         return testMessage
     }
+
 
     
     //test single user
     func testSingleUser() -> UIMessage {
         
         let testMessage = UIMessage()
-        testMessage.players.enQueue(Player(name: "Ben-Fong Torres"))
+        testMessage.players.addActive(Player(name: "Ben-Fong Torres"))
         return testMessage
     }
 }

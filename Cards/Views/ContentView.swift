@@ -9,10 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @ObservedObject var cardTable: CardTable
+    @ObservedObject var gameManager: GameManager
     @ObservedObject var uiMessage: UIMessage
     
-
+    
     var body: some View {
         
         //main views
@@ -21,16 +21,10 @@ struct ContentView: View {
             Spacer()
                 .frame(width: UIScreen.main.bounds.width, height: 1)
                         
-            HeaderView(cardTable: cardTable)
-            CardTableView(cardTable: cardTable, uiMessage: uiMessage)
-            ControlBar(cardTable: cardTable, uiMessage: uiMessage)
+            HeaderView(gameManager: gameManager)
+            CardTableView(gameManager: gameManager, uiMessage: uiMessage)
+            ControlBar(gameManager: gameManager, uiMessage: uiMessage)
             
-        }
-        .task {
-            //callback from GroupActivity.activate()?
-            for await session in Cards.sessions() {
-                cardTable.configureGroupSession(session)
-            }
         }
     }
 }
@@ -38,15 +32,9 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            //many users
-            ContentView(cardTable: CardTable(), uiMessage: UIMessage().testMultiUser())
-            
-            //single user
-            ContentView(cardTable: CardTable(), uiMessage: UIMessage().testSingleUser())
-                        
-            //no users
-            ContentView(cardTable: CardTable(), uiMessage: UIMessage())
-                
+            ContentView(gameManager: GameManager(), uiMessage: UIMessage().testMultiUser())
+            ContentView(gameManager: GameManager(), uiMessage: UIMessage().testSingleUser())
+            ContentView(gameManager: GameManager(), uiMessage: UIMessage())
         }
     }
 }

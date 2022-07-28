@@ -44,6 +44,7 @@
 		DAE7D638273C5C4200A0C8F0 /* Suit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE7D637273C5C4200A0C8F0 /* Suit.swift */; };
 		DAE7D641273C89C400A0C8F0 /* Hand.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE7D640273C89C400A0C8F0 /* Hand.swift */; };
 		DAED26D02889F30000C2982A /* Players.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAED26CF2889F30000C2982A /* Players.swift */; };
+		DAED26D2288B364900C2982A /* Dealer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAED26D1288B364900C2982A /* Dealer.swift */; };
 		DAF62655286BCFCE0063763C /* Poker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF62654286BCFCE0063763C /* Poker.swift */; };
 /* End PBXBuildFile section */
 
@@ -106,6 +107,7 @@
 		DAE7D637273C5C4200A0C8F0 /* Suit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Suit.swift; sourceTree = "<group>"; };
 		DAE7D640273C89C400A0C8F0 /* Hand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hand.swift; sourceTree = "<group>"; };
 		DAED26CF2889F30000C2982A /* Players.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Players.swift; sourceTree = "<group>"; };
+		DAED26D1288B364900C2982A /* Dealer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dealer.swift; sourceTree = "<group>"; };
 		DAF62654286BCFCE0063763C /* Poker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,6 +142,7 @@
 				DAED26CF2889F30000C2982A /* Players.swift */,
 				DAE7D631273C5B7F00A0C8F0 /* Player.swift */,
 				DAE7D640273C89C400A0C8F0 /* Hand.swift */,
+				DAED26D1288B364900C2982A /* Dealer.swift */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 				DAE7D630273C5B7000A0C8F0 /* Playable.swift in Sources */,
 				DAD8463B2882386400B6B3B7 /* GameManager.swift in Sources */,
 				DAE7D62C273C5B4D00A0C8F0 /* Card.swift in Sources */,
+				DAED26D2288B364900C2982A /* Dealer.swift in Sources */,
 				DAE7D641273C89C400A0C8F0 /* Hand.swift in Sources */,
 				DAA11A8D28497C9C00C67B26 /* LobbyView.swift in Sources */,
 				DAE7D632273C5B7F00A0C8F0 /* Player.swift in Sources */,

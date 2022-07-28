@@ -87,7 +87,7 @@ class CardTable: ObservableObject {
         
         
         //add local player to game queue
-        tMessage.players.enQueue(localPlayer)
+        tMessage.players.active.enQueue(localPlayer)
         
                 
         tMessage.action = .new
@@ -196,7 +196,7 @@ class CardTable: ObservableObject {
         tMessage.deck.shuffle()
             
         //deal cards to all players
-        for p in tMessage.players.elements {
+        for p in tMessage.players.active.elements {
             
             //assign two cards per player
             for _ in 0..<2 {

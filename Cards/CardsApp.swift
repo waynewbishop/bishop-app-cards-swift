@@ -10,12 +10,12 @@ import SwiftUI
 @main
 struct CardsApp: App {
     
-    @StateObject var cardTable = CardTable()
-    @StateObject var uiMessage = UIMessage()
+    @StateObject var gameManager = GameManager()
+    
     
     var body: some Scene {
         WindowGroup {
-            LobbyView(cardTable: cardTable, uiMessage: uiMessage)
+            LobbyView(gameManager: gameManager)
         }
     }
     

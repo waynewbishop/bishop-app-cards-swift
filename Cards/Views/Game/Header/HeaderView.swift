@@ -13,19 +13,22 @@ import Foundation
 
 struct HeaderView: View {
     
-    @ObservedObject var cardTable: CardTable
-    @StateObject var groupStateObserver = GroupStateObserver()
+    @ObservedObject var gameManager: GameManager
     @State var isSharingControllerPresented: Bool =  false
+
     
     var body: some View {
         
         VStack {
             HStack (alignment: .center) {
-                Text(cardTable.rules!.description)
-                    .font(.title)
-                    .fontWeight(.bold)
-                .multilineTextAlignment(.leading)
                 
+                if let rules = gameManager.game.rules {
+                    Text(rules.description)
+                        .font(.title)
+                        .fontWeight(.bold)
+                    .multilineTextAlignment(.leading)
+                }
+                                
                 Spacer()
                 
                  Menu("Options") {
@@ -57,7 +60,7 @@ struct HeaderView: View {
             }
                         
             HStack {
-                Text(cardTable.response)
+                Text(gameManager.response)
                     .font(.subheadline)
                     .foregroundColor(Color.gray)
                 .multilineTextAlignment(.leading)
@@ -88,7 +91,7 @@ struct MenuView: View {
 struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            HeaderView(cardTable: CardTable())
+            HeaderView(gameManager: GameManager())
         }
     }
 }

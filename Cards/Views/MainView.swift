@@ -8,23 +8,28 @@
 import SwiftUI
 
 struct MainView: View {
+
     
-    //@Environment(\.presentationMode) var presentationMode
+    @ObservedObject var gameManager: GameManager
     
-    @ObservedObject var cardTable: CardTable
-    @ObservedObject var uiMessage: UIMessage
+    /*
+     note: even though the GameManager observes changes in the UIMessage, the message
+     object runs as it's own indepentant object. GameManager only helps to faciliate
+     changes in UIMessage state.
+     */
+    
+    @StateObject var uiMessage = UIMessage()
+
     
     var body: some View {
         
         TabView {
-            ContentView(cardTable: cardTable, uiMessage: uiMessage)
+             ContentView(gameManager: gameManager, uiMessage: uiMessage)
                 .tabItem {
                     Label("Game", systemImage: "iphone.homebutton.radiowaves.left.and.right")
                 }
             
-            //todo: is this really needed? Would be nice
-            //to include everything in a single interface..
-            ScoreView(cardTable: cardTable, uiMessage: uiMessage)
+            ScoreView(gameManager: gameManager, uiMessage: uiMessage)
                 .tabItem {
                     Label("Score", systemImage: "number.circle")
                 }
@@ -37,9 +42,7 @@ struct MainView: View {
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            MainView(cardTable: CardTable(), uiMessage: UIMessage().testSingleUser())
-            MainView(cardTable: CardTable(), uiMessage: UIMessage().testMultiUser())
-            MainView(cardTable: CardTable(), uiMessage: UIMessage())
+            MainView(gameManager: GameManager(), uiMessage: UIMessage())
         }
     }
 }

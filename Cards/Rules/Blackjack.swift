@@ -8,16 +8,19 @@
 import Foundation
 
 
-class BlackJack : Playable {
+class BlackJack : Playable  {
     
     lazy var description: String = "Blackjack"
     var cardsToDeal: Int = 2
-
     
-    /// Evaluate a specific player's hand
-    /// - Parameter hand: A player's hand
-    /// - Returns: A specific outcome enumeration
-
+    var dealer = BlackJackDealer()
+    
+    
+    func dealerBot() {
+        //todo: is this defined as a algorithmic decision tree?
+    }
+  
+    
     func evaluate(player: Player) -> Outcome {
         
         let score = player.hand.score
@@ -45,11 +48,10 @@ class BlackJack : Playable {
     }
     
     
+    
     /// Calculates players Blackjack score
     /// - Parameter player: The selected player
     /// - Returns: The score
-    
-    
     func score(of player: Player) -> Int {
 
         var total: Int = 0

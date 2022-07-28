@@ -13,19 +13,22 @@ import Foundation
 class Players: Codable {
     
     var active = Queue<Player>()
-    var dealer: Player?
     var waiting: [Player] = []
-
+  //var dealer: Dealerable?
+    var dealer: Player?
+    
+    
+//    var dealer: Dealerable? {
+//        waiting.filter({ $0.isDealer })
+//    }
     
     var peek: Player? {
         active.peek
     }
  
-    
     var count: Int {
         active.count
     }
-    
     
     //sets the dealer
     func setDealer(as player: Player) {

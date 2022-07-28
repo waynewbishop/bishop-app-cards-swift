@@ -9,13 +9,14 @@ import SwiftUI
 
 struct CardView: View {
     
-    @ObservedObject var cardTable: CardTable
+    @ObservedObject var gameManager: GameManager
     @ObservedObject var uiMessage: UIMessage
-            
+
+    
     var body: some View {
         VStack {
-            ForEach(uiMessage.players.elements) { player in
-                CardRow(player: player, cardTable: cardTable)
+            ForEach(uiMessage.players.active.elements) { player in
+                CardRow(player: player, game: gameManager.game)
             }
         }
     }
@@ -24,7 +25,7 @@ struct CardView: View {
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView(cardTable: CardTable(), uiMessage: UIMessage().testMultiUser())
+        CardView(gameManager: GameManager(), uiMessage: UIMessage().testMultiUser())
     }
 }
 
@@ -32,7 +33,7 @@ struct CardView_Previews: PreviewProvider {
 struct CardRow: View {
     
     var player: Player
-    var cardTable: CardTable
+    var game: Game
     var checkColor = Color.gray
         
     var body: some View {
@@ -57,7 +58,7 @@ struct CardRow: View {
             Spacer()
                         
             //indicate the current player
-            if player == cardTable.current {
+            if player == game.current {
                 GameImage(name: "checkmark.circle.fill", width: 20, height: 20, color: Color.green)
             }
             

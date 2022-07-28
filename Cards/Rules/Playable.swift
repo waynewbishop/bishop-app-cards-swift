@@ -10,9 +10,11 @@ import Foundation
 
 protocol Playable {
     
+    // var dealer: Dealerable { get }
     var description: String {get set}
     var cardsToDeal: Int {get}
-   // var gameplay: Turns {get} defines if turns are made between players
+    
+    //var gameplay: Turns {get} defines if turns are made between players
     
     func evaluate(player: Player) -> Outcome
 

@@ -13,8 +13,7 @@ import Foundation
 
 struct LobbyView: View {
         
-    @ObservedObject var cardTable: CardTable
-    @ObservedObject var uiMessage: UIMessage
+    @ObservedObject var gameManager: GameManager
     
     @StateObject var groupStateObserver = GroupStateObserver()
     
@@ -57,8 +56,8 @@ struct LobbyView: View {
                     
                     else {
                         if selectedGame == .Blackjack {
-                            cardTable.rules = BlackJack()
-                            cardTable.localPlayer.name = newValue
+                            gameManager.game.rules = BlackJack()
+                            gameManager.game.localPlayer.name = newValue
                             isStartDisabled = false
                         }
                     }
@@ -78,7 +77,7 @@ struct LobbyView: View {
                  */
                 
                 //update to check active group session.
-                if cardTable.groupSession == nil {
+                if gameManager.groupSession == nil {
                     HStack {
                         Text("Choose the game you'd like to play")
                             .font(.caption)
@@ -94,11 +93,13 @@ struct LobbyView: View {
                         Text("Hearts").tag(GameType.Hearts)
                     }
                     .onChange(of: selectedGame, perform: { newValue in
+                        
                         //define protocol
                         if newValue == .Blackjack {
                             if screenName.count > 0 {
-                                cardTable.rules = BlackJack()
-                                cardTable.localPlayer.name = screenName
+                                
+                                gameManager.game.rules = BlackJack()
+                                gameManager.game.localPlayer.name = screenName
                                 isStartDisabled = false
                             }
                         }
@@ -113,13 +114,13 @@ struct LobbyView: View {
                 
             
                 Button (buttonLabel)  {
-                    if cardTable.groupSession != nil {
+                    if gameManager.groupSession != nil {
                         buttonLabel = "Join Game"
                     }
                     else {
                         buttonLabel = "Start Game"
                         //todo: should we also activate the new session here?
-                        cardTable.startSharing()
+                        gameManager.startSharing()
                     }
                 }
                 .disabled(isStartDisabled)
@@ -129,14 +130,14 @@ struct LobbyView: View {
                 .task {
                     //callback from GroupActivity.activate()?
                     for await session in Cards.sessions() {
-                        cardTable.configureGroupSession(session)
+                        gameManager.configureGroupSession(session)
                     }
                 }
                 
                 
                 //present as a modal dialog
                 .fullScreenCover(isPresented: $isGamePresented) {
-                    MainView(cardTable: cardTable, uiMessage: uiMessage)
+                    MainView(gameManager: gameManager)
                 }
                 
                                 
@@ -152,6 +153,6 @@ struct LobbyView: View {
 
 struct LobbyView_Previews: PreviewProvider {
     static var previews: some View {
-        LobbyView(cardTable: CardTable(), uiMessage: UIMessage())
+        LobbyView(gameManager: GameManager())
     }
 }

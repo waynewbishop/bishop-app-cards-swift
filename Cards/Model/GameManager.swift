@@ -15,14 +15,14 @@ import GroupActivities
  under this new design, the game works as a
  published property of the game manager.
  although the manager has no knowledge of how a game works
- it receives posted messages from changes in game state which it
+ it receives posted messages from changes in game state which are
  published to the UI.
  */
+
 
 class GameManager: ObservableObject, GameDelegate {
 
     @ObservedObject var uiMessage = UIMessage()
-    
     @Published var groupSession: GroupSession<Cards>?
     @Published var response: String = "Waiting for players.."
     @Published var game = Game()
@@ -49,9 +49,9 @@ class GameManager: ObservableObject, GameDelegate {
         }
     }
     
+
     
     //add the existing user to the shared session
-   
     func configureGroupSession(_ groupSession: GroupSession<Cards>) {
         
         self.groupSession = groupSession
