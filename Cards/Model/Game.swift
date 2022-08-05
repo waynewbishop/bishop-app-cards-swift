@@ -22,7 +22,6 @@ class Game {
     var localPlayer = Player()
     var tMessage = TableMessage()
     var rules: Playable?
-    var dealer = Dealer()
         
     
     //who's the current player

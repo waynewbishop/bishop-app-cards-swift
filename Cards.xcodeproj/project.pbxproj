@@ -23,6 +23,7 @@
 		DAA11A892838883800C67B26 /* UIMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA11A882838883800C67B26 /* UIMessage.swift */; };
 		DAA11A8B283ECBEC00C67B26 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA11A8A283ECBEC00C67B26 /* CardView.swift */; };
 		DAA11A8D28497C9C00C67B26 /* LobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA11A8C28497C9C00C67B26 /* LobbyView.swift */; };
+		DAAB2C572899D13D005586AC /* Decision.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAAB2C562899D13D005586AC /* Decision.swift */; };
 		DAD846342880D5A100B6B3B7 /* ShareController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD846332880D5A100B6B3B7 /* ShareController.swift */; };
 		DAD846372881195600B6B3B7 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD846362881195600B6B3B7 /* PlayerView.swift */; };
 		DAD846392881196E00B6B3B7 /* HandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD846382881196E00B6B3B7 /* HandView.swift */; };
@@ -84,6 +85,7 @@
 		DAA11A882838883800C67B26 /* UIMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMessage.swift; sourceTree = "<group>"; };
 		DAA11A8A283ECBEC00C67B26 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		DAA11A8C28497C9C00C67B26 /* LobbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyView.swift; sourceTree = "<group>"; };
+		DAAB2C562899D13D005586AC /* Decision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decision.swift; sourceTree = "<group>"; };
 		DAD846332880D5A100B6B3B7 /* ShareController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareController.swift; sourceTree = "<group>"; };
 		DAD846362881195600B6B3B7 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		DAD846382881196E00B6B3B7 /* HandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandView.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				DA478EDD2823140F00B42EB5 /* Cards.swift */,
 				DA478EDF282465E600B42EB5 /* TableMessage.swift */,
 				DAA11A882838883800C67B26 /* UIMessage.swift */,
+				DAAB2C562899D13D005586AC /* Decision.swift */,
 				DA109C8527A1EA5A00B93244 /* Player */,
 				DA109C8627A1EB3C00B93244 /* Table */,
 				DAE7D642273C9FAE00A0C8F0 /* Structures */,
@@ -478,6 +481,7 @@
 				DAD8463B2882386400B6B3B7 /* GameManager.swift in Sources */,
 				DAE7D62C273C5B4D00A0C8F0 /* Card.swift in Sources */,
 				DAED26D2288B364900C2982A /* Dealerable.swift in Sources */,
+				DAAB2C572899D13D005586AC /* Decision.swift in Sources */,
 				DAEA12BC2892435B0068A64F /* Dealer.swift in Sources */,
 				DAE7D641273C89C400A0C8F0 /* Hand.swift in Sources */,
 				DAA11A8D28497C9C00C67B26 /* LobbyView.swift in Sources */,

@@ -32,7 +32,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ContentView(gameManager: GameManager(), uiMessage: UIMessage().testMultiUser())
+            ContentView(gameManager: GameManager().testGameBlackJack(), uiMessage: UIMessage().testMultiUser())
             ContentView(gameManager: GameManager(), uiMessage: UIMessage().testSingleUser())
             ContentView(gameManager: GameManager(), uiMessage: UIMessage())
         }

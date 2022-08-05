@@ -43,6 +43,7 @@ struct MainView_Previews: PreviewProvider {
         Group {
             MainView(gameManager: GameManager().testGameBlackJack(), uiMessage: UIMessage().testSingleUser())
             MainView(gameManager: GameManager().testGamePoker(), uiMessage: UIMessage())
+            MainView(gameManager: GameManager().testGameBlackJack(), uiMessage: UIMessage().testMultiUser())
         }
     }
 }

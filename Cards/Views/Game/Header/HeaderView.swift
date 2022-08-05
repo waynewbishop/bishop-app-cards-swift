@@ -91,7 +91,7 @@ struct MenuView: View {
 struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            HeaderView(gameManager: GameManager())
+            HeaderView(gameManager: GameManager().testGameBlackJack())
         }
     }
 }
